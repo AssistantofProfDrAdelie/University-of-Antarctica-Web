@@ -28,6 +28,29 @@ function matchingMajors(student, query) {
     .filter((value, position, values) => values.indexOf(value) === position);
 }
 
+function setupCrestModal() {
+  const trigger = document.querySelector('#crest-trigger');
+  const modal = document.querySelector('#crest-modal');
+  const close = document.querySelector('#crest-close');
+  if (!trigger || !modal || !close) return;
+  const open = () => {
+    modal.hidden = false;
+    close.focus();
+  };
+  const dismiss = () => {
+    modal.hidden = true;
+    trigger.focus();
+  };
+  trigger.addEventListener('click', open);
+  close.addEventListener('click', dismiss);
+  modal.addEventListener('click', event => {
+    if (event.target === modal || event.target.matches('[data-close-crest]')) dismiss();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !modal.hidden) dismiss();
+  });
+}
+
 function loadStudents() {
   return new Promise((resolve, reject) => {
     const request = new XMLHttpRequest();
@@ -104,3 +127,4 @@ function loadStudents() {
 }
 
 loadStudents().catch(error => { document.querySelector('#student-grid').innerHTML = `<p class="load-error">学生名录暂时无法读取：${error.message}</p>`; console.error(error); });
+setupCrestModal();

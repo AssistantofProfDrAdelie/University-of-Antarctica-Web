@@ -6,15 +6,17 @@
   <meta name="robots" content="noindex, nofollow">
   <title>南极大学 · Antarctic University</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="directory-batches.css">
+  <link rel="stylesheet" href="styles.css?v=phase-2-2">
+  <link rel="stylesheet" href="directory-batches.css?v=phase-2-2">
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#directory" aria-label="南极大学首页">
-      <span class="brand-mark">AU</span>
-      <span><strong>南极大学</strong><small>THE UNIVERSITY OF ANTARCTICA</small></span>
-    </a>
+    <div class="brand">
+      <button class="crest-trigger" id="crest-trigger" type="button" aria-label="查看南极大学校徽">
+        <img src="南极大学校徽.jpg" alt="南极大学校徽">
+      </button>
+      <a class="brand-name" href="#directory" aria-label="南极大学首页"><strong>南极大学</strong><small>THE UNIVERSITY OF ANTARCTICA</small></a>
+    </div>
     <nav aria-label="主导航"><a href="#directory">学生名录</a></nav>
   </header>
 
@@ -35,7 +37,18 @@
       <div id="student-grid" class="student-grid" aria-live="polite"></div>
     </section>
   </main>
+  <section class="motto-section" aria-label="南极大学校训">
+    <img src="南极大学校训.png" alt="From the Ice, For the Earth · 南极大学校训">
+  </section>
   <footer>南极大学 · Antarctic University <span>Student Directory prototype</span></footer>
-  <script src="app.js?v=phase-2-1"></script>
+  <div class="crest-modal" id="crest-modal" hidden role="dialog" aria-modal="true" aria-labelledby="crest-modal-title">
+    <div class="crest-backdrop" data-close-crest></div>
+    <div class="crest-dialog">
+      <h2 id="crest-modal-title" class="visually-hidden">南极大学校徽</h2>
+      <button class="crest-close" id="crest-close" type="button" aria-label="关闭校徽预览">×</button>
+      <img src="南极大学校徽.jpg" alt="南极大学校徽放大图">
+    </div>
+  </div>
+  <script src="app.js?v=phase-2-2"></script>
 </body>
 </html>
