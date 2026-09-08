@@ -24,15 +24,16 @@
 
 /* Persistent institutional identity navigation. */
 .site-header{position:sticky;top:0;z-index:15;height:auto;min-height:88px;padding-top:10px;padding-bottom:10px;background:#fffdf8f2;backdrop-filter:blur(8px)}
-.brand-logo-trigger{width:150px;height:78px;flex:none}.brand-logo-trigger img{object-fit:contain}
+.brand-logo-trigger{display:block;width:240px;height:72px;flex:none;overflow:hidden;cursor:zoom-in}.brand-logo-trigger img{display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center center}
 .brand{gap:14px}.brand-name small{font-size:11px;letter-spacing:.04em}
-.site-header nav{align-items:center;gap:18px}
+.site-header nav{align-items:center;gap:28px}
 .institutional-node{display:flex;flex-direction:column;gap:3px;color:var(--navy);text-decoration:none;line-height:1.05;white-space:nowrap;cursor:zoom-in}
 .institutional-node strong{font:15px Georgia,"Songti SC",serif;font-weight:400}.institutional-node small{font:10px Arial,sans-serif;letter-spacing:.08em;color:#788086}
-.directory-nav{color:var(--ink);text-decoration:none;font-size:14px;padding-left:4px}.directory-nav:hover,.institutional-node:hover{color:var(--gold)}
-.institutional-closing{border-top:1px solid var(--line);padding:48px 6vw 54px;display:grid;justify-items:center;gap:22px;text-align:center}
+.institutional-node:hover{color:var(--gold)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,360px);gap:clamp(48px,9vw,128px);align-items:center}
+.hero-copy{min-width:0}.hero-shield{display:block;justify-self:end;width:min(100%,350px);padding:0;cursor:zoom-in}.hero-shield-field{display:block;width:100%;padding:20px;background:#fffdf8;border:1px solid var(--line)}.hero-shield-field img{display:block;width:100%;height:auto}
+.institutional-closing{border-top:1px solid var(--line);padding:54px 6vw 58px;display:grid;justify-items:center;text-align:center}
 .motto-image{display:block;width:min(900px,100%);height:auto;max-height:190px;object-fit:contain}
-.closing-shield{display:block;width:74px;height:84px;cursor:zoom-in}.closing-shield img{display:block;width:100%;height:100%;object-fit:contain}
 .secondary-identity,.motto-section,.channels-section{display:none}
 .year-group,.batch-group{scroll-margin-top:110px}
-@media(max-width:760px){.site-header{min-height:68px;padding:7px 4vw}.brand{gap:7px;min-width:0}.brand-logo-trigger{width:86px;height:54px}.brand-name strong{font-size:15px}.site-header nav{gap:6px}.institutional-node{gap:2px}.institutional-node strong{font-size:10px}.institutional-node small{font-size:8px;letter-spacing:0}.directory-nav{font-size:10px;padding-left:0}.institutional-closing{padding:34px 5vw 40px;gap:16px}.motto-image{max-height:130px}.closing-shield{width:56px;height:64px}.year-group,.batch-group{scroll-margin-top:82px}}
+@media(max-width:760px){.site-header{min-height:68px;padding:7px 4vw}.brand{gap:7px;min-width:0}.brand-logo-trigger{width:150px;height:48px}.brand-name strong{font-size:15px}.site-header nav{gap:10px}.institutional-node{gap:2px}.institutional-node strong{font-size:10px}.institutional-node small{font-size:8px;letter-spacing:0}.hero{grid-template-columns:1fr;gap:30px}.hero-shield{justify-self:start;width:min(240px,72vw)}.hero-shield-field{padding:14px}.institutional-closing{padding:42px 5vw 46px}.motto-image{max-height:130px}.year-group,.batch-group{scroll-margin-top:82px}}
