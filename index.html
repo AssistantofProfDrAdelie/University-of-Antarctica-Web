@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>南极大学 · Antarctic University</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="directory-batches.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#directory" aria-label="南极大学首页">
+      <span class="brand-mark">AU</span>
+      <span><strong>南极大学</strong><small>THE UNIVERSITY OF ANTARCTICA</small></span>
+    </a>
+    <nav aria-label="主导航"><a href="#directory">学生名录</a></nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="eyebrow">PUBLIC RECORD · 2025—</p>
+      <h1 id="hero-title">学生名录<br><em>Student Directory</em></h1>
+      <p class="intro">Student Directory · Admission Archive</p>
+    </section>
+
+    <section id="directory" class="section" aria-labelledby="directory-title">
+      <div class="section-heading"><div><p class="eyebrow">REGISTERED STUDENTS</p><h2 id="directory-title">学生名录</h2></div><span id="student-count" class="count"></span></div>
+      <div class="directory-search">
+        <label for="directory-search-input">检索学生名录</label>
+        <input id="directory-search-input" type="search" placeholder="搜索学生姓名或专业" autocomplete="off" spellcheck="false">
+      </div>
+      <nav id="directory-index" class="directory-index" aria-label="年份与录取批次索引"></nav>
+      <div id="student-grid" class="student-grid" aria-live="polite"></div>
+    </section>
+  </main>
+  <footer>南极大学 · Antarctic University <span>Student Directory prototype</span></footer>
+  <script src="app.js?v=phase-1-9"></script>
+</body>
+</html>
