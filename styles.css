@@ -30,10 +30,10 @@
 .institutional-node{display:flex;flex-direction:column;gap:3px;color:var(--navy);text-decoration:none;line-height:1.05;white-space:nowrap;cursor:zoom-in}
 .institutional-node strong{font:15px Georgia,"Songti SC",serif;font-weight:400}.institutional-node small{font:10px Arial,sans-serif;letter-spacing:.08em;color:#788086}
 .institutional-node:hover{color:var(--gold)}
-.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,360px);gap:clamp(48px,9vw,128px);align-items:center}
-.hero-copy{min-width:0}.hero-shield{display:block;justify-self:end;width:min(100%,350px);padding:0;cursor:zoom-in}.hero-shield-field{display:block;width:100%;padding:20px;background:#fffdf8;border:1px solid var(--line)}.hero-shield-field img{display:block;width:100%;height:auto}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,300px);gap:clamp(48px,9vw,128px);align-items:start}
+.hero-copy{min-width:0}.hero-shield{display:block;justify-self:end;align-self:start;width:min(100%,280px);margin-top:clamp(8px,2vw,24px);padding:0;cursor:zoom-in}.hero-shield-field{display:block;width:100%;padding:0;background:transparent;border:0}.hero-shield-field img{display:block;width:100%;height:auto;opacity:.8;mix-blend-mode:multiply}
 .institutional-closing{border-top:1px solid var(--line);padding:54px 6vw 58px;display:grid;justify-items:center;text-align:center}
 .motto-image{display:block;width:min(900px,100%);height:auto;max-height:190px;object-fit:contain}
 .secondary-identity,.motto-section,.channels-section{display:none}
 .year-group,.batch-group{scroll-margin-top:110px}
-@media(max-width:760px){.site-header{min-height:68px;padding:7px 4vw}.brand{gap:7px;min-width:0}.brand-logo-trigger{width:150px;height:48px}.brand-name strong{font-size:15px}.site-header nav{gap:10px}.institutional-node{gap:2px}.institutional-node strong{font-size:10px}.institutional-node small{font-size:8px;letter-spacing:0}.hero{grid-template-columns:1fr;gap:30px}.hero-shield{justify-self:start;width:min(240px,72vw)}.hero-shield-field{padding:14px}.institutional-closing{padding:42px 5vw 46px}.motto-image{max-height:130px}.year-group,.batch-group{scroll-margin-top:82px}}
+@media(max-width:760px){.site-header{min-height:68px;padding:7px 4vw}.brand{gap:7px;min-width:0}.brand-logo-trigger{width:150px;height:48px}.brand-name strong{font-size:15px}.site-header nav{gap:10px}.institutional-node{gap:2px}.institutional-node strong{font-size:10px}.institutional-node small{font-size:8px;letter-spacing:0}.hero{grid-template-columns:1fr;gap:30px}.hero-shield{justify-self:start;width:min(220px,64vw);margin-top:0}.institutional-closing{padding:42px 5vw 46px}.motto-image{max-height:130px}.year-group,.batch-group{scroll-margin-top:82px}}
