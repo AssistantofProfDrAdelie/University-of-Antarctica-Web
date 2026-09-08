@@ -1,3 +1,33 @@
+function normalizeSearchText(value) {
+  return String(value || '').trim().replace(/\s+/g, ' ').toLocaleLowerCase();
+}
+
+function searchTokens(query) {
+  return normalizeSearchText(query).split(' ').filter(Boolean);
+}
+
+function studentMatches(student, query) {
+  const tokens = searchTokens(query);
+  if (!tokens.length) return true;
+  const searchableText = [student.name_cn, student.major_cn, student.major_en]
+    .map(normalizeSearchText)
+    .filter(Boolean)
+    .join(' ');
+  return tokens.every(token => searchableText.includes(token));
+}
+
+function matchingMajors(student, query) {
+  const tokens = searchTokens(query);
+  if (!tokens.length) return [];
+  return [student.major_cn, student.major_en]
+    .filter(Boolean)
+    .filter(value => {
+      const text = normalizeSearchText(value);
+      return tokens.some(token => text.includes(token));
+    })
+    .filter((value, position, values) => values.indexOf(value) === position);
+}
+
 function loadStudents() {
   return new Promise((resolve, reject) => {
     const request = new XMLHttpRequest();
@@ -23,18 +53,8 @@ function loadStudents() {
   const count = document.querySelector('#student-count');
   const index = document.querySelector('#directory-index');
   const grid = document.querySelector('#student-grid');
-  const normalized = value => String(value || '').toLocaleLowerCase();
-  const matches = (student, query) => {
-    const needle = normalized(query);
-    return !needle || [student.name_cn, student.major_cn, student.major_en].some(value => normalized(value).includes(needle));
-  };
   const matchDetails = (student, query) => {
-    if (!query) return '';
-    const needle = normalized(query);
-    const details = [];
-    if (normalized(student.major_cn).includes(needle)) details.push(student.major_cn);
-    if (normalized(student.major_en).includes(needle)) details.push(student.major_en);
-    return details.filter(Boolean).filter((value, position, values) => values.indexOf(value) === position).join(' · ');
+    return matchingMajors(student, query).join(' · ');
   };
   const parseBatchNumber = batch => {
     const token = batch.match(/第([一二三四五六七八九十百]+)/)?.[1] || '';
@@ -46,7 +66,7 @@ function loadStudents() {
     return digits[token] || 0;
   };
   const render = query => {
-    const filtered = students.filter(student => matches(student, query));
+    const filtered = students.filter(student => studentMatches(student, query));
     const groups = new Map();
     filtered.forEach(student => {
     const year = String(student.admission_year);
