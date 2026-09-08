@@ -28,23 +28,32 @@ function matchingMajors(student, query) {
     .filter((value, position, values) => values.indexOf(value) === position);
 }
 
-function setupCrestModal() {
-  const trigger = document.querySelector('#crest-trigger');
-  const modal = document.querySelector('#crest-modal');
-  const close = document.querySelector('#crest-close');
-  if (!trigger || !modal || !close) return;
-  const open = () => {
+function setupIdentityLightbox() {
+  const modal = document.querySelector('#identity-lightbox');
+  const image = document.querySelector('#identity-lightbox-image');
+  const close = document.querySelector('#identity-lightbox-close');
+  const triggers = [...document.querySelectorAll('[data-lightbox="identity"]')];
+  if (!modal || !image || !close || !triggers.length) return;
+  let activeTrigger = null;
+  const open = trigger => {
+    activeTrigger = trigger;
+    image.src = trigger.getAttribute('href');
+    image.alt = trigger.dataset.lightboxAlt || '';
     modal.hidden = false;
     close.focus();
   };
   const dismiss = () => {
     modal.hidden = true;
-    trigger.focus();
+    image.removeAttribute('src');
+    if (activeTrigger) activeTrigger.focus();
   };
-  trigger.addEventListener('click', open);
+  triggers.forEach(trigger => trigger.addEventListener('click', event => {
+    event.preventDefault();
+    open(trigger);
+  }));
   close.addEventListener('click', dismiss);
   modal.addEventListener('click', event => {
-    if (event.target === modal || event.target.matches('[data-close-crest]')) dismiss();
+    if (event.target === modal || event.target.matches('[data-close-lightbox]')) dismiss();
   });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && !modal.hidden) dismiss();
@@ -127,4 +136,4 @@ function loadStudents() {
 }
 
 loadStudents().catch(error => { document.querySelector('#student-grid').innerHTML = `<p class="load-error">学生名录暂时无法读取：${error.message}</p>`; console.error(error); });
-setupCrestModal();
+setupIdentityLightbox();
