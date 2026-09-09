@@ -1,5 +1,9 @@
 [
   {
+    "artist_name": "Amon",
+    "certificate_path": "极光艺术家/极光艺术家-Amon.png"
+  },
+  {
     "artist_name": "鸟好鸟坏",
     "certificate_path": "极光艺术家/极光艺术家-鸟好鸟坏.PNG"
   },
@@ -26,6 +30,10 @@
   {
     "artist_name": "卡波鼠博士",
     "certificate_path": "极光艺术家/极光艺术家-卡波鼠博士.PNG"
+  },
+  {
+    "artist_name": "Mariella",
+    "certificate_path": "极光艺术家/极光艺术家-Mariella.png"
   },
   {
     "artist_name": "燃海",
