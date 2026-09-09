@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>极光艺术馆 · Aurora Art Gallery</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../styles.css?v=phase-2-8">
+  <link rel="stylesheet" href="../directory-batches.css?v=phase-2-2">
+  <link rel="stylesheet" href="../aurora.css?v=phase-3-0">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a class="brand-logo-trigger identity-image-trigger" href="../南极大学校徽2.png" data-lightbox="identity" data-lightbox-alt="the University of Antarctica 标准校标" aria-label="查看 the University of Antarctica 标准校标">
+        <img src="../南极大学校徽2.png" alt="the University of Antarctica 标准校标">
+      </a>
+      <div class="brand-name" aria-label="南极大学"><strong>南极大学</strong></div>
+    </div>
+    <nav aria-label="机构导航与主导航">
+      <a class="directory-nav-link" href="../">学生名录</a>
+      <a class="directory-nav-link" href="./" aria-current="page">极光艺术馆</a>
+      <a class="institutional-node" href="../阿德利教授小红书.jpg" data-lightbox="identity" data-lightbox-alt="阿德利教授, Ph.D. 小红书账户卡" aria-label="查看阿德利教授, Ph.D. 身份卡">
+        <span class="identity-portrait"><img src="../阿德利教授.JPG" alt="阿德利教授, Ph.D. 头像"></span>
+        <span class="identity-copy"><strong>阿德利教授, Ph.D.</strong><small>小红书</small></span>
+      </a>
+      <a class="institutional-node" href="../一袋企鹅二维码.jpg" data-lightbox="identity" data-lightbox-alt="一袋企鹅微信公众号二维码" aria-label="查看一袋企鹅微信公众号二维码">
+        <span class="identity-qr"><img src="../一袋企鹅二维码.jpg" alt="一袋企鹅微信公众号二维码"></span>
+        <span class="identity-copy"><strong>一袋企鹅</strong><small>微信公众号</small></span>
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="aurora-hero" aria-labelledby="aurora-title">
+      <div class="aurora-hero-copy">
+        <p class="eyebrow">AURORA ART GALLERY</p>
+        <h1 id="aurora-title">极光艺术馆<br><em>Aurora Art Gallery</em></h1>
+        <p class="aurora-intro">An institutional certificate archive for the University of Antarctica’s Aurora artists.</p>
+      </div>
+      <div class="curator-block">
+        <div class="curator-portrait"><img src="../极光艺术家/帝加索.JPG" alt="帝加索馆长"></div>
+        <div><p class="eyebrow">馆长</p><h2>帝加索馆长</h2><p>极光艺术馆</p></div>
+      </div>
+    </section>
+
+    <section class="aurora-directory" aria-labelledby="artist-directory-title">
+      <div class="aurora-section-heading">
+        <div><p class="eyebrow">AURORA ARTISTS</p><h2 id="artist-directory-title">极光艺术家</h2></div>
+        <span id="artist-count" class="count"></span>
+      </div>
+      <div id="aurora-grid" class="aurora-certificate-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <section class="institutional-closing" aria-label="南极大学校训">
+    <img class="motto-image" src="../南极大学校训.png" alt="From the Ice, For the Earth · 南极大学校训">
+  </section>
+  <footer>南极大学 · The University of Antarctica <span>Aurora Art Gallery archive</span></footer>
+
+  <div class="identity-lightbox" id="identity-lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="identity-lightbox-title">
+    <div class="identity-lightbox-backdrop" data-close-lightbox></div>
+    <div class="identity-lightbox-dialog">
+      <h2 id="identity-lightbox-title" class="visually-hidden">the University of Antarctica identity asset</h2>
+      <button class="identity-lightbox-close" id="identity-lightbox-close" type="button" aria-label="关闭身份资产预览">×</button>
+      <img id="identity-lightbox-image" src="" alt="">
+    </div>
+  </div>
+  <div class="aurora-lightbox" id="aurora-lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="aurora-lightbox-title">
+    <div class="aurora-lightbox-backdrop" data-close-aurora-lightbox></div>
+    <div class="aurora-lightbox-dialog">
+      <h2 id="aurora-lightbox-title" class="visually-hidden">Aurora artist certificate</h2>
+      <button class="aurora-lightbox-close" id="aurora-lightbox-close" type="button" aria-label="关闭证书预览">×</button>
+      <img id="aurora-lightbox-image" src="" alt="">
+    </div>
+  </div>
+  <script src="../aurora.js?v=phase-3-0-1"></script>
+</body>
+</html>
