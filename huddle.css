@@ -9,9 +9,9 @@
   white-space: nowrap;
 }
 
-.huddle-start:hover { color: var(--gold); }
+.huddle-start:hover { color: var(--accent); }
 .huddle-start:focus-visible,
-.huddle-close:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.huddle-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .huddle-overlay {
   position: fixed;

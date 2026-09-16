@@ -28,10 +28,10 @@ class PaletteContrastTest(unittest.TestCase):
     def test_primary_palette_text_colors_meet_wcag_aa(self):
         stylesheet = (ROOT / "styles.css").read_text(encoding="utf-8")
         variables = dict(
-            re.findall(r"--(navy|gold|ink|paper|surface|muted):(#[0-9a-f]{6})", stylesheet)
+            re.findall(r"--(navy|accent|ink|paper|surface|muted):(#[0-9a-f]{6})", stylesheet)
         )
 
-        for foreground in ("navy", "gold", "ink", "muted"):
+        for foreground in ("navy", "accent", "ink", "muted"):
             for background in ("paper", "surface"):
                 with self.subTest(foreground=foreground, background=background):
                     self.assertGreaterEqual(

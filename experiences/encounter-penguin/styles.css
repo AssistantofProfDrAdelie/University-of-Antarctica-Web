@@ -1,4 +1,4 @@
-:root { --ink:#123b59; --paper:#f1f7f9; --orange:#087985; --teal:#075d70; --line:rgba(18,59,89,.2); }
+:root { --ink:#123b59; --paper:#f1f7f9; --accent:#087985; --teal:#075d70; --line:rgba(18,59,89,.2); }
 * { box-sizing:border-box; }
 body { margin:0; color:var(--ink); background:var(--paper); font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif; min-height:100vh; }
 body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.24; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E"); }
@@ -11,9 +11,9 @@ h1,h2 { font-family:Georgia,'Times New Roman',serif; font-weight:400; margin:0; 
 .intro { min-height:690px; display:grid; grid-template-columns:1.1fr .9fr; gap:8vw; align-items:center; padding:70px 5vw; }
 .intro h1 { font-size:clamp(52px,6.3vw,92px); line-height:.92; }
 .drop-zone { min-height:390px; border:1.5px dashed rgba(18,59,89,.4); background:rgba(251,253,254,.5); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; cursor:pointer; transition:.25s; position:relative; }
-.drop-zone:hover,.drop-zone.dragging { background:#fbfdfe; border-color:var(--orange); transform:translateY(-3px); box-shadow:0 16px 50px rgba(18,59,89,.1); }
+.drop-zone:hover,.drop-zone.dragging { background:#fbfdfe; border-color:var(--accent); transform:translateY(-3px); box-shadow:0 16px 50px rgba(18,59,89,.1); }
 .drop-zone input { position:absolute; width:1px; height:1px; opacity:0; }
-.upload-icon { display:grid; place-items:center; width:65px; height:65px; border-radius:50%; background:var(--orange); color:#fff; font-size:31px; margin-bottom:25px; }
+.upload-icon { display:grid; place-items:center; width:65px; height:65px; border-radius:50%; background:var(--accent); color:#fff; font-size:31px; margin-bottom:25px; }
 .drop-zone strong { font-family:Georgia,serif; font-size:27px; font-weight:400; }
 .drop-zone > span:not(.upload-icon) { margin-top:7px; opacity:.65; }
 .encounter { max-width:1080px; margin:44px auto 80px; border:1px solid var(--line); }
