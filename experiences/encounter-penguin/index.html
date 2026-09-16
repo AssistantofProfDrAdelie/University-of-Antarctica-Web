@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f1e8" />
+    <title>Encounter a Penguin</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <header class="masthead">
+        <a class="brand" href="./" aria-label="Encounter a Penguin home">
+          <span class="brand-mark" aria-hidden="true"><i></i></span>
+          <span>Encounter a Penguin</span>
+        </a>
+      </header>
+
+      <section class="intro" id="intro">
+        <div class="intro-copy">
+          <h1>Professor Adelie is nearby.</h1>
+        </div>
+        <label class="drop-zone" id="dropZone">
+          <input id="fileInput" type="file" accept="image/*" />
+          <span class="upload-icon" aria-hidden="true">↥</span>
+          <strong>Choose a photograph</strong>
+          <span>or drop one here</span>
+        </label>
+      </section>
+
+      <section class="encounter" id="encounter" hidden>
+        <div class="photo-column">
+          <div class="photo-head">
+            <button class="text-button" id="changeButton" type="button">Choose another</button>
+          </div>
+          <div class="photo-frame" id="photoFrame">
+            <canvas id="sourceCanvas" aria-label="Uploaded photograph"></canvas>
+            <canvas id="visitorCanvas" aria-hidden="true"></canvas>
+            <a class="save-button" id="saveButton" href="#" download hidden>Save <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="app-ui.js"></script>
+  </body>
+</html>

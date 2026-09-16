@@ -1,0 +1,45 @@
+name: Deploy static Antarctic University site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Test Encounter Penguin
+        working-directory: experiences/encounter-penguin
+        run: python3 -m unittest discover -s tests -v
+      - name: Test University web contracts
+        run: python3 -m unittest discover -s tests -v
+      - uses: actions/configure-pages@v5
+      - name: Build public website artifact
+        run: python3 tools/build-public-site.py "$GITHUB_WORKSPACE" "$RUNNER_TEMP/public-site"
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ runner.temp }}/public-site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

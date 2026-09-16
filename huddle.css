@@ -1,0 +1,122 @@
+/* Local Huddle logic prototype. The triangle is a temporary test renderer. */
+.huddle-start {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--navy);
+  padding: 7px 11px;
+  font: 13px Georgia, "Songti SC", serif;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.huddle-start:hover { color: var(--gold); }
+.huddle-start:focus-visible,
+.huddle-close:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.huddle-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  background: rgb(23 60 112 / 12%);
+  touch-action: manipulation;
+  contain: strict;
+}
+
+.huddle-stage { position: absolute; inset: 0; overflow: hidden; }
+
+.huddle-close {
+  position: absolute;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  z-index: 3;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid rgb(23 60 112 / 35%);
+  border-radius: 50%;
+  background: #fffdf8;
+  color: var(--navy);
+  font: 25px/1 Georgia, serif;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgb(23 60 112 / 14%);
+}
+
+.huddle-entity {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--huddle-token-width);
+  height: var(--huddle-token-height);
+  border: 0;
+  padding: 0;
+  background: var(--navy);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  cursor: pointer;
+  will-change: transform;
+  transform-origin: center;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(.22, .72, .3, 1);
+}
+
+.huddle-entity[data-state="settled"] { will-change: auto; }
+.huddle-entity[data-state="exiting"] {
+  pointer-events: none;
+  transition-timing-function: cubic-bezier(.55, .05, .9, .38);
+}
+
+.huddle-debug-envelope,
+.huddle-debug-lane { display: none; }
+
+.huddle-physics-debug .huddle-debug-envelope {
+  display: block;
+  position: absolute;
+  border: 1px dashed #b43b52;
+  pointer-events: none;
+}
+
+.huddle-physics-debug .huddle-debug-lane {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1px;
+  background: rgb(180 59 82 / 55%);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.huddle-physics-debug .huddle-entity::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--huddle-collider-diameter);
+  height: var(--huddle-collider-diameter);
+  border: 1px solid #d33;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  clip-path: none;
+  pointer-events: none;
+}
+
+.huddle-physics-debug .huddle-entity {
+  clip-path: none;
+  background: transparent;
+}
+
+.huddle-physics-debug .huddle-entity::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--navy);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+@media (max-width: 760px) {
+  .huddle-start { padding: 6px 8px; font-size: 12px; }
+  .huddle-close { top: max(12px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .huddle-entity { transition-duration: 0.01ms !important; }
+}
