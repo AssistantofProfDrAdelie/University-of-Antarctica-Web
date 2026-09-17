@@ -8,6 +8,10 @@ Encounter Penguin now lives inside the University of Antarctica parent product
 at `experiences/encounter-penguin/`. The parent repository's allowlisted build
 and GitHub Pages workflow publish this experience.
 
+This directory is the sole active source of truth. The former standalone
+`find_a_penguin` repository is retained only as historical migration
+provenance; do not develop, deploy, or synchronize from it.
+
 The application remains browser-only: it needs no server, secrets, database, or
 access to the owner's computer or raw asset archive.
 

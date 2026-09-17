@@ -11,6 +11,7 @@ The public site is assembled by `tools/build-public-site.py` from an explicit
 allowlist and deployed by GitHub Actions to GitHub Pages. Encounter Penguin is
 fully browser-only: uploaded photographs stay on the visitor's device.
 
-The standalone `find_a_penguin` repository remains an intact migration source.
-Its public product snapshot and Git provenance were imported into this project;
-the private Professor Adelie source library was not imported.
+Encounter Penguin is developed, tested, built, and deployed only from this
+repository. The former standalone `find_a_penguin` repository is historical
+migration provenance, not an active development or deployment source. There is
+no synchronization path between the repositories.

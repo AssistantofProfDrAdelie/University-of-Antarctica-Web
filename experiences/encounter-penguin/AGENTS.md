@@ -10,6 +10,7 @@
 ## Product source of truth
 
 - The product is **Encounter Penguin**. The former **Find the Penguin** detector/quiz framing is obsolete.
+- `experiences/encounter-penguin/` in the University of Antarctica repository is the sole active product source. The former standalone `find_a_penguin` repository is historical migration provenance only: do not develop or deploy from it, and do not create synchronization machinery.
 - Preserve the durable product principles in `DESIGN.md`. The authoritative Professor Adelie corpus is a Private engineering source and must not be copied into this public repository.
 - “There is always a penguin” is a playful worldview, not a machine-authoritative classification requirement. Human perception remains authoritative; a penguin is not an answer key.
 - Never build quiz-master persuasion such as hints, progressive reveals, scores, bounding boxes, or explanations that prove why something is a penguin.
@@ -27,7 +28,7 @@
 
 > The owner controls the Public / Private boundary. Access does not imply publication.
 
-- `AssistantofProfDrAdelie/find_a_penguin` and its deliberately selected product code, public documentation, deployment configuration, and required processed runtime assets are Public.
+- The deliberately selected Encounter Penguin product code, public documentation, University deployment configuration, and required processed runtime assets are Public. The former `AssistantofProfDrAdelie/find_a_penguin` repository contains the historical public migration snapshot but is not an active product source.
 - The owner's local photo libraries, the Antarctic University source archive, raw Professor Adelie photographs, historical encounter photographs in that archive, mixed source material, experiments, working files, temporary processing outputs, and any unapproved material outside this repository are Private.
 - Read access, processing permission, or technical usefulness never authorizes publication. Codex may autonomously process authorized Private inputs, but may not reclassify them as Public.
 - Crossing from Private to Public by copying, committing, uploading, embedding, or exposing content is a publication action. Publish only the minimum deliberately required product derivative. If status is uncertain, keep the item Private.
