@@ -30,7 +30,7 @@ class HuddleContractTest(unittest.TestCase):
         ):
             self.assertIn(required, script)
 
-    def test_public_build_contains_huddle_runtime_only(self):
+    def test_public_build_excludes_unfinished_huddle_runtime(self):
         with tempfile.TemporaryDirectory() as output:
             subprocess.run(
                 ["python3", "tools/build-public-site.py", str(ROOT), output],
@@ -38,8 +38,8 @@ class HuddleContractTest(unittest.TestCase):
                 check=True,
             )
             public = Path(output)
-            self.assertTrue((public / "huddle.js").is_file())
-            self.assertTrue((public / "huddle.css").is_file())
+            self.assertFalse((public / "huddle.js").exists())
+            self.assertFalse((public / "huddle.css").exists())
             self.assertFalse((public / "tests").exists())
             self.assertFalse((public / "docs").exists())
 

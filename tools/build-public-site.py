@@ -11,8 +11,6 @@ STATIC_FILES = (
     "styles.css",
     "directory-batches.css",
     "app.js",
-    "huddle.css",
-    "huddle.js",
     "南极大学校徽2.png",
     "南极大学校徽2.jpg",
     "南极大学校徽.jpg",
