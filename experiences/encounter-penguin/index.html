@@ -11,15 +11,24 @@
   <body>
     <main>
       <header class="masthead">
+        <a class="university-link" href="../../" aria-label="返回南极大学">
+          <span aria-hidden="true">←</span>
+          <span>南极大学</span>
+        </a>
         <a class="brand" href="./" aria-label="Encounter a Penguin home">
           <img class="brand-mark" src="assets/prof-adelie-icon.png" alt="" aria-hidden="true" />
           <span>Encounter a Penguin</span>
         </a>
-        <a class="university-link" href="../../" aria-label="Back to University of Antarctica">
-          <span aria-hidden="true">←</span>
-          <span class="university-name">University of Antarctica</span>
-          <span class="university-name-short">University</span>
-        </a>
+        <nav class="channel-links" aria-label="阿德利教授与一袋企鹅社交账号">
+          <a class="channel-link" href="../../阿德利教授小红书.jpg" data-lightbox="identity" data-lightbox-alt="阿德利教授, Ph.D. 小红书账户卡" aria-label="查看阿德利教授小红书">
+            <span class="channel-image channel-portrait"><img src="../../阿德利教授.JPG" alt="" /></span>
+            <span class="channel-copy"><strong>阿德利教授</strong><small>小红书</small></span>
+          </a>
+          <a class="channel-link" href="../../一袋企鹅二维码.jpg" data-lightbox="identity" data-lightbox-alt="一袋企鹅微信公众号二维码" aria-label="查看一袋企鹅微信公众号二维码">
+            <span class="channel-image channel-qr"><img src="../../一袋企鹅二维码.jpg" alt="" /></span>
+            <span class="channel-copy"><strong>一袋企鹅</strong><small>微信公众号</small></span>
+          </a>
+        </nav>
       </header>
 
       <section class="intro" id="intro">
@@ -47,6 +56,14 @@
         </div>
       </section>
     </main>
+    <div class="identity-lightbox" id="identityLightbox" hidden role="dialog" aria-modal="true" aria-labelledby="identityLightboxTitle">
+      <button class="identity-lightbox-backdrop" type="button" data-close-lightbox aria-label="关闭预览"></button>
+      <div class="identity-lightbox-dialog">
+        <h2 class="visually-hidden" id="identityLightboxTitle">社交账号预览</h2>
+        <button class="identity-lightbox-close" id="identityLightboxClose" type="button" aria-label="关闭预览">×</button>
+        <img id="identityLightboxImage" src="" alt="" />
+      </div>
+    </div>
     <script src="app-ui.js"></script>
   </body>
 </html>

@@ -242,3 +242,16 @@ fileInput.addEventListener("change",event=>loadFile(event.target.files[0]));
 ["dragleave","drop"].forEach(type=>dropZone.addEventListener(type,event=>{event.preventDefault();dropZone.classList.remove("dragging");}));
 dropZone.addEventListener("drop",event=>loadFile(event.dataTransfer.files[0]));
 $("#changeButton").addEventListener("click",()=>{fileInput.value="";fileInput.click();});
+
+const identityLightbox=$("#identityLightbox"),identityLightboxImage=$("#identityLightboxImage"),identityLightboxClose=$("#identityLightboxClose");
+let identityLightboxReturnFocus=null;
+function closeIdentityLightbox(){
+  identityLightbox.hidden=true;identityLightboxImage.src="";
+  if(identityLightboxReturnFocus)identityLightboxReturnFocus.focus();
+}
+document.querySelectorAll('[data-lightbox="identity"]').forEach(trigger=>trigger.addEventListener("click",event=>{
+  event.preventDefault();identityLightboxReturnFocus=trigger;identityLightboxImage.src=trigger.href;identityLightboxImage.alt=trigger.dataset.lightboxAlt||"";identityLightbox.hidden=false;identityLightboxClose.focus();
+}));
+identityLightbox.addEventListener("click",event=>{if(event.target.closest("[data-close-lightbox]"))closeIdentityLightbox();});
+identityLightboxClose.addEventListener("click",closeIdentityLightbox);
+document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!identityLightbox.hidden)closeIdentityLightbox();});
