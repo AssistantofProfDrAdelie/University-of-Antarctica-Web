@@ -57,6 +57,8 @@ class AppServerTest(unittest.TestCase):
         self.assertIn("Professor Adelie is nearby.", markup)
         self.assertIn('src="assets/prof-adelie-icon.png"', markup)
         self.assertNotIn('<span class="brand-mark"', markup)
+        self.assertIn('class="university-link" href="../../"', markup)
+        self.assertIn('aria-label="Back to University of Antarctica"', markup)
         self.assertNotIn("An ordinary photograph", markup)
         self.assertIn('>Save <span', markup)
         self.assertNotIn("Save this encounter", markup)
