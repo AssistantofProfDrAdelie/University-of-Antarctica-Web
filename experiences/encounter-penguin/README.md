@@ -25,7 +25,7 @@ python3 app.py
 
 Open <http://127.0.0.1:8000> and choose a photograph.
 
-After a quiet pause, Professor Adelie peeks in from an edge, stays briefly with a save option, then retreats. The photograph is never uploaded or modified.
+After a quiet pause, Professor Adelie peeks in from somewhere along the photograph's continuous perimeter, stays briefly with a save option, then retreats. After a short beat, he may return somewhere spatially different. Lower-boundary visits remain common while side, diagonal, and unusual upper arrivals keep the encounter open-ended. The photograph is never uploaded or modified.
 
 ## Character asset
 
