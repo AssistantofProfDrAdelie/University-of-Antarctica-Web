@@ -16,3 +16,10 @@ live review target.
   OCR/review data, reconciliation files, audit material, or source images.
 - `tools/build-public-site.py` is the deployment allowlist. Update it explicitly
   when a new public runtime file is intentionally introduced.
+
+## Frontend review
+
+For frontend work, the rendered page is the primary review artifact. Preview
+and visually inspect affected desktop and mobile states—including relevant
+interactions—before release; after the Pages workflow completes, repeat the
+checks on the live URL and give the owner that direct visual review target.
