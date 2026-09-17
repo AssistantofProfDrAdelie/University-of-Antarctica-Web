@@ -108,6 +108,8 @@ class AppServerTest(unittest.TestCase):
         self.assertIn("visitor.dataset.choreography", script)
         self.assertIn('imageSmoothingQuality="high"', script)
         self.assertIn("photoFrame.style.maxWidth", script)
+        self.assertIn('photoFrame.style.setProperty("--photo-aspect"', script)
+        self.assertIn("100svh - 210px", Path("styles.css").read_text())
         self.assertNotIn("professor-adelie-transparent.png", script)
         self.assertNotIn("professor-adelie-transparent.svg", script)
         self.assertIn('download hidden', markup)

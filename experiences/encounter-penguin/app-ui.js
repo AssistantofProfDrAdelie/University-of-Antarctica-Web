@@ -87,7 +87,7 @@ function loadFile(file){
     if(generation!==encounterGeneration){URL.revokeObjectURL(url);return;}
     const max=1800,scale=Math.min(1,max/Math.max(image.width,image.height));
     source.width=visitor.width=Math.round(image.width*scale);source.height=visitor.height=Math.round(image.height*scale);
-    highQualitySmoothing(srcCtx);highQualitySmoothing(visitorCtx);photoFrame.style.maxWidth=`${source.width}px`;
+    highQualitySmoothing(srcCtx);highQualitySmoothing(visitorCtx);photoFrame.style.maxWidth=`${source.width}px`;photoFrame.style.setProperty("--photo-aspect",String(source.width/source.height));
     srcCtx.drawImage(image,0,0,source.width,source.height);visitorCtx.clearRect(0,0,visitor.width,visitor.height);
     URL.revokeObjectURL(url);loaded=true;fileStem=(file.name.replace(/\.[^.]+$/,"" )||"photograph")+"-professor-adelie";saveButton.download=`${fileStem}.png`;
     intro.hidden=true;encounter.hidden=false;encounter.scrollIntoView({behavior:"smooth",block:"start"});scheduleFirstEncounter(generation);
