@@ -55,6 +55,8 @@ class AppServerTest(unittest.TestCase):
         script = Path("app-ui.js").read_text()
         self.assertIn("Encounter a Penguin", markup)
         self.assertIn("Professor Adelie is nearby.", markup)
+        self.assertIn('src="assets/prof-adelie-icon.png"', markup)
+        self.assertNotIn('<span class="brand-mark"', markup)
         self.assertNotIn("An ordinary photograph", markup)
         self.assertIn('>Save <span', markup)
         self.assertNotIn("Save this encounter", markup)
@@ -106,9 +108,12 @@ class AppServerTest(unittest.TestCase):
     def test_javascript_and_asset_have_correct_content_types(self):
         js_response, _ = self.fetch("/app-ui.js")
         png_response, png = self.fetch("/assets/professor-adelie-owner-approved.png")
+        icon_response, icon = self.fetch("/assets/prof-adelie-icon.png")
         self.assertIn("javascript", js_response.getheader("Content-Type"))
         self.assertIn("png", png_response.getheader("Content-Type"))
         self.assertTrue(png.startswith(b"\x89PNG\r\n\x1a\n"))
+        self.assertIn("png", icon_response.getheader("Content-Type"))
+        self.assertTrue(icon.startswith(b"\x89PNG\r\n\x1a\n"))
 
     def test_missing_file_is_404(self):
         response, _ = self.fetch("/not-here")

@@ -5,8 +5,7 @@ body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity
 main { width:min(1320px,calc(100% - 40px)); margin:auto; }
 .masthead { height:94px; display:flex; align-items:center; border-bottom:1px solid var(--line); }
 .brand { color:inherit; text-decoration:none; display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:-.02em; }
-.brand-mark { width:27px; height:35px; display:block; border-radius:48% 48% 43% 43%; background:var(--ink); position:relative; transform:rotate(-4deg); }
-.brand-mark i { position:absolute; width:13px; height:21px; background:var(--paper); border-radius:50%; bottom:3px; left:7px; }
+.brand-mark { width:auto; height:52px; display:block; object-fit:contain; }
 h1,h2 { font-family:Georgia,'Times New Roman',serif; font-weight:400; margin:0; letter-spacing:-.04em; }
 .intro { min-height:690px; display:grid; grid-template-columns:1.1fr .9fr; gap:8vw; align-items:center; padding:70px 5vw; }
 .intro h1 { font-size:clamp(52px,6.3vw,92px); line-height:.92; }
@@ -27,7 +26,7 @@ h1,h2 { font-family:Georgia,'Times New Roman',serif; font-weight:400; margin:0; 
 .save-button:hover { background:#fff; transform:translateY(-2px); }
 [hidden] { display:none !important; }
 @media(max-width:800px){
-  main{width:min(100% - 24px,650px)} .masthead{height:74px}
+  main{width:min(100% - 24px,650px)} .masthead{height:74px}.brand-mark{height:44px}
   .intro{grid-template-columns:1fr;padding:55px 0;gap:45px;min-height:0}.drop-zone{min-height:300px}
   .encounter{margin-top:24px}.photo-column{padding:18px}.save-button{right:10px;bottom:10px}
 }

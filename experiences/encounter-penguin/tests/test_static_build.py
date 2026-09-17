@@ -19,6 +19,7 @@ class StaticBuildTest(unittest.TestCase):
                 "index.html",
                 "styles.css",
                 "app-ui.js",
+                "assets/prof-adelie-icon.png",
                 "assets/professor-adelie-owner-approved.png",
             },
         )
