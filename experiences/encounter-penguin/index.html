@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f1f7f9" />
     <title>Encounter a Penguin</title>
-    <link rel="stylesheet" href="styles.css?v=visitor-count-1" />
+    <link rel="stylesheet" href="styles.css?v=encounter-count-1" />
   </head>
   <body>
     <main>
@@ -55,14 +55,8 @@
         </div>
       </section>
     </main>
-    <aside class="penguin-count" aria-label="Encounter Penguin 页面累计浏览数">
-      <img
-        src="https://hits.sh/assistantofprofdradelie.github.io/University-of-Antarctica-Web/experiences/encounter-penguin.svg?label=%E4%BC%81%E9%B9%85&color=087985&labelColor=123b59"
-        alt="企鹅浏览数"
-        width="82"
-        height="20"
-        referrerpolicy="no-referrer"
-      />
+    <aside class="penguin-count" aria-label="阿德利教授累计被遇见的次数">
+      <span>Professor Adelie has been encountered <strong id="penguinCountValue">0</strong> times.</span>
     </aside>
     <div class="identity-lightbox" id="identityLightbox" hidden role="dialog" aria-modal="true" aria-labelledby="identityLightboxTitle">
       <button class="identity-lightbox-backdrop" type="button" data-close-lightbox aria-label="关闭预览"></button>
@@ -72,6 +66,6 @@
         <img id="identityLightboxImage" src="" alt="" />
       </div>
     </div>
-    <script src="app-ui.js?v=visitor-count-1"></script>
+    <script src="app-ui.js?v=encounter-count-1"></script>
   </body>
 </html>

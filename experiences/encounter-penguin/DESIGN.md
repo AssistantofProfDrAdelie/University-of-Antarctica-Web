@@ -16,7 +16,7 @@ Keep the UI understated. Do not over-intellectualize or explain the joke.
 
 ## Core encounter
 
-The user chooses an ordinary photograph. After a brief untouched pause, Professor Adelie cautiously peeks from an edge or corner without being requested or announced, remains long enough to be noticed or saved, then slowly retreats and disappears. The photograph becomes genuinely quiet again, but the silence is not necessarily the end: after an unpredictable absence he may visit again. The source photograph remains unchanged; saving creates a separate composite capture only while he is visible. A quiet lower-right “企鹅” counter records aggregate page views as a trace of other visitors having passed through; it is not a counter for Professor Adelie's appearances and must not narrate or gamify the encounter.
+The user chooses an ordinary photograph. After a brief untouched pause, Professor Adelie cautiously peeks from an edge or corner without being requested or announced, remains long enough to be noticed or saved, then slowly retreats and disappears. The photograph becomes genuinely quiet again, but the silence is not necessarily the end: after an unpredictable absence he may visit again. The source photograph remains unchanged; saving creates a separate composite capture only while he is visible. A quiet lower-right counter records completed Professor Adelie encounters within the current browser. It increments when an appearance becomes encounterable, persists across local revisits, and never changes merely because the page loads, reloads, or is revisited. It is a private trace of the work's history rather than a visitor metric, global claim, score, or prompt.
 
 Each appearance remains simple—arrival, pause, retreat. The motion should feel like a temporary visit, not a pop, a mechanical full-image slide, an obvious animation loop, or an elaborate character performance. Richness comes from uncertainty about when, where, and eventually which approved Professor Adelie appears. Do not add scene understanding merely to choose placement.
 
@@ -64,7 +64,7 @@ AI may analyze supplied images but may not generate image content. All visible c
 - Deliver the complete local encounter loop reliably.
 - Keep the user's original photograph untouched.
 - Keep the experience short, replayable, and uncomplicated.
-- Do not add recognition, semantic analysis, commentary, or other intelligence merely to demonstrate it. The aggregate page-view counter is the sole current external runtime service and must remain nonessential to the encounter.
+- Do not add recognition, semantic analysis, commentary, external services, or other intelligence merely to demonstrate it. The encounter counter remains entirely inside the browser and must remain nonessential to the encounter.
 
 ## Distribution
 
@@ -72,9 +72,8 @@ Encounter Penguin is a static, client-side application. Photograph loading,
 animation, compositing, and saving all remain in the user's browser; photographs
 are not uploaded. The production application is continuously deployed from the
 GitHub `main` branch to GitHub Pages and must operate independently of the
-owner's computer. The page-view counter may depend on a privacy-respecting hosted
-counter, but its failure must never block the local photograph experience. Only
-production runtime files and the cleaned Professor Adelie
+owner's computer. The encounter counter uses only local browser storage and sends
+nothing outside the application. Only production runtime files and the cleaned Professor Adelie
 derivative belong in the deployed artifact.
 
 The repository and deployed product are Public. Raw photographs, the broader
