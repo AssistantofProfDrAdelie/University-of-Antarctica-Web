@@ -59,6 +59,8 @@ class AppServerTest(unittest.TestCase):
         self.assertNotIn('<span class="brand-mark"', markup)
         self.assertIn('class="university-link" href="../../"', markup)
         self.assertIn('aria-label="返回南极大学"', markup)
+        self.assertIn('src="../../南极大学校徽2.png"', markup)
+        self.assertNotIn('<span aria-hidden="true">←</span>', markup)
         self.assertIn('href="../../阿德利教授小红书.jpg"', markup)
         self.assertIn('href="../../一袋企鹅二维码.jpg"', markup)
         self.assertIn('aria-label="查看阿德利教授小红书"', markup)
