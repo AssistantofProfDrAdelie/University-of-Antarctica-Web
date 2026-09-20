@@ -49,6 +49,9 @@ class DarkSidePenguinContractTest(unittest.TestCase):
         self.assertIn('property="og:title" content="鹅之暗面 · The Dark Side of the Penguin"', page)
         self.assertIn('property="og:image" content="https://assistantofprofdradelie.github.io/', page)
         self.assertIn('name="twitter:card" content="summary_large_image"', page)
+        self.assertNotIn('name="description"', page)
+        self.assertNotIn('property="og:description"', page)
+        self.assertNotIn('name="twitter:description"', page)
         self.assertNotIn("noindex", page)
 
 
