@@ -25,12 +25,12 @@ body::before {
   gap: 9px;
   min-height: 36px;
   padding: 0 12px;
-  border: 1px solid rgba(238, 234, 225, .18);
+  border: 1px solid rgba(238, 234, 225, .48);
   border-radius: 999px;
-  background: rgba(0, 0, 0, .52);
-  color: #77746e;
-  font-size: 8px;
-  letter-spacing: .16em;
+  background: rgba(12, 12, 12, .82);
+  color: #d7d3ca;
+  font-size: 11px;
+  letter-spacing: .08em;
   text-decoration: none;
   backdrop-filter: blur(8px);
   transition: color .2s ease, border-color .2s ease, background-color .2s ease;
@@ -177,10 +177,10 @@ h1 {
 @keyframes breathe { to { opacity: .2; transform: scale(1.035); } }
 @media (max-width: 620px) {
   .university-return {
-    min-width: 38px;
-    padding-inline: 11px;
+    min-height: 34px;
+    padding-inline: 10px;
+    font-size: 10px;
   }
-  .university-return span:last-child { display: none; }
   .experience { padding-inline: 18px; }
   .artwork { width: min(76vw, 49vh); }
   h1 { font-size: clamp(27px, 9vw, 42px); }
