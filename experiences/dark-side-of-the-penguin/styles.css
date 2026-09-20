@@ -7,6 +7,11 @@ body {
   color: #eeeae1;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+.experience,
+.experience * {
+  -webkit-user-select: none;
+  user-select: none;
+}
 body::before {
   position: fixed;
   inset: 0;
@@ -90,6 +95,9 @@ h1 {
   color: inherit;
   cursor: grab;
   touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
   user-select: none;
   transition: transform .14s ease;
   -webkit-tap-highlight-color: transparent;
@@ -126,6 +134,8 @@ h1 {
   height: 100%;
   display: block;
   object-fit: cover;
+  pointer-events: none;
+  -webkit-user-drag: none;
   transform: translateY(8%);
 }
 .penguin-control {

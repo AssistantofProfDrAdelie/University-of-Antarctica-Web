@@ -54,6 +54,14 @@ class DarkSidePenguinContractTest(unittest.TestCase):
         self.assertNotIn('name="twitter:description"', page)
         self.assertNotIn("noindex", page)
 
+    def test_turntable_prevents_mobile_text_and_image_selection(self):
+        page = (EXPERIENCE / "index.html").read_text(encoding="utf-8")
+        styles = (EXPERIENCE / "styles.css").read_text(encoding="utf-8")
+        self.assertIn('draggable="false"', page)
+        self.assertIn("-webkit-touch-callout: none", styles)
+        self.assertIn("-webkit-user-select: none", styles)
+        self.assertIn("-webkit-user-drag: none", styles)
+
 
 if __name__ == "__main__":
     unittest.main()
