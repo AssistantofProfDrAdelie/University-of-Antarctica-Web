@@ -15,7 +15,7 @@ STATIC_FILES = (
     "南极大学校徽2.jpg",
     "南极大学校徽.jpg",
     "南极大学校训.png",
-    "阿德利教授.JPG",
+    "阿德利教授.png",
     "阿德利教授小红书.jpg",
     "一袋企鹅二维码.jpg",
 )
@@ -25,6 +25,14 @@ ENCOUNTER_PENGUIN_FILES = (
     "app-ui.js",
     "assets/prof-adelie-icon.png",
     "assets/professor-adelie-owner-approved.png",
+)
+DARK_SIDE_PENGUIN_FILES = (
+    "index.html",
+    "styles.css",
+    "app.js",
+    "vinyl-processor.js",
+    "assets/cover.jpg",
+    "assets/emperor-penguin-original-60s.mp3",
 )
 CURATED_AURORA_ARTISTS = (
     "Amon.png",
@@ -95,6 +103,10 @@ def validate_public_tree(output: Path, public_students: list[dict]) -> None:
     for name in ENCOUNTER_PENGUIN_FILES:
         if not (encounter_root / name).is_file():
             fail(f"missing Encounter Penguin runtime asset: {name}")
+    dark_side_root = output / "experiences/dark-side-of-the-penguin"
+    for name in DARK_SIDE_PENGUIN_FILES:
+        if not (dark_side_root / name).is_file():
+            fail(f"missing Dark Side of the Penguin runtime asset: {name}")
     forbidden_extensions = {".xlsx", ".zip", ".pyc"}
     for path in output.rglob("*"):
         if path.is_file() and path.suffix.lower() in forbidden_extensions:
@@ -136,6 +148,15 @@ def main() -> None:
         if not source.is_file():
             fail(f"missing Encounter Penguin source asset: {name}")
         destination = encounter_output / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, destination)
+    dark_side_source = root / "experiences/dark-side-of-the-penguin"
+    dark_side_output = output / "experiences/dark-side-of-the-penguin"
+    for name in DARK_SIDE_PENGUIN_FILES:
+        source = dark_side_source / name
+        if not source.is_file():
+            fail(f"missing Dark Side of the Penguin source asset: {name}")
+        destination = dark_side_output / name
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, destination)
     aurora_assets = output / "极光艺术家"

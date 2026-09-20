@@ -27,6 +27,8 @@ jobs:
         run: python3 -m unittest discover -s tests -v
       - name: Test University web contracts
         run: python3 -m unittest discover -s tests -v
+      - name: Test Penguin Turntable public contract
+        run: python3 tests/test_dark_side_penguin_contract.py
       - uses: actions/configure-pages@v5
       - name: Build public website artifact
         run: python3 tools/build-public-site.py "$GITHUB_WORKSPACE" "$RUNNER_TEMP/public-site"

@@ -1,0 +1,153 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { min-height: 100%; background: #000; }
+body {
+  margin: 0;
+  overflow: hidden;
+  color: #eeeae1;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+body::before {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: .04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.experience {
+  width: 100%;
+  min-height: 100svh;
+  padding: clamp(30px, 5vh, 62px) 24px clamp(24px, 4vh, 46px);
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  align-items: center;
+  justify-items: center;
+  opacity: 0;
+  animation: apparition 2.8s cubic-bezier(.22,.7,.2,1) .15s forwards;
+  transition: opacity 3.2s ease, filter 3.2s ease;
+}
+.experience.is-vanishing {
+  animation: none;
+  opacity: 0;
+  filter: blur(14px);
+  pointer-events: none;
+}
+h1 {
+  z-index: 1;
+  margin: 0;
+  text-align: center;
+  font-family: Didot, "Bodoni 72", "Times New Roman", serif;
+  font-size: clamp(28px, 5.4vh, 62px);
+  font-weight: 400;
+  line-height: .94;
+  letter-spacing: .11em;
+  text-indent: .11em;
+}
+.artwork {
+  position: relative;
+  width: min(54vh, 58vw, 550px);
+  aspect-ratio: 1;
+  margin: clamp(18px, 3vh, 38px) 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #000;
+  color: inherit;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  transition: transform .14s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.artwork-disc {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.11), 0 28px 80px rgba(0,0,0,.88);
+  will-change: transform;
+  transition: filter .16s ease;
+}
+.artwork:not(.is-started):active { transform: scale(.975); }
+.artwork.is-scratching { cursor: grabbing; }
+.artwork.is-scratching .artwork-disc {
+  filter: blur(calc(var(--scratch-intensity, 0) * .65px))
+    saturate(calc(1 + var(--scratch-intensity, 0) * .48))
+    contrast(calc(1 + var(--scratch-intensity, 0) * .12));
+}
+.artwork.is-scratching .artwork-halo {
+  opacity: calc(.12 + var(--scratch-intensity, 0) * .22);
+}
+.artwork-disc::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  content: "";
+  background: repeating-radial-gradient(circle, transparent 0 10px, rgba(255,255,255,.018) 11px, transparent 12px);
+}
+.artwork-disc img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transform: translateY(8%);
+}
+.penguin-control {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: 46%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  cursor: grab;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+.artwork-halo {
+  position: absolute;
+  inset: -9%;
+  border-radius: 50%;
+  opacity: var(--pulse, .08);
+  background: radial-gradient(circle, rgba(255,255,255,.2), transparent 67%);
+  filter: blur(22px);
+  animation: breathe 4.6s ease-in-out infinite alternate;
+}
+.artwork:focus-visible { outline: 1px solid rgba(238,234,225,.85); outline-offset: 9px; }
+.artwork:hover .artwork-halo { opacity: .18; }
+.experience > p {
+  z-index: 1;
+  margin: 0;
+  color: #898782;
+  text-align: center;
+  font-size: clamp(8px, 1.15vh, 11px);
+  letter-spacing: .52em;
+  text-indent: .52em;
+  white-space: nowrap;
+}
+.recording-credit {
+  margin-top: 14px;
+  color: #55534f;
+  font-size: 8px;
+  letter-spacing: .08em;
+  text-align: center;
+}
+.recording-credit a { color: inherit; text-decoration-color: #343330; }
+.recording-credit a:hover { color: #9b9891; }
+@keyframes apparition {
+  from { opacity: 0; filter: blur(18px); transform: scale(.985); }
+  to { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+@keyframes breathe { to { opacity: .2; transform: scale(1.035); } }
+@media (max-width: 620px) {
+  .experience { padding-inline: 18px; }
+  .artwork { width: min(76vw, 49vh); }
+  h1 { font-size: clamp(27px, 9vw, 42px); }
+  .experience > p { font-size: 7px; letter-spacing: .34em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .experience { animation-duration: .01ms; }
+  .artwork-halo { animation: none; }
+}
