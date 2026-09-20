@@ -44,6 +44,13 @@ class DarkSidePenguinContractTest(unittest.TestCase):
         self.assertIn("CC BY-NC 4.0", page)
         self.assertNotIn("original-vocal", page)
 
+    def test_public_page_has_share_card_metadata(self):
+        page = (EXPERIENCE / "index.html").read_text(encoding="utf-8")
+        self.assertIn('property="og:title" content="鹅之暗面 · The Dark Side of the Penguin"', page)
+        self.assertIn('property="og:image" content="https://assistantofprofdradelie.github.io/', page)
+        self.assertIn('name="twitter:card" content="summary_large_image"', page)
+        self.assertNotIn("noindex", page)
+
 
 if __name__ == "__main__":
     unittest.main()
