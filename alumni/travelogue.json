@@ -1,0 +1,18 @@
+{
+  "slug": "rabelais-leona-in-france",
+  "title": "拉伯莱奥那游记",
+  "location": "法国 · France",
+  "cover": "634",
+  "photos": [
+    {"id": "385", "original": "385.JPG", "src": "assets/385.jpg", "thumb": "assets/385-thumb.jpg", "alt": "拉伯莱奥那在法国旅行中参观纪念建筑"},
+    {"id": "390", "original": "390.JPG", "src": "assets/390.jpg", "thumb": "assets/390-thumb.jpg", "alt": "拉伯莱奥那与居里夫妇纪念碑合影"},
+    {"id": "399", "original": "399.JPG", "src": "assets/399.jpg", "thumb": "assets/399-thumb.jpg", "alt": "拉伯莱奥那与大仲马纪念碑合影"},
+    {"id": "401", "original": "401.JPG", "src": "assets/401.jpg", "thumb": "assets/401-thumb.jpg", "alt": "拉伯莱奥那与维克多·雨果纪念碑合影"},
+    {"id": "411", "original": "411.JPG", "src": "assets/411.jpg", "thumb": "assets/411-thumb.jpg", "alt": "拉伯莱奥那在法国的纪念碑前留影"},
+    {"id": "447", "original": "447.JPG", "src": "assets/447.jpg", "thumb": "assets/447-thumb.jpg", "alt": "拉伯莱奥那参观法国历史展览"},
+    {"id": "454", "original": "454.JPG", "src": "assets/454.jpg", "thumb": "assets/454-thumb.jpg", "alt": "拉伯莱奥那在纪念铭文旁留影"},
+    {"id": "462", "original": "462.JPG", "src": "assets/462.jpg", "thumb": "assets/462-thumb.jpg", "alt": "拉伯莱奥那与法国历史纪念雕塑合影"},
+    {"id": "634", "original": "634.JPG", "src": "assets/634.jpg", "thumb": "assets/634-thumb.jpg", "alt": "拉伯莱奥那在法国博物馆外留影"},
+    {"id": "636", "original": "636.JPG", "src": "assets/636.jpg", "thumb": "assets/636-thumb.jpg", "alt": "拉伯莱奥那参观法国勋章展览"}
+  ]
+}

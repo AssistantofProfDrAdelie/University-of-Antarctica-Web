@@ -1,0 +1,1687 @@
+[
+  {
+    "id": "event-01",
+    "date": "2025-01-03",
+    "title": "2025新年见面会",
+    "location": "上海交大闵行校区",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "e45654672d38d3fe",
+        "src": "assets/e45654672d38d3fe.jpg",
+        "thumb": "assets/e45654672d38d3fe-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-02",
+    "date": "2025-01-05",
+    "title": "2025新年CityWalk",
+    "location": "上海徐汇滨江",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "9d96d4129036c357",
+        "src": "assets/9d96d4129036c357.jpg",
+        "thumb": "assets/9d96d4129036c357-thumb.jpg"
+      },
+      {
+        "id": "f34ce2c1c642bcf0",
+        "src": "assets/f34ce2c1c642bcf0.jpg",
+        "thumb": "assets/f34ce2c1c642bcf0-thumb.jpg"
+      },
+      {
+        "id": "56ef39f7fda3df71",
+        "src": "assets/56ef39f7fda3df71.jpg",
+        "thumb": "assets/56ef39f7fda3df71-thumb.jpg"
+      },
+      {
+        "id": "5528866a3f59eabb",
+        "src": "assets/5528866a3f59eabb.jpg",
+        "thumb": "assets/5528866a3f59eabb-thumb.jpg"
+      },
+      {
+        "id": "c9a6b4fa01c260ec",
+        "src": "assets/c9a6b4fa01c260ec.jpg",
+        "thumb": "assets/c9a6b4fa01c260ec-thumb.jpg"
+      },
+      {
+        "id": "6ad5a008210e749c",
+        "src": "assets/6ad5a008210e749c.jpg",
+        "thumb": "assets/6ad5a008210e749c-thumb.jpg"
+      },
+      {
+        "id": "af8a999bc298d942",
+        "src": "assets/af8a999bc298d942.jpg",
+        "thumb": "assets/af8a999bc298d942-thumb.jpg"
+      },
+      {
+        "id": "9a2d38d17076d49c",
+        "src": "assets/9a2d38d17076d49c.jpg",
+        "thumb": "assets/9a2d38d17076d49c-thumb.jpg"
+      },
+      {
+        "id": "a878e43dc89ed38c",
+        "src": "assets/a878e43dc89ed38c.jpg",
+        "thumb": "assets/a878e43dc89ed38c-thumb.jpg"
+      },
+      {
+        "id": "201ea1784cc232fb",
+        "src": "assets/201ea1784cc232fb.jpg",
+        "thumb": "assets/201ea1784cc232fb-thumb.jpg"
+      },
+      {
+        "id": "43ff678911c8e956",
+        "src": "assets/43ff678911c8e956.jpg",
+        "thumb": "assets/43ff678911c8e956-thumb.jpg"
+      },
+      {
+        "id": "2d2c6610ee5f6363",
+        "src": "assets/2d2c6610ee5f6363.jpg",
+        "thumb": "assets/2d2c6610ee5f6363-thumb.jpg"
+      },
+      {
+        "id": "416326237c4e3457",
+        "src": "assets/416326237c4e3457.jpg",
+        "thumb": "assets/416326237c4e3457-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-03",
+    "date": "2025-01-26",
+    "title": "2025新春见面会",
+    "location": "东京上野公园",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "8ac07b7e0a1afde9",
+        "src": "assets/8ac07b7e0a1afde9.jpg",
+        "thumb": "assets/8ac07b7e0a1afde9-thumb.jpg"
+      },
+      {
+        "id": "b9e00ab6b4609291",
+        "src": "assets/b9e00ab6b4609291.jpg",
+        "thumb": "assets/b9e00ab6b4609291-thumb.jpg"
+      },
+      {
+        "id": "eec410a04fc6b746",
+        "src": "assets/eec410a04fc6b746.jpg",
+        "thumb": "assets/eec410a04fc6b746-thumb.jpg"
+      },
+      {
+        "id": "4e56c7bb7e9524c4",
+        "src": "assets/4e56c7bb7e9524c4.jpg",
+        "thumb": "assets/4e56c7bb7e9524c4-thumb.jpg"
+      },
+      {
+        "id": "556cae8c1dc38dd1",
+        "src": "assets/556cae8c1dc38dd1.jpg",
+        "thumb": "assets/556cae8c1dc38dd1-thumb.jpg"
+      },
+      {
+        "id": "140c83aa3674129f",
+        "src": "assets/140c83aa3674129f.jpg",
+        "thumb": "assets/140c83aa3674129f-thumb.jpg"
+      },
+      {
+        "id": "77a12abbfaa4ee41",
+        "src": "assets/77a12abbfaa4ee41.jpg",
+        "thumb": "assets/77a12abbfaa4ee41-thumb.jpg"
+      },
+      {
+        "id": "4becdd0fca65bd46",
+        "src": "assets/4becdd0fca65bd46.jpg",
+        "thumb": "assets/4becdd0fca65bd46-thumb.jpg"
+      },
+      {
+        "id": "071b87d324dfcf04",
+        "src": "assets/071b87d324dfcf04.jpg",
+        "thumb": "assets/071b87d324dfcf04-thumb.jpg"
+      },
+      {
+        "id": "6e63c5068afabd87",
+        "src": "assets/6e63c5068afabd87.jpg",
+        "thumb": "assets/6e63c5068afabd87-thumb.jpg"
+      },
+      {
+        "id": "14263b5a779e954f",
+        "src": "assets/14263b5a779e954f.jpg",
+        "thumb": "assets/14263b5a779e954f-thumb.jpg"
+      },
+      {
+        "id": "16232ab0ddf34bc4",
+        "src": "assets/16232ab0ddf34bc4.jpg",
+        "thumb": "assets/16232ab0ddf34bc4-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-04",
+    "date": "2025-02-28",
+    "title": "南半球旅行团见面会",
+    "location": "地点待补",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "a0f74298b21e2998",
+        "src": "assets/a0f74298b21e2998.jpg",
+        "thumb": "assets/a0f74298b21e2998-thumb.jpg"
+      },
+      {
+        "id": "8a0b3e6abe49c75c",
+        "src": "assets/8a0b3e6abe49c75c.jpg",
+        "thumb": "assets/8a0b3e6abe49c75c-thumb.jpg"
+      },
+      {
+        "id": "261c6aba83a51850",
+        "src": "assets/261c6aba83a51850.jpg",
+        "thumb": "assets/261c6aba83a51850-thumb.jpg"
+      },
+      {
+        "id": "1c74000334d2b70b",
+        "src": "assets/1c74000334d2b70b.jpg",
+        "thumb": "assets/1c74000334d2b70b-thumb.jpg"
+      },
+      {
+        "id": "14c4dbd0d02d147d",
+        "src": "assets/14c4dbd0d02d147d.jpg",
+        "thumb": "assets/14c4dbd0d02d147d-thumb.jpg"
+      },
+      {
+        "id": "6a23aadebe67552b",
+        "src": "assets/6a23aadebe67552b.jpg",
+        "thumb": "assets/6a23aadebe67552b-thumb.jpg"
+      },
+      {
+        "id": "ff9e930f4e6a05d6",
+        "src": "assets/ff9e930f4e6a05d6.jpg",
+        "thumb": "assets/ff9e930f4e6a05d6-thumb.jpg"
+      },
+      {
+        "id": "5e9d1f6af8684669",
+        "src": "assets/5e9d1f6af8684669.jpg",
+        "thumb": "assets/5e9d1f6af8684669-thumb.jpg"
+      },
+      {
+        "id": "79f187f55e06d120",
+        "src": "assets/79f187f55e06d120.jpg",
+        "thumb": "assets/79f187f55e06d120-thumb.jpg"
+      },
+      {
+        "id": "5e8308012801242e",
+        "src": "assets/5e8308012801242e.jpg",
+        "thumb": "assets/5e8308012801242e-thumb.jpg"
+      },
+      {
+        "id": "0e5df040fb08771a",
+        "src": "assets/0e5df040fb08771a.jpg",
+        "thumb": "assets/0e5df040fb08771a-thumb.jpg"
+      },
+      {
+        "id": "f9bb54c21207be35",
+        "src": "assets/f9bb54c21207be35.jpg",
+        "thumb": "assets/f9bb54c21207be35-thumb.jpg"
+      },
+      {
+        "id": "7f8152e33bd0f9df",
+        "src": "assets/7f8152e33bd0f9df.jpg",
+        "thumb": "assets/7f8152e33bd0f9df-thumb.jpg"
+      },
+      {
+        "id": "06307a9780d37af6",
+        "src": "assets/06307a9780d37af6.jpg",
+        "thumb": "assets/06307a9780d37af6-thumb.jpg"
+      },
+      {
+        "id": "f982afc5de43b592",
+        "src": "assets/f982afc5de43b592.jpg",
+        "thumb": "assets/f982afc5de43b592-thumb.jpg"
+      },
+      {
+        "id": "b973f8b7d91b7b3f",
+        "src": "assets/b973f8b7d91b7b3f.jpg",
+        "thumb": "assets/b973f8b7d91b7b3f-thumb.jpg"
+      },
+      {
+        "id": "69300a9a2af4c671",
+        "src": "assets/69300a9a2af4c671.jpg",
+        "thumb": "assets/69300a9a2af4c671-thumb.jpg"
+      },
+      {
+        "id": "cd53715a7853ce8a",
+        "src": "assets/cd53715a7853ce8a.jpg",
+        "thumb": "assets/cd53715a7853ce8a-thumb.jpg"
+      },
+      {
+        "id": "8f07fedb969cb5c8",
+        "src": "assets/8f07fedb969cb5c8.jpg",
+        "thumb": "assets/8f07fedb969cb5c8-thumb.jpg"
+      },
+      {
+        "id": "cc7fe343af6fd1c1",
+        "src": "assets/cc7fe343af6fd1c1.jpg",
+        "thumb": "assets/cc7fe343af6fd1c1-thumb.jpg"
+      },
+      {
+        "id": "2bc0d182cb76370f",
+        "src": "assets/2bc0d182cb76370f.jpg",
+        "thumb": "assets/2bc0d182cb76370f-thumb.jpg"
+      },
+      {
+        "id": "4051c83b8e96d3d6",
+        "src": "assets/4051c83b8e96d3d6.jpg",
+        "thumb": "assets/4051c83b8e96d3d6-thumb.jpg"
+      },
+      {
+        "id": "0d4fe9aeaa44fe4f",
+        "src": "assets/0d4fe9aeaa44fe4f.jpg",
+        "thumb": "assets/0d4fe9aeaa44fe4f-thumb.jpg"
+      },
+      {
+        "id": "4fd3c5b2cbd07d88",
+        "src": "assets/4fd3c5b2cbd07d88.jpg",
+        "thumb": "assets/4fd3c5b2cbd07d88-thumb.jpg"
+      },
+      {
+        "id": "46660003525e92ce",
+        "src": "assets/46660003525e92ce.jpg",
+        "thumb": "assets/46660003525e92ce-thumb.jpg"
+      },
+      {
+        "id": "b85f9b5be006a3dc",
+        "src": "assets/b85f9b5be006a3dc.jpg",
+        "thumb": "assets/b85f9b5be006a3dc-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-05",
+    "date": "2025-03-28",
+    "title": "2025关西见面会",
+    "location": "神户Meriken公园",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "26e13e5abab1aaa4",
+        "src": "assets/26e13e5abab1aaa4.jpg",
+        "thumb": "assets/26e13e5abab1aaa4-thumb.jpg"
+      },
+      {
+        "id": "26f9b4ba5ebdf5bb",
+        "src": "assets/26f9b4ba5ebdf5bb.jpg",
+        "thumb": "assets/26f9b4ba5ebdf5bb-thumb.jpg"
+      },
+      {
+        "id": "84c9e18b3c198d70",
+        "src": "assets/84c9e18b3c198d70.jpg",
+        "thumb": "assets/84c9e18b3c198d70-thumb.jpg"
+      },
+      {
+        "id": "df09f09e8388ef58",
+        "src": "assets/df09f09e8388ef58.jpg",
+        "thumb": "assets/df09f09e8388ef58-thumb.jpg"
+      },
+      {
+        "id": "b61a24de665b37fc",
+        "src": "assets/b61a24de665b37fc.jpg",
+        "thumb": "assets/b61a24de665b37fc-thumb.jpg"
+      },
+      {
+        "id": "bb26828c1c1409a1",
+        "src": "assets/bb26828c1c1409a1.jpg",
+        "thumb": "assets/bb26828c1c1409a1-thumb.jpg"
+      },
+      {
+        "id": "27a02ee1acc4de03",
+        "src": "assets/27a02ee1acc4de03.jpg",
+        "thumb": "assets/27a02ee1acc4de03-thumb.jpg"
+      },
+      {
+        "id": "dd31a4742d01a298",
+        "src": "assets/dd31a4742d01a298.jpg",
+        "thumb": "assets/dd31a4742d01a298-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-06",
+    "date": "2025-08-03",
+    "title": "2025夏季见面会天津站",
+    "location": "天津滨江道",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "a591032813c102d1",
+        "src": "assets/a591032813c102d1.jpg",
+        "thumb": "assets/a591032813c102d1-thumb.jpg"
+      },
+      {
+        "id": "ed3952922092b9de",
+        "src": "assets/ed3952922092b9de.jpg",
+        "thumb": "assets/ed3952922092b9de-thumb.jpg"
+      },
+      {
+        "id": "1ee0d6c171792c4c",
+        "src": "assets/1ee0d6c171792c4c.jpg",
+        "thumb": "assets/1ee0d6c171792c4c-thumb.jpg"
+      },
+      {
+        "id": "678f0bc74c4641cd",
+        "src": "assets/678f0bc74c4641cd.jpg",
+        "thumb": "assets/678f0bc74c4641cd-thumb.jpg"
+      },
+      {
+        "id": "2b6ef077007badec",
+        "src": "assets/2b6ef077007badec.jpg",
+        "thumb": "assets/2b6ef077007badec-thumb.jpg"
+      },
+      {
+        "id": "6ef5dba69431990d",
+        "src": "assets/6ef5dba69431990d.jpg",
+        "thumb": "assets/6ef5dba69431990d-thumb.jpg"
+      },
+      {
+        "id": "35319e0232d936a6",
+        "src": "assets/35319e0232d936a6.jpg",
+        "thumb": "assets/35319e0232d936a6-thumb.jpg"
+      },
+      {
+        "id": "e41d1525b666f773",
+        "src": "assets/e41d1525b666f773.jpg",
+        "thumb": "assets/e41d1525b666f773-thumb.jpg"
+      },
+      {
+        "id": "d72f035e6774aea6",
+        "src": "assets/d72f035e6774aea6.jpg",
+        "thumb": "assets/d72f035e6774aea6-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-07",
+    "date": "2025-08-06",
+    "title": "2025夏季见面会北京站",
+    "location": "北京什刹海",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "47e42b0d726ce7a8",
+        "src": "assets/47e42b0d726ce7a8.jpg",
+        "thumb": "assets/47e42b0d726ce7a8-thumb.jpg"
+      },
+      {
+        "id": "66b5f07de4ce6d79",
+        "src": "assets/66b5f07de4ce6d79.jpg",
+        "thumb": "assets/66b5f07de4ce6d79-thumb.jpg"
+      },
+      {
+        "id": "4aa2a2e37a83775c",
+        "src": "assets/4aa2a2e37a83775c.jpg",
+        "thumb": "assets/4aa2a2e37a83775c-thumb.jpg"
+      },
+      {
+        "id": "274be24e5d8673e7",
+        "src": "assets/274be24e5d8673e7.jpg",
+        "thumb": "assets/274be24e5d8673e7-thumb.jpg"
+      },
+      {
+        "id": "dd0b0a246463338c",
+        "src": "assets/dd0b0a246463338c.jpg",
+        "thumb": "assets/dd0b0a246463338c-thumb.jpg"
+      },
+      {
+        "id": "9cf72565054a2b52",
+        "src": "assets/9cf72565054a2b52.jpg",
+        "thumb": "assets/9cf72565054a2b52-thumb.jpg"
+      },
+      {
+        "id": "1565e1e9a8675baa",
+        "src": "assets/1565e1e9a8675baa.jpg",
+        "thumb": "assets/1565e1e9a8675baa-thumb.jpg"
+      },
+      {
+        "id": "e07afddcf71bc699",
+        "src": "assets/e07afddcf71bc699.jpg",
+        "thumb": "assets/e07afddcf71bc699-thumb.jpg"
+      },
+      {
+        "id": "0e2a36a5a89fc05a",
+        "src": "assets/0e2a36a5a89fc05a.jpg",
+        "thumb": "assets/0e2a36a5a89fc05a-thumb.jpg"
+      },
+      {
+        "id": "dc7f0dcd97dae282",
+        "src": "assets/dc7f0dcd97dae282.jpg",
+        "thumb": "assets/dc7f0dcd97dae282-thumb.jpg"
+      },
+      {
+        "id": "5d5b3d1923b60c4b",
+        "src": "assets/5d5b3d1923b60c4b.jpg",
+        "thumb": "assets/5d5b3d1923b60c4b-thumb.jpg"
+      },
+      {
+        "id": "14e539e083523359",
+        "src": "assets/14e539e083523359.jpg",
+        "thumb": "assets/14e539e083523359-thumb.jpg"
+      },
+      {
+        "id": "2c7810fb7f4279b3",
+        "src": "assets/2c7810fb7f4279b3.jpg",
+        "thumb": "assets/2c7810fb7f4279b3-thumb.jpg"
+      },
+      {
+        "id": "27aaae6b8d0f1a2b",
+        "src": "assets/27aaae6b8d0f1a2b.jpg",
+        "thumb": "assets/27aaae6b8d0f1a2b-thumb.jpg"
+      },
+      {
+        "id": "89c47af510fd98c6",
+        "src": "assets/89c47af510fd98c6.jpg",
+        "thumb": "assets/89c47af510fd98c6-thumb.jpg"
+      },
+      {
+        "id": "f649d45bc706187a",
+        "src": "assets/f649d45bc706187a.jpg",
+        "thumb": "assets/f649d45bc706187a-thumb.jpg"
+      },
+      {
+        "id": "d6299d0b76fd0ec5",
+        "src": "assets/d6299d0b76fd0ec5.jpg",
+        "thumb": "assets/d6299d0b76fd0ec5-thumb.jpg"
+      },
+      {
+        "id": "36c4d5dba8ccdee3",
+        "src": "assets/36c4d5dba8ccdee3.jpg",
+        "thumb": "assets/36c4d5dba8ccdee3-thumb.jpg"
+      },
+      {
+        "id": "b6ad4c9f7b23c556",
+        "src": "assets/b6ad4c9f7b23c556.jpg",
+        "thumb": "assets/b6ad4c9f7b23c556-thumb.jpg"
+      },
+      {
+        "id": "dd6760f7f47223bf",
+        "src": "assets/dd6760f7f47223bf.jpg",
+        "thumb": "assets/dd6760f7f47223bf-thumb.jpg"
+      },
+      {
+        "id": "a30c9b6f77ae02c9",
+        "src": "assets/a30c9b6f77ae02c9.jpg",
+        "thumb": "assets/a30c9b6f77ae02c9-thumb.jpg"
+      },
+      {
+        "id": "7f9216d24c855488",
+        "src": "assets/7f9216d24c855488.jpg",
+        "thumb": "assets/7f9216d24c855488-thumb.jpg"
+      },
+      {
+        "id": "3d46e11fbdbb9afa",
+        "src": "assets/3d46e11fbdbb9afa.jpg",
+        "thumb": "assets/3d46e11fbdbb9afa-thumb.jpg"
+      },
+      {
+        "id": "d81a63b21e26eda6",
+        "src": "assets/d81a63b21e26eda6.jpg",
+        "thumb": "assets/d81a63b21e26eda6-thumb.jpg"
+      },
+      {
+        "id": "452fd39c6fa9e0b5",
+        "src": "assets/452fd39c6fa9e0b5.jpg",
+        "thumb": "assets/452fd39c6fa9e0b5-thumb.jpg"
+      },
+      {
+        "id": "96a4f24b18c907e2",
+        "src": "assets/96a4f24b18c907e2.jpg",
+        "thumb": "assets/96a4f24b18c907e2-thumb.jpg"
+      },
+      {
+        "id": "5dbb8cbf16b5475b",
+        "src": "assets/5dbb8cbf16b5475b.jpg",
+        "thumb": "assets/5dbb8cbf16b5475b-thumb.jpg"
+      },
+      {
+        "id": "a4e02cccbe8e378d",
+        "src": "assets/a4e02cccbe8e378d.jpg",
+        "thumb": "assets/a4e02cccbe8e378d-thumb.jpg"
+      },
+      {
+        "id": "909050f46dc1181a",
+        "src": "assets/909050f46dc1181a.jpg",
+        "thumb": "assets/909050f46dc1181a-thumb.jpg"
+      },
+      {
+        "id": "f28afa882aa87007",
+        "src": "assets/f28afa882aa87007.jpg",
+        "thumb": "assets/f28afa882aa87007-thumb.jpg"
+      },
+      {
+        "id": "7a3e738206974aa2",
+        "src": "assets/7a3e738206974aa2.jpg",
+        "thumb": "assets/7a3e738206974aa2-thumb.jpg"
+      },
+      {
+        "id": "2c828f43fb33c6d9",
+        "src": "assets/2c828f43fb33c6d9.jpg",
+        "thumb": "assets/2c828f43fb33c6d9-thumb.jpg"
+      },
+      {
+        "id": "d2aee78cd36305c5",
+        "src": "assets/d2aee78cd36305c5.jpg",
+        "thumb": "assets/d2aee78cd36305c5-thumb.jpg"
+      },
+      {
+        "id": "33738a6f2bcbe6c8",
+        "src": "assets/33738a6f2bcbe6c8.jpg",
+        "thumb": "assets/33738a6f2bcbe6c8-thumb.jpg"
+      },
+      {
+        "id": "00537be8815e528a",
+        "src": "assets/00537be8815e528a.jpg",
+        "thumb": "assets/00537be8815e528a-thumb.jpg"
+      },
+      {
+        "id": "9bb3b829e741adb2",
+        "src": "assets/9bb3b829e741adb2.jpg",
+        "thumb": "assets/9bb3b829e741adb2-thumb.jpg"
+      },
+      {
+        "id": "8de2f1c59b66cff1",
+        "src": "assets/8de2f1c59b66cff1.jpg",
+        "thumb": "assets/8de2f1c59b66cff1-thumb.jpg"
+      },
+      {
+        "id": "5cfb1de8db78425b",
+        "src": "assets/5cfb1de8db78425b.jpg",
+        "thumb": "assets/5cfb1de8db78425b-thumb.jpg"
+      },
+      {
+        "id": "9ff2deed6fc5ca8e",
+        "src": "assets/9ff2deed6fc5ca8e.jpg",
+        "thumb": "assets/9ff2deed6fc5ca8e-thumb.jpg"
+      },
+      {
+        "id": "9213e077123dcac3",
+        "src": "assets/9213e077123dcac3.jpg",
+        "thumb": "assets/9213e077123dcac3-thumb.jpg"
+      },
+      {
+        "id": "55dfe57f1fc6a485",
+        "src": "assets/55dfe57f1fc6a485.jpg",
+        "thumb": "assets/55dfe57f1fc6a485-thumb.jpg"
+      },
+      {
+        "id": "10e25e66e00dcad5",
+        "src": "assets/10e25e66e00dcad5.jpg",
+        "thumb": "assets/10e25e66e00dcad5-thumb.jpg"
+      },
+      {
+        "id": "6275ad19875f9983",
+        "src": "assets/6275ad19875f9983.jpg",
+        "thumb": "assets/6275ad19875f9983-thumb.jpg"
+      },
+      {
+        "id": "ab80fbdef78a9c2d",
+        "src": "assets/ab80fbdef78a9c2d.jpg",
+        "thumb": "assets/ab80fbdef78a9c2d-thumb.jpg"
+      },
+      {
+        "id": "f1e841a7b2943de8",
+        "src": "assets/f1e841a7b2943de8.jpg",
+        "thumb": "assets/f1e841a7b2943de8-thumb.jpg"
+      },
+      {
+        "id": "f7cec2076840cde2",
+        "src": "assets/f7cec2076840cde2.jpg",
+        "thumb": "assets/f7cec2076840cde2-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-08",
+    "date": "2025-08-09",
+    "title": "2025夏季见面会上海交大站",
+    "location": "上海交大闵行校区",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "27af640d6754b87e",
+        "src": "assets/27af640d6754b87e.jpg",
+        "thumb": "assets/27af640d6754b87e-thumb.jpg"
+      },
+      {
+        "id": "1a5cba67f3877806",
+        "src": "assets/1a5cba67f3877806.jpg",
+        "thumb": "assets/1a5cba67f3877806-thumb.jpg"
+      },
+      {
+        "id": "0dc3b5152bd70c22",
+        "src": "assets/0dc3b5152bd70c22.jpg",
+        "thumb": "assets/0dc3b5152bd70c22-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-09",
+    "date": "2025-08-10",
+    "title": "2025夏季见面会上海长宁站",
+    "location": "上海愚园路",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "5d1991cff83b9397",
+        "src": "assets/5d1991cff83b9397.jpg",
+        "thumb": "assets/5d1991cff83b9397-thumb.jpg"
+      },
+      {
+        "id": "165610999d8de3d8",
+        "src": "assets/165610999d8de3d8.jpg",
+        "thumb": "assets/165610999d8de3d8-thumb.jpg"
+      },
+      {
+        "id": "9c1c5c285af3160b",
+        "src": "assets/9c1c5c285af3160b.jpg",
+        "thumb": "assets/9c1c5c285af3160b-thumb.jpg"
+      },
+      {
+        "id": "f3fc81b72cb21cbd",
+        "src": "assets/f3fc81b72cb21cbd.jpg",
+        "thumb": "assets/f3fc81b72cb21cbd-thumb.jpg"
+      },
+      {
+        "id": "107036fdaffbe022",
+        "src": "assets/107036fdaffbe022.jpg",
+        "thumb": "assets/107036fdaffbe022-thumb.jpg"
+      },
+      {
+        "id": "9486fb8be5d8bfeb",
+        "src": "assets/9486fb8be5d8bfeb.jpg",
+        "thumb": "assets/9486fb8be5d8bfeb-thumb.jpg"
+      },
+      {
+        "id": "4a59be23bd984984",
+        "src": "assets/4a59be23bd984984.jpg",
+        "thumb": "assets/4a59be23bd984984-thumb.jpg"
+      },
+      {
+        "id": "fe470a195c766f11",
+        "src": "assets/fe470a195c766f11.jpg",
+        "thumb": "assets/fe470a195c766f11-thumb.jpg"
+      },
+      {
+        "id": "d7f12ec6dfb38e18",
+        "src": "assets/d7f12ec6dfb38e18.jpg",
+        "thumb": "assets/d7f12ec6dfb38e18-thumb.jpg"
+      },
+      {
+        "id": "5d9f9f76984d0ea2",
+        "src": "assets/5d9f9f76984d0ea2.jpg",
+        "thumb": "assets/5d9f9f76984d0ea2-thumb.jpg"
+      },
+      {
+        "id": "87a577d26fb5339f",
+        "src": "assets/87a577d26fb5339f.jpg",
+        "thumb": "assets/87a577d26fb5339f-thumb.jpg"
+      },
+      {
+        "id": "d11b51a9305c1f32",
+        "src": "assets/d11b51a9305c1f32.jpg",
+        "thumb": "assets/d11b51a9305c1f32-thumb.jpg"
+      },
+      {
+        "id": "684ce38581d3f32c",
+        "src": "assets/684ce38581d3f32c.jpg",
+        "thumb": "assets/684ce38581d3f32c-thumb.jpg"
+      },
+      {
+        "id": "a89dde9ab6f19a0d",
+        "src": "assets/a89dde9ab6f19a0d.jpg",
+        "thumb": "assets/a89dde9ab6f19a0d-thumb.jpg"
+      },
+      {
+        "id": "5b683ef5da7b57e5",
+        "src": "assets/5b683ef5da7b57e5.jpg",
+        "thumb": "assets/5b683ef5da7b57e5-thumb.jpg"
+      },
+      {
+        "id": "28fb0be0d17fd4c1",
+        "src": "assets/28fb0be0d17fd4c1.jpg",
+        "thumb": "assets/28fb0be0d17fd4c1-thumb.jpg"
+      },
+      {
+        "id": "1ef869d11da8b944",
+        "src": "assets/1ef869d11da8b944.jpg",
+        "thumb": "assets/1ef869d11da8b944-thumb.jpg"
+      },
+      {
+        "id": "63b159f3ebf425da",
+        "src": "assets/63b159f3ebf425da.jpg",
+        "thumb": "assets/63b159f3ebf425da-thumb.jpg"
+      },
+      {
+        "id": "19f57b198e429010",
+        "src": "assets/19f57b198e429010.jpg",
+        "thumb": "assets/19f57b198e429010-thumb.jpg"
+      },
+      {
+        "id": "08a8bdfcea0d7e80",
+        "src": "assets/08a8bdfcea0d7e80.jpg",
+        "thumb": "assets/08a8bdfcea0d7e80-thumb.jpg"
+      },
+      {
+        "id": "ab32b173aab4ad01",
+        "src": "assets/ab32b173aab4ad01.jpg",
+        "thumb": "assets/ab32b173aab4ad01-thumb.jpg"
+      },
+      {
+        "id": "9c634a12502d5dbe",
+        "src": "assets/9c634a12502d5dbe.jpg",
+        "thumb": "assets/9c634a12502d5dbe-thumb.jpg"
+      },
+      {
+        "id": "2d84ef7948821968",
+        "src": "assets/2d84ef7948821968.jpg",
+        "thumb": "assets/2d84ef7948821968-thumb.jpg"
+      },
+      {
+        "id": "13362c9334df397d",
+        "src": "assets/13362c9334df397d.jpg",
+        "thumb": "assets/13362c9334df397d-thumb.jpg"
+      },
+      {
+        "id": "c7f5219965145001",
+        "src": "assets/c7f5219965145001.jpg",
+        "thumb": "assets/c7f5219965145001-thumb.jpg"
+      },
+      {
+        "id": "23e762eae3012c90",
+        "src": "assets/23e762eae3012c90.jpg",
+        "thumb": "assets/23e762eae3012c90-thumb.jpg"
+      },
+      {
+        "id": "adf4f3eeb8006ce5",
+        "src": "assets/adf4f3eeb8006ce5.jpg",
+        "thumb": "assets/adf4f3eeb8006ce5-thumb.jpg"
+      },
+      {
+        "id": "4d339b5d94810405",
+        "src": "assets/4d339b5d94810405.jpg",
+        "thumb": "assets/4d339b5d94810405-thumb.jpg"
+      },
+      {
+        "id": "809f1ed4ba9e6a4c",
+        "src": "assets/809f1ed4ba9e6a4c.jpg",
+        "thumb": "assets/809f1ed4ba9e6a4c-thumb.jpg"
+      },
+      {
+        "id": "1313b96ebc55fe7d",
+        "src": "assets/1313b96ebc55fe7d.jpg",
+        "thumb": "assets/1313b96ebc55fe7d-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-10",
+    "date": "2025-08-15",
+    "title": "2025夏季见面会扬州站",
+    "location": "扬州东关街",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "57b44dd1007432dc",
+        "src": "assets/57b44dd1007432dc.jpg",
+        "thumb": "assets/57b44dd1007432dc-thumb.jpg"
+      },
+      {
+        "id": "35fa9beeb5aac18d",
+        "src": "assets/35fa9beeb5aac18d.jpg",
+        "thumb": "assets/35fa9beeb5aac18d-thumb.jpg"
+      },
+      {
+        "id": "17b2805d1c4108c8",
+        "src": "assets/17b2805d1c4108c8.jpg",
+        "thumb": "assets/17b2805d1c4108c8-thumb.jpg"
+      },
+      {
+        "id": "d61d078d8c45f194",
+        "src": "assets/d61d078d8c45f194.jpg",
+        "thumb": "assets/d61d078d8c45f194-thumb.jpg"
+      },
+      {
+        "id": "de70e1389b702dd6",
+        "src": "assets/de70e1389b702dd6.jpg",
+        "thumb": "assets/de70e1389b702dd6-thumb.jpg"
+      },
+      {
+        "id": "350c8c338cf84ef4",
+        "src": "assets/350c8c338cf84ef4.jpg",
+        "thumb": "assets/350c8c338cf84ef4-thumb.jpg"
+      },
+      {
+        "id": "8cfae2a5f4931151",
+        "src": "assets/8cfae2a5f4931151.jpg",
+        "thumb": "assets/8cfae2a5f4931151-thumb.jpg"
+      },
+      {
+        "id": "5814401f7f4cba80",
+        "src": "assets/5814401f7f4cba80.jpg",
+        "thumb": "assets/5814401f7f4cba80-thumb.jpg"
+      },
+      {
+        "id": "bc63d5e7f5b46658",
+        "src": "assets/bc63d5e7f5b46658.jpg",
+        "thumb": "assets/bc63d5e7f5b46658-thumb.jpg"
+      },
+      {
+        "id": "e92fca3b2dc42881",
+        "src": "assets/e92fca3b2dc42881.jpg",
+        "thumb": "assets/e92fca3b2dc42881-thumb.jpg"
+      },
+      {
+        "id": "9c2b10439beac428",
+        "src": "assets/9c2b10439beac428.jpg",
+        "thumb": "assets/9c2b10439beac428-thumb.jpg"
+      },
+      {
+        "id": "f73a18409341e587",
+        "src": "assets/f73a18409341e587.jpg",
+        "thumb": "assets/f73a18409341e587-thumb.jpg"
+      },
+      {
+        "id": "78f59dd7994ff913",
+        "src": "assets/78f59dd7994ff913.jpg",
+        "thumb": "assets/78f59dd7994ff913-thumb.jpg"
+      },
+      {
+        "id": "6352c18c8ebc1ab5",
+        "src": "assets/6352c18c8ebc1ab5.jpg",
+        "thumb": "assets/6352c18c8ebc1ab5-thumb.jpg"
+      },
+      {
+        "id": "1b6bfec71a232323",
+        "src": "assets/1b6bfec71a232323.jpg",
+        "thumb": "assets/1b6bfec71a232323-thumb.jpg"
+      },
+      {
+        "id": "e1afc87846739a55",
+        "src": "assets/e1afc87846739a55.jpg",
+        "thumb": "assets/e1afc87846739a55-thumb.jpg"
+      },
+      {
+        "id": "60b538f5ef6f19b5",
+        "src": "assets/60b538f5ef6f19b5.jpg",
+        "thumb": "assets/60b538f5ef6f19b5-thumb.jpg"
+      },
+      {
+        "id": "2559bae7d6a3dd37",
+        "src": "assets/2559bae7d6a3dd37.jpg",
+        "thumb": "assets/2559bae7d6a3dd37-thumb.jpg"
+      },
+      {
+        "id": "5ffa04df9db52891",
+        "src": "assets/5ffa04df9db52891.jpg",
+        "thumb": "assets/5ffa04df9db52891-thumb.jpg"
+      },
+      {
+        "id": "8afd28d9b2bf072e",
+        "src": "assets/8afd28d9b2bf072e.jpg",
+        "thumb": "assets/8afd28d9b2bf072e-thumb.jpg"
+      },
+      {
+        "id": "afe7488767fdbb84",
+        "src": "assets/afe7488767fdbb84.jpg",
+        "thumb": "assets/afe7488767fdbb84-thumb.jpg"
+      },
+      {
+        "id": "37c46e2d72fc1491",
+        "src": "assets/37c46e2d72fc1491.jpg",
+        "thumb": "assets/37c46e2d72fc1491-thumb.jpg"
+      },
+      {
+        "id": "c44c74091390c17c",
+        "src": "assets/c44c74091390c17c.jpg",
+        "thumb": "assets/c44c74091390c17c-thumb.jpg"
+      },
+      {
+        "id": "44e40b7a0461317a",
+        "src": "assets/44e40b7a0461317a.jpg",
+        "thumb": "assets/44e40b7a0461317a-thumb.jpg"
+      },
+      {
+        "id": "d53bec747d612c69",
+        "src": "assets/d53bec747d612c69.jpg",
+        "thumb": "assets/d53bec747d612c69-thumb.jpg"
+      },
+      {
+        "id": "9b6f075624dfd7b4",
+        "src": "assets/9b6f075624dfd7b4.jpg",
+        "thumb": "assets/9b6f075624dfd7b4-thumb.jpg"
+      },
+      {
+        "id": "78e2d8316b60b1d3",
+        "src": "assets/78e2d8316b60b1d3.jpg",
+        "thumb": "assets/78e2d8316b60b1d3-thumb.jpg"
+      },
+      {
+        "id": "ec5cc4ac419508e9",
+        "src": "assets/ec5cc4ac419508e9.jpg",
+        "thumb": "assets/ec5cc4ac419508e9-thumb.jpg"
+      },
+      {
+        "id": "b355dbf9f5e43ed5",
+        "src": "assets/b355dbf9f5e43ed5.jpg",
+        "thumb": "assets/b355dbf9f5e43ed5-thumb.jpg"
+      },
+      {
+        "id": "658ddb03210e4723",
+        "src": "assets/658ddb03210e4723.jpg",
+        "thumb": "assets/658ddb03210e4723-thumb.jpg"
+      },
+      {
+        "id": "11bed5bfb01f5b42",
+        "src": "assets/11bed5bfb01f5b42.jpg",
+        "thumb": "assets/11bed5bfb01f5b42-thumb.jpg"
+      },
+      {
+        "id": "05ac36d571de27a5",
+        "src": "assets/05ac36d571de27a5.jpg",
+        "thumb": "assets/05ac36d571de27a5-thumb.jpg"
+      },
+      {
+        "id": "22a2b674206dfc75",
+        "src": "assets/22a2b674206dfc75.jpg",
+        "thumb": "assets/22a2b674206dfc75-thumb.jpg"
+      },
+      {
+        "id": "3880390005e9cce8",
+        "src": "assets/3880390005e9cce8.jpg",
+        "thumb": "assets/3880390005e9cce8-thumb.jpg"
+      },
+      {
+        "id": "d65c12647dc497c7",
+        "src": "assets/d65c12647dc497c7.jpg",
+        "thumb": "assets/d65c12647dc497c7-thumb.jpg"
+      },
+      {
+        "id": "537b1e6839d4b48a",
+        "src": "assets/537b1e6839d4b48a.jpg",
+        "thumb": "assets/537b1e6839d4b48a-thumb.jpg"
+      },
+      {
+        "id": "cd9ce79c1991b93c",
+        "src": "assets/cd9ce79c1991b93c.jpg",
+        "thumb": "assets/cd9ce79c1991b93c-thumb.jpg"
+      },
+      {
+        "id": "f4500e46533019df",
+        "src": "assets/f4500e46533019df.jpg",
+        "thumb": "assets/f4500e46533019df-thumb.jpg"
+      },
+      {
+        "id": "5ed70ab0f43a40ad",
+        "src": "assets/5ed70ab0f43a40ad.jpg",
+        "thumb": "assets/5ed70ab0f43a40ad-thumb.jpg"
+      },
+      {
+        "id": "f915ea998fde1fa8",
+        "src": "assets/f915ea998fde1fa8.jpg",
+        "thumb": "assets/f915ea998fde1fa8-thumb.jpg"
+      },
+      {
+        "id": "6b93f01052659d9f",
+        "src": "assets/6b93f01052659d9f.jpg",
+        "thumb": "assets/6b93f01052659d9f-thumb.jpg"
+      },
+      {
+        "id": "60cfcd180273d7ee",
+        "src": "assets/60cfcd180273d7ee.jpg",
+        "thumb": "assets/60cfcd180273d7ee-thumb.jpg"
+      },
+      {
+        "id": "d7b019c88b17cd06",
+        "src": "assets/d7b019c88b17cd06.jpg",
+        "thumb": "assets/d7b019c88b17cd06-thumb.jpg"
+      },
+      {
+        "id": "aab7b1af3ca4f766",
+        "src": "assets/aab7b1af3ca4f766.jpg",
+        "thumb": "assets/aab7b1af3ca4f766-thumb.jpg"
+      },
+      {
+        "id": "ff220b87a27202d5",
+        "src": "assets/ff220b87a27202d5.jpg",
+        "thumb": "assets/ff220b87a27202d5-thumb.jpg"
+      },
+      {
+        "id": "094804cfa13eee5c",
+        "src": "assets/094804cfa13eee5c.jpg",
+        "thumb": "assets/094804cfa13eee5c-thumb.jpg"
+      },
+      {
+        "id": "a63c748c414b312a",
+        "src": "assets/a63c748c414b312a.jpg",
+        "thumb": "assets/a63c748c414b312a-thumb.jpg"
+      },
+      {
+        "id": "0153bad6ea0c1f40",
+        "src": "assets/0153bad6ea0c1f40.jpg",
+        "thumb": "assets/0153bad6ea0c1f40-thumb.jpg"
+      },
+      {
+        "id": "6972df4395e9a2c7",
+        "src": "assets/6972df4395e9a2c7.jpg",
+        "thumb": "assets/6972df4395e9a2c7-thumb.jpg"
+      },
+      {
+        "id": "7cc06979aa47e580",
+        "src": "assets/7cc06979aa47e580.jpg",
+        "thumb": "assets/7cc06979aa47e580-thumb.jpg"
+      },
+      {
+        "id": "36ffe252f16f3d54",
+        "src": "assets/36ffe252f16f3d54.jpg",
+        "thumb": "assets/36ffe252f16f3d54-thumb.jpg"
+      },
+      {
+        "id": "6657d82e28c1b0e5",
+        "src": "assets/6657d82e28c1b0e5.jpg",
+        "thumb": "assets/6657d82e28c1b0e5-thumb.jpg"
+      },
+      {
+        "id": "f6d72b95f29e08ee",
+        "src": "assets/f6d72b95f29e08ee.jpg",
+        "thumb": "assets/f6d72b95f29e08ee-thumb.jpg"
+      },
+      {
+        "id": "4a289b6cc5523c37",
+        "src": "assets/4a289b6cc5523c37.jpg",
+        "thumb": "assets/4a289b6cc5523c37-thumb.jpg"
+      },
+      {
+        "id": "a1a8c75666afe8e9",
+        "src": "assets/a1a8c75666afe8e9.jpg",
+        "thumb": "assets/a1a8c75666afe8e9-thumb.jpg"
+      },
+      {
+        "id": "35202a3d09ee424d",
+        "src": "assets/35202a3d09ee424d.jpg",
+        "thumb": "assets/35202a3d09ee424d-thumb.jpg"
+      },
+      {
+        "id": "063e20f11f513825",
+        "src": "assets/063e20f11f513825.jpg",
+        "thumb": "assets/063e20f11f513825-thumb.jpg"
+      },
+      {
+        "id": "fb1536ac5b6b5a50",
+        "src": "assets/fb1536ac5b6b5a50.jpg",
+        "thumb": "assets/fb1536ac5b6b5a50-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-11",
+    "date": "2025-11-01",
+    "title": "2025万圣节合影",
+    "location": "上海提香研磨咖啡",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "23d867f27486168f",
+        "src": "assets/23d867f27486168f.jpg",
+        "thumb": "assets/23d867f27486168f-thumb.jpg"
+      },
+      {
+        "id": "283098b5c376cb35",
+        "src": "assets/283098b5c376cb35.jpg",
+        "thumb": "assets/283098b5c376cb35-thumb.jpg"
+      },
+      {
+        "id": "0a3352d4f6a455c9",
+        "src": "assets/0a3352d4f6a455c9.jpg",
+        "thumb": "assets/0a3352d4f6a455c9-thumb.jpg"
+      },
+      {
+        "id": "835f81c960e5080a",
+        "src": "assets/835f81c960e5080a.jpg",
+        "thumb": "assets/835f81c960e5080a-thumb.jpg"
+      },
+      {
+        "id": "2c6e564cfd342be3",
+        "src": "assets/2c6e564cfd342be3.jpg",
+        "thumb": "assets/2c6e564cfd342be3-thumb.jpg"
+      },
+      {
+        "id": "683972dbc8c6d1a2",
+        "src": "assets/683972dbc8c6d1a2.jpg",
+        "thumb": "assets/683972dbc8c6d1a2-thumb.jpg"
+      },
+      {
+        "id": "344b9f2685a153fa",
+        "src": "assets/344b9f2685a153fa.jpg",
+        "thumb": "assets/344b9f2685a153fa-thumb.jpg"
+      },
+      {
+        "id": "ae2ea8b7bbbedbed",
+        "src": "assets/ae2ea8b7bbbedbed.jpg",
+        "thumb": "assets/ae2ea8b7bbbedbed-thumb.jpg"
+      },
+      {
+        "id": "8f03193c2675ac50",
+        "src": "assets/8f03193c2675ac50.jpg",
+        "thumb": "assets/8f03193c2675ac50-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-16",
+    "date": "2025-12-20",
+    "title": "2025年圣诞节合影",
+    "location": "上海复兴公园",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "6830b47c94756222",
+        "src": "assets/6830b47c94756222.jpg",
+        "thumb": "assets/6830b47c94756222-thumb.jpg"
+      },
+      {
+        "id": "70157441ea1d7793",
+        "src": "assets/70157441ea1d7793.jpg",
+        "thumb": "assets/70157441ea1d7793-thumb.jpg"
+      },
+      {
+        "id": "4958cca0454afb69",
+        "src": "assets/4958cca0454afb69.jpg",
+        "thumb": "assets/4958cca0454afb69-thumb.jpg"
+      },
+      {
+        "id": "5f857db83175044a",
+        "src": "assets/5f857db83175044a.jpg",
+        "thumb": "assets/5f857db83175044a-thumb.jpg"
+      },
+      {
+        "id": "53e020e5a568d3cc",
+        "src": "assets/53e020e5a568d3cc.jpg",
+        "thumb": "assets/53e020e5a568d3cc-thumb.jpg"
+      },
+      {
+        "id": "d0ee50a5e21e47b9",
+        "src": "assets/d0ee50a5e21e47b9.jpg",
+        "thumb": "assets/d0ee50a5e21e47b9-thumb.jpg"
+      },
+      {
+        "id": "a55ecf4f126751e0",
+        "src": "assets/a55ecf4f126751e0.jpg",
+        "thumb": "assets/a55ecf4f126751e0-thumb.jpg"
+      },
+      {
+        "id": "a34b253da625bbd6",
+        "src": "assets/a34b253da625bbd6.jpg",
+        "thumb": "assets/a34b253da625bbd6-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-12",
+    "date": "2026-01-02",
+    "title": "2026新年见面会",
+    "location": "上海鲁迅公园",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "086b447dfa97ba99",
+        "src": "assets/086b447dfa97ba99.jpg",
+        "thumb": "assets/086b447dfa97ba99-thumb.jpg"
+      },
+      {
+        "id": "b0944ac63134572a",
+        "src": "assets/b0944ac63134572a.jpg",
+        "thumb": "assets/b0944ac63134572a-thumb.jpg"
+      },
+      {
+        "id": "08e1840faa9098a3",
+        "src": "assets/08e1840faa9098a3.jpg",
+        "thumb": "assets/08e1840faa9098a3-thumb.jpg"
+      },
+      {
+        "id": "4e6574b75cdb7582",
+        "src": "assets/4e6574b75cdb7582.jpg",
+        "thumb": "assets/4e6574b75cdb7582-thumb.jpg"
+      },
+      {
+        "id": "1b7985e574f9f394",
+        "src": "assets/1b7985e574f9f394.jpg",
+        "thumb": "assets/1b7985e574f9f394-thumb.jpg"
+      },
+      {
+        "id": "1214077292b2ab4b",
+        "src": "assets/1214077292b2ab4b.jpg",
+        "thumb": "assets/1214077292b2ab4b-thumb.jpg"
+      },
+      {
+        "id": "6602e14ba9f9f5a4",
+        "src": "assets/6602e14ba9f9f5a4.jpg",
+        "thumb": "assets/6602e14ba9f9f5a4-thumb.jpg"
+      },
+      {
+        "id": "4b10f924cb12bd46",
+        "src": "assets/4b10f924cb12bd46.jpg",
+        "thumb": "assets/4b10f924cb12bd46-thumb.jpg"
+      },
+      {
+        "id": "4123768684ef9ae0",
+        "src": "assets/4123768684ef9ae0.jpg",
+        "thumb": "assets/4123768684ef9ae0-thumb.jpg"
+      },
+      {
+        "id": "50224533ca5675c3",
+        "src": "assets/50224533ca5675c3.jpg",
+        "thumb": "assets/50224533ca5675c3-thumb.jpg"
+      },
+      {
+        "id": "d37b3de33687417b",
+        "src": "assets/d37b3de33687417b.jpg",
+        "thumb": "assets/d37b3de33687417b-thumb.jpg"
+      },
+      {
+        "id": "c0b6f95d3ded0275",
+        "src": "assets/c0b6f95d3ded0275.jpg",
+        "thumb": "assets/c0b6f95d3ded0275-thumb.jpg"
+      },
+      {
+        "id": "f0b69992a9f74056",
+        "src": "assets/f0b69992a9f74056.jpg",
+        "thumb": "assets/f0b69992a9f74056-thumb.jpg"
+      },
+      {
+        "id": "f4c3e90817aa6625",
+        "src": "assets/f4c3e90817aa6625.jpg",
+        "thumb": "assets/f4c3e90817aa6625-thumb.jpg"
+      },
+      {
+        "id": "16d2e8c3c4f658cd",
+        "src": "assets/16d2e8c3c4f658cd.jpg",
+        "thumb": "assets/16d2e8c3c4f658cd-thumb.jpg"
+      },
+      {
+        "id": "f1ebabfe1bf330e5",
+        "src": "assets/f1ebabfe1bf330e5.jpg",
+        "thumb": "assets/f1ebabfe1bf330e5-thumb.jpg"
+      },
+      {
+        "id": "1a506298b5681391",
+        "src": "assets/1a506298b5681391.jpg",
+        "thumb": "assets/1a506298b5681391-thumb.jpg"
+      },
+      {
+        "id": "8f7184626e482c9b",
+        "src": "assets/8f7184626e482c9b.jpg",
+        "thumb": "assets/8f7184626e482c9b-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-13",
+    "date": "2026-08-13",
+    "title": "访问美西螈与企鹅友好咖啡店",
+    "location": "天津候鸟与咖啡",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "6d196051396e5a93",
+        "src": "assets/6d196051396e5a93.jpg",
+        "thumb": "assets/6d196051396e5a93-thumb.jpg"
+      },
+      {
+        "id": "42bb1ef70dad1bf1",
+        "src": "assets/42bb1ef70dad1bf1.jpg",
+        "thumb": "assets/42bb1ef70dad1bf1-thumb.jpg"
+      },
+      {
+        "id": "35e5a77a654438ab",
+        "src": "assets/35e5a77a654438ab.jpg",
+        "thumb": "assets/35e5a77a654438ab-thumb.jpg"
+      },
+      {
+        "id": "b7290eb641164b2d",
+        "src": "assets/b7290eb641164b2d.jpg",
+        "thumb": "assets/b7290eb641164b2d-thumb.jpg"
+      },
+      {
+        "id": "7e50ee97db5f9880",
+        "src": "assets/7e50ee97db5f9880.jpg",
+        "thumb": "assets/7e50ee97db5f9880-thumb.jpg"
+      },
+      {
+        "id": "17eeee631c5ea3c6",
+        "src": "assets/17eeee631c5ea3c6.jpg",
+        "thumb": "assets/17eeee631c5ea3c6-thumb.jpg"
+      },
+      {
+        "id": "0a12e90d00f16a75",
+        "src": "assets/0a12e90d00f16a75.jpg",
+        "thumb": "assets/0a12e90d00f16a75-thumb.jpg"
+      },
+      {
+        "id": "e266defc8798bb9e",
+        "src": "assets/e266defc8798bb9e.jpg",
+        "thumb": "assets/e266defc8798bb9e-thumb.jpg"
+      },
+      {
+        "id": "55978b2bf0a733b1",
+        "src": "assets/55978b2bf0a733b1.jpg",
+        "thumb": "assets/55978b2bf0a733b1-thumb.jpg"
+      },
+      {
+        "id": "d84cb031f3ce42c5",
+        "src": "assets/d84cb031f3ce42c5.jpg",
+        "thumb": "assets/d84cb031f3ce42c5-thumb.jpg"
+      },
+      {
+        "id": "599ca0419099ccc8",
+        "src": "assets/599ca0419099ccc8.jpg",
+        "thumb": "assets/599ca0419099ccc8-thumb.jpg"
+      },
+      {
+        "id": "00fb435c91ce1093",
+        "src": "assets/00fb435c91ce1093.jpg",
+        "thumb": "assets/00fb435c91ce1093-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-14",
+    "date": "2026-08-15",
+    "title": "2026夏日见面会",
+    "location": "上海虹口区多伦路文化名人街",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "d931f1fa3418a6aa",
+        "src": "assets/d931f1fa3418a6aa.jpg",
+        "thumb": "assets/d931f1fa3418a6aa-thumb.jpg"
+      },
+      {
+        "id": "b4bd69300479be73",
+        "src": "assets/b4bd69300479be73.jpg",
+        "thumb": "assets/b4bd69300479be73-thumb.jpg"
+      },
+      {
+        "id": "66223fa3520ca332",
+        "src": "assets/66223fa3520ca332.jpg",
+        "thumb": "assets/66223fa3520ca332-thumb.jpg"
+      },
+      {
+        "id": "1b899886907d1235",
+        "src": "assets/1b899886907d1235.jpg",
+        "thumb": "assets/1b899886907d1235-thumb.jpg"
+      },
+      {
+        "id": "b668ee2f338d8752",
+        "src": "assets/b668ee2f338d8752.jpg",
+        "thumb": "assets/b668ee2f338d8752-thumb.jpg"
+      },
+      {
+        "id": "9a9b1dac57577682",
+        "src": "assets/9a9b1dac57577682.jpg",
+        "thumb": "assets/9a9b1dac57577682-thumb.jpg"
+      },
+      {
+        "id": "e13c8a449bc4e799",
+        "src": "assets/e13c8a449bc4e799.jpg",
+        "thumb": "assets/e13c8a449bc4e799-thumb.jpg"
+      },
+      {
+        "id": "fb6e14ecb087d00d",
+        "src": "assets/fb6e14ecb087d00d.jpg",
+        "thumb": "assets/fb6e14ecb087d00d-thumb.jpg"
+      },
+      {
+        "id": "fc6989b808e1798d",
+        "src": "assets/fc6989b808e1798d.jpg",
+        "thumb": "assets/fc6989b808e1798d-thumb.jpg"
+      }
+    ]
+  },
+  {
+    "id": "event-15",
+    "date": "2026-09-20",
+    "title": "2026池袋见面会",
+    "location": "东京池袋阳光水族馆",
+    "datePending": false,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "9e7792a53e90547c",
+        "src": "assets/9e7792a53e90547c.jpg",
+        "thumb": "assets/9e7792a53e90547c-thumb.jpg"
+      },
+      {
+        "id": "700c5fbe570193ae",
+        "src": "assets/700c5fbe570193ae.jpg",
+        "thumb": "assets/700c5fbe570193ae-thumb.jpg"
+      },
+      {
+        "id": "b3b0d367935e4803",
+        "src": "assets/b3b0d367935e4803.jpg",
+        "thumb": "assets/b3b0d367935e4803-thumb.jpg"
+      },
+      {
+        "id": "03fe3e019c9b6c48",
+        "src": "assets/03fe3e019c9b6c48.jpg",
+        "thumb": "assets/03fe3e019c9b6c48-thumb.jpg"
+      },
+      {
+        "id": "a58af9502dcefcb8",
+        "src": "assets/a58af9502dcefcb8.jpg",
+        "thumb": "assets/a58af9502dcefcb8-thumb.jpg"
+      },
+      {
+        "id": "1c6f398f1c83d7e5",
+        "src": "assets/1c6f398f1c83d7e5.jpg",
+        "thumb": "assets/1c6f398f1c83d7e5-thumb.jpg"
+      },
+      {
+        "id": "a8e3275b67e2d7c5",
+        "src": "assets/a8e3275b67e2d7c5.jpg",
+        "thumb": "assets/a8e3275b67e2d7c5-thumb.jpg"
+      },
+      {
+        "id": "78a8a7ec7a0a3cf3",
+        "src": "assets/78a8a7ec7a0a3cf3.jpg",
+        "thumb": "assets/78a8a7ec7a0a3cf3-thumb.jpg"
+      },
+      {
+        "id": "ed0a7f00a0f09a44",
+        "src": "assets/ed0a7f00a0f09a44.jpg",
+        "thumb": "assets/ed0a7f00a0f09a44-thumb.jpg"
+      },
+      {
+        "id": "b9c8410630e8e73e",
+        "src": "assets/b9c8410630e8e73e.jpg",
+        "thumb": "assets/b9c8410630e8e73e-thumb.jpg"
+      },
+      {
+        "id": "d3ebca6a6440c7cf",
+        "src": "assets/d3ebca6a6440c7cf.jpg",
+        "thumb": "assets/d3ebca6a6440c7cf-thumb.jpg"
+      },
+      {
+        "id": "2ca96828561a1df6",
+        "src": "assets/2ca96828561a1df6.jpg",
+        "thumb": "assets/2ca96828561a1df6-thumb.jpg"
+      },
+      {
+        "id": "b3af69bd80548a12",
+        "src": "assets/b3af69bd80548a12.jpg",
+        "thumb": "assets/b3af69bd80548a12-thumb.jpg"
+      },
+      {
+        "id": "be06e9d0c7f1fd0a",
+        "src": "assets/be06e9d0c7f1fd0a.jpg",
+        "thumb": "assets/be06e9d0c7f1fd0a-thumb.jpg"
+      },
+      {
+        "id": "4800f38d658dbc25",
+        "src": "assets/4800f38d658dbc25.jpg",
+        "thumb": "assets/4800f38d658dbc25-thumb.jpg"
+      },
+      {
+        "id": "4d3dfcb396d34f3e",
+        "src": "assets/4d3dfcb396d34f3e.jpg",
+        "thumb": "assets/4d3dfcb396d34f3e-thumb.jpg"
+      },
+      {
+        "id": "b40ae3a7dda98d5b",
+        "src": "assets/b40ae3a7dda98d5b.jpg",
+        "thumb": "assets/b40ae3a7dda98d5b-thumb.jpg"
+      },
+      {
+        "id": "cfd6e127c5b6f08b",
+        "src": "assets/cfd6e127c5b6f08b.jpg",
+        "thumb": "assets/cfd6e127c5b6f08b-thumb.jpg"
+      },
+      {
+        "id": "0132ebb041da0e13",
+        "src": "assets/0132ebb041da0e13.jpg",
+        "thumb": "assets/0132ebb041da0e13-thumb.jpg"
+      },
+      {
+        "id": "e157c6ec3c355e7f",
+        "src": "assets/e157c6ec3c355e7f.jpg",
+        "thumb": "assets/e157c6ec3c355e7f-thumb.jpg"
+      },
+      {
+        "id": "7d6db6662a4ca8ed",
+        "src": "assets/7d6db6662a4ca8ed.jpg",
+        "thumb": "assets/7d6db6662a4ca8ed-thumb.jpg"
+      },
+      {
+        "id": "413b3e5533cf0e34",
+        "src": "assets/413b3e5533cf0e34.jpg",
+        "thumb": "assets/413b3e5533cf0e34-thumb.jpg"
+      },
+      {
+        "id": "9bf3787e260ee205",
+        "src": "assets/9bf3787e260ee205.jpg",
+        "thumb": "assets/9bf3787e260ee205-thumb.jpg"
+      },
+      {
+        "id": "444e0984d961f002",
+        "src": "assets/444e0984d961f002.jpg",
+        "thumb": "assets/444e0984d961f002-thumb.jpg"
+      },
+      {
+        "id": "c89f86d147f0f8b2",
+        "src": "assets/c89f86d147f0f8b2.jpg",
+        "thumb": "assets/c89f86d147f0f8b2-thumb.jpg"
+      },
+      {
+        "id": "4f7b2bea95528fa7",
+        "src": "assets/4f7b2bea95528fa7.jpg",
+        "thumb": "assets/4f7b2bea95528fa7-thumb.jpg"
+      },
+      {
+        "id": "ecc46d1286f73cb9",
+        "src": "assets/ecc46d1286f73cb9.jpg",
+        "thumb": "assets/ecc46d1286f73cb9-thumb.jpg"
+      },
+      {
+        "id": "09a0b23c02ecff94",
+        "src": "assets/09a0b23c02ecff94.jpg",
+        "thumb": "assets/09a0b23c02ecff94-thumb.jpg"
+      },
+      {
+        "id": "ee26f6be233938a4",
+        "src": "assets/ee26f6be233938a4.jpg",
+        "thumb": "assets/ee26f6be233938a4-thumb.jpg"
+      },
+      {
+        "id": "2d76fba44d0b7e3b",
+        "src": "assets/2d76fba44d0b7e3b.jpg",
+        "thumb": "assets/2d76fba44d0b7e3b-thumb.jpg"
+      },
+      {
+        "id": "14d2883ae85dc54b",
+        "src": "assets/14d2883ae85dc54b.jpg",
+        "thumb": "assets/14d2883ae85dc54b-thumb.jpg"
+      },
+      {
+        "id": "c0bb75b99a5f94da",
+        "src": "assets/c0bb75b99a5f94da.jpg",
+        "thumb": "assets/c0bb75b99a5f94da-thumb.jpg"
+      },
+      {
+        "id": "8cef07a3e61fe55a",
+        "src": "assets/8cef07a3e61fe55a.jpg",
+        "thumb": "assets/8cef07a3e61fe55a-thumb.jpg"
+      },
+      {
+        "id": "c78a659bae46fdab",
+        "src": "assets/c78a659bae46fdab.jpg",
+        "thumb": "assets/c78a659bae46fdab-thumb.jpg"
+      },
+      {
+        "id": "78a0fda0c387ace1",
+        "src": "assets/78a0fda0c387ace1.jpg",
+        "thumb": "assets/78a0fda0c387ace1-thumb.jpg"
+      },
+      {
+        "id": "7e5a201f1397fe26",
+        "src": "assets/7e5a201f1397fe26.jpg",
+        "thumb": "assets/7e5a201f1397fe26-thumb.jpg"
+      },
+      {
+        "id": "61feac91a7cf47ce",
+        "src": "assets/61feac91a7cf47ce.jpg",
+        "thumb": "assets/61feac91a7cf47ce-thumb.jpg"
+      },
+      {
+        "id": "8493187430fb8eb7",
+        "src": "assets/8493187430fb8eb7.jpg",
+        "thumb": "assets/8493187430fb8eb7-thumb.jpg"
+      },
+      {
+        "id": "e50264dc9014099b",
+        "src": "assets/e50264dc9014099b.jpg",
+        "thumb": "assets/e50264dc9014099b-thumb.jpg"
+      },
+      {
+        "id": "d2b1fad885463191",
+        "src": "assets/d2b1fad885463191.jpg",
+        "thumb": "assets/d2b1fad885463191-thumb.jpg"
+      },
+      {
+        "id": "269b7496c06814d2",
+        "src": "assets/269b7496c06814d2.jpg",
+        "thumb": "assets/269b7496c06814d2-thumb.jpg"
+      },
+      {
+        "id": "0c834e4888d0745e",
+        "src": "assets/0c834e4888d0745e.jpg",
+        "thumb": "assets/0c834e4888d0745e-thumb.jpg"
+      },
+      {
+        "id": "e38c2764c2af2211",
+        "src": "assets/e38c2764c2af2211.jpg",
+        "thumb": "assets/e38c2764c2af2211-thumb.jpg"
+      }
+    ]
+  }
+]

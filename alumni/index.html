@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>拉伯莱奥那游记 · 校友风采 · 南极大学</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="alumni.css?v=1-0">
+</head>
+<body>
+  <header class="alumni-header">
+    <a class="alumni-brand" href="../" aria-label="返回南极大学学生名录">
+      <img src="../南极大学校徽2.png" alt="南极大学">
+      <span>南极大学</span>
+    </a>
+    <nav aria-label="主导航">
+      <a href="../">学生名录</a>
+      <a href="../campus/">校园活动</a>
+      <a href="./" aria-current="page">校友风采</a>
+      <a href="../aurora/">极光艺术馆</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="travel-hero" aria-labelledby="page-title">
+      <figure class="hero-image"><img src="assets/634.jpg" alt="拉伯莱奥那在法国博物馆外留影"></figure>
+      <div class="hero-copy">
+        <p class="location">法国 · France</p>
+        <h1 id="page-title">拉伯莱奥那<br>游记</h1>
+        <a href="#travel-gallery">观看旅途影像 <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section class="gallery-section" aria-labelledby="gallery-title">
+      <header class="gallery-heading">
+        <div><p>校友风采</p><h2 id="gallery-title">旅途影像</h2></div>
+        <span id="photo-count">10 张照片</span>
+      </header>
+      <p id="load-error" role="alert" hidden>影像暂时未能加载，请刷新页面重试。</p>
+      <div id="travel-gallery" class="travel-gallery" aria-live="polite"></div>
+      <noscript><p>请启用 JavaScript 来浏览这组旅行影像。</p></noscript>
+    </section>
+  </main>
+
+  <section class="alumni-motto" aria-label="南极大学校训">
+    <img src="../南极大学校训.png" alt="From the Ice, For the Earth · 南极大学校训">
+  </section>
+  <footer>南极大学 · The University of Antarctica</footer>
+
+  <dialog id="viewer" aria-labelledby="viewer-title">
+    <div class="viewer-bar">
+      <h2 id="viewer-title">拉伯莱奥那游记</h2>
+      <div><span id="viewer-count" aria-live="polite"></span><button id="close-viewer" type="button" aria-label="关闭大图">×</button></div>
+    </div>
+    <div class="viewer-stage">
+      <button id="previous-photo" type="button" aria-label="上一张">←</button>
+      <img id="viewer-image" alt="">
+      <button id="next-photo" type="button" aria-label="下一张">→</button>
+    </div>
+  </dialog>
+  <script src="alumni.js?v=1-0"></script>
+</body>
+</html>

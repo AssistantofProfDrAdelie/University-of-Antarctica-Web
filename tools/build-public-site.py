@@ -34,6 +34,12 @@ DARK_SIDE_PENGUIN_FILES = (
     "assets/cover.jpg",
     "assets/emperor-penguin-original-60s.mp3",
 )
+ALUMNI_RUNTIME_FILES = (
+    "index.html",
+    "alumni.css",
+    "alumni.js",
+    "travelogue.json",
+)
 CURATED_AURORA_ARTISTS = (
     "Amon.png",
     "鸟好鸟坏.PNG",
@@ -107,6 +113,25 @@ def validate_public_tree(output: Path, public_students: list[dict]) -> None:
     for name in DARK_SIDE_PENGUIN_FILES:
         if not (dark_side_root / name).is_file():
             fail(f"missing Dark Side of the Penguin runtime asset: {name}")
+    alumni_root = output / "alumni"
+    for name in ALUMNI_RUNTIME_FILES:
+        if not (alumni_root / name).is_file():
+            fail(f"missing Alumni Stories runtime asset: {name}")
+    alumni_data = json.loads((alumni_root / "travelogue.json").read_text(encoding="utf-8"))
+    alumni_photos = alumni_data.get("photos", [])
+    if len(alumni_photos) != 10:
+        fail(f"expected 10 Rabelais Leona photos, got {len(alumni_photos)}")
+    if alumni_data.get("cover") != "634":
+        fail("Rabelais Leona cover must be photo 634")
+    if len({photo.get("id") for photo in alumni_photos}) != len(alumni_photos):
+        fail("duplicate Rabelais Leona photo ids")
+    for photo in alumni_photos:
+        for key in ("src", "thumb"):
+            relative = Path(photo[key])
+            if relative.is_absolute() or ".." in relative.parts or relative.parts[0] != "assets" or relative.suffix != ".jpg":
+                fail(f"invalid alumni photo path: {relative}")
+            if not (alumni_root / relative).is_file():
+                fail(f"missing alumni photo asset: {relative}")
     forbidden_extensions = {".xlsx", ".zip", ".pyc"}
     for path in output.rglob("*"):
         if path.is_file() and path.suffix.lower() in forbidden_extensions:
@@ -134,12 +159,48 @@ def main() -> None:
 
     data_dir = output / "data"
     data_dir.mkdir()
+    campus_source = root / "campus"
+    campus_output = output / "campus"
+    campus_output.mkdir()
+    for name in ("index.html", "campus.css", "campus.js", "albums.json"):
+        shutil.copy2(campus_source / name, campus_output / name)
+    campus_albums = json.loads((campus_source / "albums.json").read_text(encoding="utf-8"))
+    for album in campus_albums:
+        for photo in album["photos"]:
+            for key in ("src", "thumb"):
+                relative = Path(photo[key])
+                if relative.is_absolute() or ".." in relative.parts or relative.parts[0] != "assets" or relative.suffix != ".jpg":
+                    fail(f"invalid campus photo path: {relative}")
+                destination = campus_output / relative
+                destination.parent.mkdir(exist_ok=True)
+                shutil.copy2(campus_source / relative, destination)
     aurora_dir = output / "aurora"
     aurora_dir.mkdir()
     for name in ("index.html",):
         shutil.copy2(root / "aurora" / name, aurora_dir / name)
     shutil.copy2(root / "aurora.js", output / "aurora.js")
     shutil.copy2(root / "aurora.css", output / "aurora.css")
+
+    alumni_source = root / "alumni"
+    alumni_output = output / "alumni"
+    alumni_output.mkdir()
+    for name in ALUMNI_RUNTIME_FILES:
+        source = alumni_source / name
+        if not source.is_file():
+            fail(f"missing Alumni Stories source asset: {name}")
+        shutil.copy2(source, alumni_output / name)
+    alumni_data = json.loads((alumni_source / "travelogue.json").read_text(encoding="utf-8"))
+    for photo in alumni_data.get("photos", []):
+        for key in ("src", "thumb"):
+            relative = Path(photo[key])
+            if relative.is_absolute() or ".." in relative.parts or relative.parts[0] != "assets" or relative.suffix != ".jpg":
+                fail(f"invalid alumni source photo path: {relative}")
+            source = alumni_source / relative
+            if not source.is_file():
+                fail(f"missing alumni source photo: {relative}")
+            destination = alumni_output / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, destination)
 
     encounter_source = root / "experiences/encounter-penguin"
     encounter_output = output / "experiences/encounter-penguin"
