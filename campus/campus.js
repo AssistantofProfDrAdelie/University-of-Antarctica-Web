@@ -61,7 +61,7 @@
   $('previous-photo').addEventListener('click',()=>step(-1));$('next-photo').addEventListener('click',()=>step(1));
   $('viewer').addEventListener('keydown',event=>{if(event.key==='ArrowLeft'){event.preventDefault();step(-1);}if(event.key==='ArrowRight'){event.preventDefault();step(1);}});
   window.addEventListener('hashchange',route);
-  fetch('albums.json?v=20260922-2').then(response=>{if(!response.ok)throw Error(response.status);return response.json();}).then(data=>{
+  fetch('albums.json?v=20260922-3').then(response=>{if(!response.ok)throw Error(response.status);return response.json();}).then(data=>{
     albums=data;renderAlbums();
     renderHero();
     route();
