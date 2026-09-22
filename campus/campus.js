@@ -15,7 +15,6 @@
       const cover = node('div', 'album-cover');
       if(album.photos.length) cover.append(image(album.photos[0], album.title));
       else {const empty = node('div','empty-cover'); empty.append(node('span','','○'),node('small','','等待下一张回忆')); cover.append(empty);}
-      cover.append(node('span','photo-number',album.photos.length ? `${album.photos.length} 张` : '照片待补'));
       card.append(cover,node('p','album-date',dateText(album)),node('h3','',album.title),node('p','album-location',album.location));
       card.addEventListener('click',()=>{lastTrigger=card; location.hash=album.id;});
       $(album.category && album.category !== '与鹅同行' ? 'separate-grid' : 'album-grid').append(card);

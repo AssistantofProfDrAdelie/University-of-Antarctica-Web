@@ -29,3 +29,14 @@
 @media(max-width:900px){.hero-stage{height:290px}}
 @media(max-width:600px){.campus-intro{padding-top:38px;gap:32px;padding-bottom:48px}.hero-stage{height:270px}}
 @media(prefers-reduced-motion:reduce){.hero-photo .hero-slide{transition:none}}
+
+/* Album groups: the cover stays unobstructed while layered sheets imply a photo set. */
+.campus-subnav{display:block}
+.campus-subnav-track{width:min(1320px,100%)}
+.album-cover{isolation:isolate;width:calc(100% - 14px);margin:14px 0 0;overflow:visible}
+.album-cover::before,.album-cover::after{content:"";position:absolute;inset:0;background:var(--surface);border:1px solid var(--line);transform-origin:center;pointer-events:none}
+.album-cover::before{z-index:-2;transform:translate(12px,-12px) rotate(1.4deg)}
+.album-cover::after{z-index:-1;transform:translate(6px,-6px) rotate(-.7deg)}
+.album-cover img,.album-cover .empty-cover{position:relative;z-index:1;width:100%;height:100%;border:1px solid var(--line);background:var(--paper)}
+.album-card:hover img{transform:translate(-2px,2px) rotate(-.35deg)}
+@media(max-width:600px){.album-cover{width:calc(100% - 10px);margin-top:11px}.album-cover::before{transform:translate(9px,-9px) rotate(1.2deg)}.album-cover::after{transform:translate(5px,-5px) rotate(-.6deg)}}
