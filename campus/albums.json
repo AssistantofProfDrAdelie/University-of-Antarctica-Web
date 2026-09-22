@@ -1468,6 +1468,11 @@
     "category": "与鹅同行",
     "photos": [
       {
+        "id": "0c834e4888d0745e",
+        "src": "assets/0c834e4888d0745e.jpg",
+        "thumb": "assets/0c834e4888d0745e-thumb.jpg"
+      },
+      {
         "id": "9e7792a53e90547c",
         "src": "assets/9e7792a53e90547c.jpg",
         "thumb": "assets/9e7792a53e90547c-thumb.jpg"
@@ -1671,11 +1676,6 @@
         "id": "269b7496c06814d2",
         "src": "assets/269b7496c06814d2.jpg",
         "thumb": "assets/269b7496c06814d2-thumb.jpg"
-      },
-      {
-        "id": "0c834e4888d0745e",
-        "src": "assets/0c834e4888d0745e.jpg",
-        "thumb": "assets/0c834e4888d0745e-thumb.jpg"
       },
       {
         "id": "e38c2764c2af2211",
