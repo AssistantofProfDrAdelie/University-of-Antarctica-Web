@@ -1,3 +1,10 @@
+const auroraArtistOrder = [
+  'Amon', '鸟好鸟坏', '骷髅柴人', 'skny', '第六封信', '柏闲也', '叶无殊',
+  'Mariella', '卡波鼠博士', '燃海', 'Hyggelgloo', '萝卜萝卜马', '晚风',
+  '团子', '未来小道士', '小琉', '魅力棕熊姨', '幽灵', '7%溶剂',
+  'ICEBEBE艾斯比比', '睡觉闪闪'
+];
+
 function setupLightbox({modalId, imageId, closeId, triggerSelector, closeAttribute}) {
   const modal = document.querySelector(modalId);
   const image = document.querySelector(imageId);
@@ -114,7 +121,14 @@ async function loadExhibition() {
     const works = await response.json();
     const individual = works.filter(work => !work.project);
     const artists = [...new Set(individual.map(work => work.artist))]
-      .sort((a, b) => Number(b === 'Amon') - Number(a === 'Amon') || a.localeCompare(b, 'zh-CN'));
+      .sort((a, b) => {
+        const aIndex = auroraArtistOrder.indexOf(a);
+        const bIndex = auroraArtistOrder.indexOf(b);
+        if (aIndex >= 0 && bIndex >= 0) return aIndex - bIndex;
+        if (aIndex >= 0) return -1;
+        if (bIndex >= 0) return 1;
+        return a.localeCompare(b, 'zh-CN');
+      });
     albums = artists.map(artist => {
       const artistWorks = individual.filter(work => work.artist === artist);
       const coverIds = {'第六封信': 'w034', '卡波鼠博士': 'w013', '骷髅柴人': 'w033', '魅力棕熊姨': 'w016', '幽灵': 'w021', '叶无殊': 'w004', 'ICEBEBE艾斯比比': 'w052'};
