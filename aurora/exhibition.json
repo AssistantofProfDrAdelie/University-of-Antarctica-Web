@@ -1,0 +1,443 @@
+[
+  {
+    "id": "w001",
+    "artist": "鸟好鸟坏",
+    "project": null,
+    "full": "assets/works/full/w001.webp",
+    "thumb": "assets/works/thumb/w001.webp"
+  },
+  {
+    "id": "w002",
+    "artist": "skny",
+    "project": null,
+    "full": "assets/works/full/w002.webp",
+    "thumb": "assets/works/thumb/w002.webp"
+  },
+  {
+    "id": "w003",
+    "artist": "叶无殊",
+    "project": null,
+    "full": "assets/works/full/w003.webp",
+    "thumb": "assets/works/thumb/w003.webp"
+  },
+  {
+    "id": "w004",
+    "artist": "叶无殊",
+    "project": null,
+    "full": "assets/works/full/w004.webp",
+    "thumb": "assets/works/thumb/w004.webp"
+  },
+  {
+    "id": "w005",
+    "artist": "Mariella",
+    "project": null,
+    "full": "assets/works/full/w005.webp",
+    "thumb": "assets/works/thumb/w005.webp"
+  },
+  {
+    "id": "w006",
+    "artist": "未来小道士",
+    "project": null,
+    "full": "assets/works/full/w006.webp",
+    "thumb": "assets/works/thumb/w006.webp"
+  },
+  {
+    "id": "w007",
+    "artist": "未来小道士",
+    "project": null,
+    "full": "assets/works/full/w007.webp",
+    "thumb": "assets/works/thumb/w007.webp"
+  },
+  {
+    "id": "w008",
+    "artist": "辰不垃圾",
+    "project": null,
+    "full": "assets/works/full/w008.webp",
+    "thumb": "assets/works/thumb/w008.webp"
+  },
+  {
+    "id": "w009",
+    "artist": "未来小道士",
+    "project": null,
+    "full": "assets/works/full/w009.webp",
+    "thumb": "assets/works/thumb/w009.webp"
+  },
+  {
+    "id": "w010",
+    "artist": "第六封信",
+    "project": null,
+    "full": "assets/works/full/w010.webp",
+    "thumb": "assets/works/thumb/w010.webp"
+  },
+  {
+    "id": "w011",
+    "artist": "柏闲也",
+    "project": null,
+    "full": "assets/works/full/w011.webp",
+    "thumb": "assets/works/thumb/w011.webp"
+  },
+  {
+    "id": "w012",
+    "artist": "卡波鼠博士",
+    "project": null,
+    "full": "assets/works/full/w012.webp",
+    "thumb": "assets/works/thumb/w012.webp"
+  },
+  {
+    "id": "w013",
+    "artist": "卡波鼠博士",
+    "project": null,
+    "full": "assets/works/full/w013.webp",
+    "thumb": "assets/works/thumb/w013.webp"
+  },
+  {
+    "id": "w014",
+    "artist": "魅力棕熊姨",
+    "project": null,
+    "full": "assets/works/full/w014.webp",
+    "thumb": "assets/works/thumb/w014.webp"
+  },
+  {
+    "id": "w015",
+    "artist": "燃海",
+    "project": null,
+    "full": "assets/works/full/w015.webp",
+    "thumb": "assets/works/thumb/w015.webp"
+  },
+  {
+    "id": "w016",
+    "artist": "魅力棕熊姨",
+    "project": null,
+    "full": "assets/works/full/w016.webp",
+    "thumb": "assets/works/thumb/w016.webp"
+  },
+  {
+    "id": "w017",
+    "artist": "第六封信",
+    "project": null,
+    "full": "assets/works/full/w017.webp",
+    "thumb": "assets/works/thumb/w017.webp"
+  },
+  {
+    "id": "w018",
+    "artist": "小琉",
+    "project": null,
+    "full": "assets/works/full/w018.webp",
+    "thumb": "assets/works/thumb/w018.webp"
+  },
+  {
+    "id": "w019",
+    "artist": "skny",
+    "project": null,
+    "full": "assets/works/full/w019.webp",
+    "thumb": "assets/works/thumb/w019.webp"
+  },
+  {
+    "id": "w020",
+    "artist": "幽灵",
+    "project": null,
+    "full": "assets/works/full/w020.webp",
+    "thumb": "assets/works/thumb/w020.webp"
+  },
+  {
+    "id": "w021",
+    "artist": "幽灵",
+    "project": null,
+    "full": "assets/works/full/w021.webp",
+    "thumb": "assets/works/thumb/w021.webp"
+  },
+  {
+    "id": "w022",
+    "artist": "燃海",
+    "project": null,
+    "full": "assets/works/full/w022.webp",
+    "thumb": "assets/works/thumb/w022.webp"
+  },
+  {
+    "id": "w023",
+    "artist": "7%溶剂",
+    "project": null,
+    "full": "assets/works/full/w023.webp",
+    "thumb": "assets/works/thumb/w023.webp"
+  },
+  {
+    "id": "w024",
+    "artist": "7%溶剂",
+    "project": null,
+    "full": "assets/works/full/w024.webp",
+    "thumb": "assets/works/thumb/w024.webp"
+  },
+  {
+    "id": "w025",
+    "artist": "skny",
+    "project": null,
+    "full": "assets/works/full/w025.webp",
+    "thumb": "assets/works/thumb/w025.webp"
+  },
+  {
+    "id": "w026",
+    "artist": "灰灰家长",
+    "project": null,
+    "full": "assets/works/full/w026.webp",
+    "thumb": "assets/works/thumb/w026.webp"
+  },
+  {
+    "id": "w027",
+    "artist": "骷髅柴人",
+    "project": null,
+    "full": "assets/works/full/w027.webp",
+    "thumb": "assets/works/thumb/w027.webp"
+  },
+  {
+    "id": "w028",
+    "artist": "第六封信",
+    "project": null,
+    "full": "assets/works/full/w028.webp",
+    "thumb": "assets/works/thumb/w028.webp"
+  },
+  {
+    "id": "w029",
+    "artist": "skny",
+    "project": null,
+    "full": "assets/works/full/w029.webp",
+    "thumb": "assets/works/thumb/w029.webp"
+  },
+  {
+    "id": "w030",
+    "artist": "萝卜萝卜马",
+    "project": null,
+    "full": "assets/works/full/w030.webp",
+    "thumb": "assets/works/thumb/w030.webp"
+  },
+  {
+    "id": "w031",
+    "artist": "第六封信",
+    "project": null,
+    "full": "assets/works/full/w031.webp",
+    "thumb": "assets/works/thumb/w031.webp"
+  },
+  {
+    "id": "w032",
+    "artist": "Hyggelgloo",
+    "project": null,
+    "full": "assets/works/full/w032.webp",
+    "thumb": "assets/works/thumb/w032.webp"
+  },
+  {
+    "id": "w033",
+    "artist": "骷髅柴人",
+    "project": null,
+    "full": "assets/works/full/w033.webp",
+    "thumb": "assets/works/thumb/w033.webp"
+  },
+  {
+    "id": "w034",
+    "artist": "第六封信",
+    "project": null,
+    "full": "assets/works/full/w034.webp",
+    "thumb": "assets/works/thumb/w034.webp"
+  },
+  {
+    "id": "w035",
+    "artist": "晚风",
+    "project": null,
+    "full": "assets/works/full/w035.webp",
+    "thumb": "assets/works/thumb/w035.webp"
+  },
+  {
+    "id": "w036",
+    "artist": "团子",
+    "project": null,
+    "full": "assets/works/full/w036.webp",
+    "thumb": "assets/works/thumb/w036.webp"
+  },
+  {
+    "id": "w037",
+    "artist": "团子",
+    "project": null,
+    "full": "assets/works/full/w037.webp",
+    "thumb": "assets/works/thumb/w037.webp"
+  },
+  {
+    "id": "w038",
+    "artist": "团子",
+    "project": null,
+    "full": "assets/works/full/w038.webp",
+    "thumb": "assets/works/thumb/w038.webp"
+  },
+  {
+    "id": "w039",
+    "artist": "团子",
+    "project": null,
+    "full": "assets/works/full/w039.webp",
+    "thumb": "assets/works/thumb/w039.webp"
+  },
+  {
+    "id": "w040",
+    "artist": "团子",
+    "project": null,
+    "full": "assets/works/full/w040.webp",
+    "thumb": "assets/works/thumb/w040.webp"
+  },
+  {
+    "id": "w041",
+    "artist": "团子",
+    "project": null,
+    "full": "assets/works/full/w041.webp",
+    "thumb": "assets/works/thumb/w041.webp"
+  },
+  {
+    "id": "w042",
+    "artist": "7%溶剂",
+    "project": null,
+    "full": "assets/works/full/w042.webp",
+    "thumb": "assets/works/thumb/w042.webp"
+  },
+  {
+    "id": "w043",
+    "artist": "橙橙又子子",
+    "project": null,
+    "full": "assets/works/full/w043.webp",
+    "thumb": "assets/works/thumb/w043.webp"
+  },
+  {
+    "id": "w044",
+    "artist": "第六封信",
+    "project": null,
+    "full": "assets/works/full/w044.webp",
+    "thumb": "assets/works/thumb/w044.webp"
+  },
+  {
+    "id": "w045",
+    "artist": "7%溶剂",
+    "project": null,
+    "full": "assets/works/full/w045.webp",
+    "thumb": "assets/works/thumb/w045.webp"
+  },
+  {
+    "id": "w046",
+    "artist": "7%溶剂",
+    "project": null,
+    "full": "assets/works/full/w046.webp",
+    "thumb": "assets/works/thumb/w046.webp"
+  },
+  {
+    "id": "w047",
+    "artist": "7%溶剂",
+    "project": null,
+    "full": "assets/works/full/w047.webp",
+    "thumb": "assets/works/thumb/w047.webp"
+  },
+  {
+    "id": "w048",
+    "artist": "7%溶剂",
+    "project": null,
+    "full": "assets/works/full/w048.webp",
+    "thumb": "assets/works/thumb/w048.webp"
+  },
+  {
+    "id": "w049",
+    "artist": "Amon",
+    "project": null,
+    "full": "assets/works/full/w049.webp",
+    "thumb": "assets/works/thumb/w049.webp"
+  },
+  {
+    "id": "w050",
+    "artist": "ICEBEBE艾斯比比",
+    "project": null,
+    "full": "assets/works/full/w050.webp",
+    "thumb": "assets/works/thumb/w050.webp"
+  },
+  {
+    "id": "w051",
+    "artist": "ICEBEBE艾斯比比",
+    "project": null,
+    "full": "assets/works/full/w051.webp",
+    "thumb": "assets/works/thumb/w051.webp"
+  },
+  {
+    "id": "w052",
+    "artist": "ICEBEBE艾斯比比",
+    "project": null,
+    "full": "assets/works/full/w052.webp",
+    "thumb": "assets/works/thumb/w052.webp"
+  },
+  {
+    "id": "w053",
+    "artist": "Amon",
+    "project": null,
+    "full": "assets/works/full/w053.webp",
+    "thumb": "assets/works/thumb/w053.webp"
+  },
+  {
+    "id": "w054",
+    "artist": "幽灵",
+    "project": null,
+    "full": "assets/works/full/w054.webp",
+    "thumb": "assets/works/thumb/w054.webp"
+  },
+  {
+    "id": "w055",
+    "artist": "羊听了都睡了",
+    "project": "画画教授",
+    "full": "assets/works/full/w055.webp",
+    "thumb": "assets/works/thumb/w055.webp"
+  },
+  {
+    "id": "w056",
+    "artist": "Hyggelgloo",
+    "project": "画画教授",
+    "full": "assets/works/full/w056.webp",
+    "thumb": "assets/works/thumb/w056.webp"
+  },
+  {
+    "id": "w057",
+    "artist": "企鹅研究员",
+    "project": "画画教授",
+    "full": "assets/works/full/w057.webp",
+    "thumb": "assets/works/thumb/w057.webp"
+  },
+  {
+    "id": "w058",
+    "artist": "辰不垃圾",
+    "project": "画画教授",
+    "full": "assets/works/full/w058.webp",
+    "thumb": "assets/works/thumb/w058.webp"
+  },
+  {
+    "id": "w059",
+    "artist": "卤水冰糖橙",
+    "project": "画画教授",
+    "full": "assets/works/full/w059.webp",
+    "thumb": "assets/works/thumb/w059.webp"
+  },
+  {
+    "id": "w060",
+    "artist": "福鹅鹅斯和花花家长",
+    "project": "画画教授",
+    "full": "assets/works/full/w060.webp",
+    "thumb": "assets/works/thumb/w060.webp"
+  },
+  {
+    "id": "w061",
+    "artist": "睡觉闪闪",
+    "project": null,
+    "full": "assets/works/full/w061.webp",
+    "thumb": "assets/works/thumb/w061.webp"
+  },
+  {
+    "id": "w062",
+    "artist": "安子木or 森川肆条（看个签）",
+    "project": null,
+    "full": "assets/works/full/w062.webp",
+    "thumb": "assets/works/thumb/w062.webp"
+  },
+  {
+    "id": "w063",
+    "artist": "安子木or 森川肆条（看个签）",
+    "project": null,
+    "full": "assets/works/full/w063.webp",
+    "thumb": "assets/works/thumb/w063.webp"
+  }
+]

@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow">
   <title>极光艺术馆 · Aurora Art Gallery</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../styles.css?v=phase-2-8">
   <link rel="stylesheet" href="../directory-batches.css?v=phase-2-2">
-  <link rel="stylesheet" href="../aurora.css?v=phase-3-0">
+  <link rel="stylesheet" href="../aurora.css?v=exhibition-1">
   <link rel="stylesheet" href="../huddle.css?v=1-1">
 </head>
 <body>
@@ -43,20 +42,40 @@
       <div class="aurora-hero-copy">
         <p class="eyebrow">AURORA ART GALLERY</p>
         <h1 id="aurora-title">极光艺术馆<br><em>Aurora Art Gallery</em></h1>
-        <p class="aurora-intro">An institutional certificate archive for the University of Antarctica’s Aurora artists.</p>
+        <p class="aurora-intro">极光从每一位创作者的手中亮起。在这里观看极光艺术家的作品，也看看大家一起画出的阿德利教授。</p>
+        <div class="aurora-hero-links"><a href="#exhibition">进入极光艺术展 <span aria-hidden="true">↗</span></a><a href="#artist-directory">艺术家名录</a></div>
+        <p class="curator-credit">馆长 · 帝加索</p>
       </div>
-      <div class="curator-block">
-        <div class="curator-portrait"><img src="../极光艺术家/帝加索.JPG" alt="帝加索"></div>
-        <div><p class="eyebrow">馆长</p><h2>帝加索</h2><p>极光艺术馆</p></div>
-      </div>
+      <figure class="aurora-hero-art"><img src="./assets/works/full/w049.webp" alt="Amon 创作的阿德利教授肖像"><figcaption><span>Amon · 首位极光艺术家</span><span>极光艺术展</span></figcaption></figure>
     </section>
 
-    <section class="aurora-directory" aria-labelledby="artist-directory-title">
+    <section class="aurora-exhibition" id="exhibition" aria-label="极光艺术展">
+      <div id="exhibition-overview">
       <div class="aurora-section-heading">
-        <div><p class="eyebrow">AURORA ARTISTS</p><h2 id="artist-directory-title">极光艺术家</h2></div>
+        <div><p class="eyebrow">AURORA EXHIBITION</p><h2 id="exhibition-title">极光艺术展</h2></div>
+        <span id="work-count" class="count"></span>
+      </div>
+      <div class="exhibition-tools">
+        <p>选择一位艺术家，浏览他的完整作品集。</p>
+      </div>
+        <div id="exhibition-grid" class="exhibition-album-grid" aria-live="polite"></div>
+        <div class="collective-heading"><p class="eyebrow">COLLECTIVE PROJECT</p><h3>画画教授</h3><p>一笔一画，一起画出阿德利教授。</p></div>
+        <div id="collective-grid" class="exhibition-album-grid collective-albums"></div>
+      </div>
+      <section id="exhibition-detail" class="exhibition-detail" hidden aria-labelledby="exhibition-detail-title">
+        <button type="button" id="back-exhibition" class="exhibition-back">← 返回极光艺术展</button>
+        <div class="exhibition-detail-heading"><div><p id="exhibition-detail-label" class="eyebrow"></p><h3 id="exhibition-detail-title" tabindex="-1"></h3></div><span id="exhibition-detail-count"></span></div>
+        <div id="exhibition-works" class="exhibition-grid"></div>
+      </section>
+    </section>
+
+    <section class="aurora-directory" id="artist-directory" aria-labelledby="artist-directory-title">
+      <div class="aurora-section-heading">
+        <div><p class="eyebrow">ARTIST DIRECTORY</p><h2 id="artist-directory-title">艺术家名录</h2></div>
         <span id="artist-count" class="count"></span>
       </div>
-      <div id="aurora-grid" class="aurora-certificate-grid" aria-live="polite"></div>
+      <p class="directory-intro">认识参与极光艺术馆的艺术家，查看他们的荣誉证书。</p>
+      <details class="directory-details"><summary>查看艺术家名录 <span aria-hidden="true">＋</span></summary><div id="aurora-grid" class="aurora-certificate-grid" aria-live="polite"></div></details>
     </section>
   </main>
 
@@ -76,12 +95,12 @@
   <div class="aurora-lightbox" id="aurora-lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="aurora-lightbox-title">
     <div class="aurora-lightbox-backdrop" data-close-aurora-lightbox></div>
     <div class="aurora-lightbox-dialog">
-      <h2 id="aurora-lightbox-title" class="visually-hidden">Aurora artist certificate</h2>
-      <button class="aurora-lightbox-close" id="aurora-lightbox-close" type="button" aria-label="关闭证书预览">×</button>
+      <h2 id="aurora-lightbox-title" class="visually-hidden">极光艺术馆图片预览</h2>
+      <button class="aurora-lightbox-close" id="aurora-lightbox-close" type="button" aria-label="关闭图片预览">×</button>
       <img id="aurora-lightbox-image" src="" alt="">
     </div>
   </div>
-  <script src="../aurora.js?v=phase-3-0-1"></script>
+  <script src="../aurora.js?v=exhibition-1"></script>
   <script src="../huddle.js?v=1-1"></script>
 </body>
 </html>
