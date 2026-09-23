@@ -4,6 +4,9 @@ const poems = [
   { title: '鹅爱你，当然与你有关', author: '胖胖皮', thumb: 'assets/web/poem-03-cover-thumb.webp', cover: 'assets/web/poem-03-cover.webp', text: 'assets/web/poem-03-text.webp', width: 420, height: 562 },
   { title: '无题', author: '胖胖皮', thumb: 'assets/web/poem-04-cover-thumb.webp', cover: 'assets/web/poem-04-cover.webp', text: 'assets/web/poem-04-text.webp', width: 420, height: 700 },
   { title: '你就好像菩萨显灵', author: '胖胖皮', thumb: 'assets/web/poem-05-cover-thumb.webp', cover: 'assets/web/poem-05-cover.webp', text: 'assets/web/poem-05-text.webp', width: 420, height: 909 },
+  { title: '新纪元的夜晚', author: '胖胖皮', thumb: 'assets/web/poem-06-cover-thumb.webp', cover: 'assets/web/poem-06-cover.webp', text: 'assets/web/poem-06-text.webp', width: 420, height: 561 },
+  { title: '企鹅的一部分由月亮构成', author: 'boo妈', thumb: 'assets/web/poem-07-cover-thumb.webp', cover: 'assets/web/poem-07-cover.webp', text: 'assets/web/poem-07-text.webp', width: 420, height: 561 },
+  { title: '风轻轻淌过黎明', author: '胖胖皮', thumb: 'assets/web/poem-08-cover-thumb.webp', cover: 'assets/web/poem-08-cover.webp', text: 'assets/web/poem-08-text.webp', width: 420, height: 561 },
 ];
 
 const grid = document.querySelector('#poem-grid');
