@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>鹅之小石 · 极光艺术馆</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css?v=1-1">
+</head>
+<body>
+  <header class="poetry-header">
+    <a class="university-brand" href="../" aria-label="返回极光艺术馆">
+      <img src="../../南极大学校徽2.png" alt="南极大学">
+    </a>
+    <a class="return-link" href="../">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6"/></svg>
+      返回极光艺术馆
+    </a>
+  </header>
+
+  <main>
+    <section class="poetry-hero" aria-labelledby="page-title">
+      <div class="hero-title">
+        <h1 id="page-title">鹅之小石</h1>
+      </div>
+    </section>
+
+    <section class="poem-archive" aria-label="诗作">
+      <div class="poem-grid" id="poem-grid"></div>
+      <noscript><p class="noscript">请启用 JavaScript 浏览诗作。</p></noscript>
+    </section>
+  </main>
+
+  <footer>
+    <span>鹅之小石</span>
+    <span>极光艺术馆 · 南极大学</span>
+  </footer>
+
+  <dialog class="reader" id="reader" aria-labelledby="reader-title">
+    <div class="reader-bar">
+      <div>
+        <p id="reader-position"></p>
+        <h2 id="reader-title"></h2>
+      </div>
+      <button class="icon-button" id="close-reader" type="button" aria-label="关闭诗歌阅读器">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="reader-stage">
+      <button class="reader-arrow" id="previous-page" type="button" aria-label="上一页">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg>
+      </button>
+      <figure class="reader-page">
+        <img id="reader-image" alt="">
+        <figcaption id="reader-caption" aria-live="polite"></figcaption>
+      </figure>
+      <button class="reader-arrow" id="next-page" type="button" aria-label="下一页">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+  </dialog>
+
+  <script src="app.js?v=1-3"></script>
+</body>
+</html>
