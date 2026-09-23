@@ -32,14 +32,14 @@ function setupLightbox({modalId, imageId, closeId, triggerSelector, closeAttribu
   });
 }
 
-function artworkNode(work, index, total, album) {
+function artworkNode(work, album) {
   const figure = document.createElement('figure');
   figure.className = 'artwork';
   const link = document.createElement('a');
   link.className = 'artwork-link';
   link.href = `./${work.full}`;
   link.setAttribute('data-aurora-lightbox', '');
-  link.dataset.lightboxAlt = `${work.artist}的${album.artist === '团子' ? '照片' : '作品'}，第${index + 1}张`;
+  link.dataset.lightboxAlt = `${work.artist}的${album.artist === '团子' ? '照片' : '作品'}`;
   const img = document.createElement('img');
   img.src = `./${work.full}`;
   img.alt = link.dataset.lightboxAlt;
@@ -49,18 +49,16 @@ function artworkNode(work, index, total, album) {
   const caption = document.createElement('figcaption');
   const label = document.createElement('span');
   label.textContent = work.project ? work.artist : album.artist === '团子' ? '团子' : album.artist;
-  const number = document.createElement('small');
-  number.textContent = `${String(index + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
-  caption.append(label, number);
+  caption.append(label);
   figure.append(link, caption);
   return figure;
 }
 
 function albumCardNode(album, onOpen) {
   const card = document.createElement('button');
-  card.className = 'exhibition-album-card';
+  card.className = `exhibition-album-card${album.works.length === 1 ? ' single-work' : ''}`;
   card.type = 'button';
-  card.setAttribute('aria-label', `打开${album.title}，${album.works.length}张图片`);
+  card.setAttribute('aria-label', `打开${album.title}`);
   const cover = document.createElement('span');
   cover.className = 'exhibition-album-cover';
   const image = document.createElement('img');
@@ -71,13 +69,12 @@ function albumCardNode(album, onOpen) {
   cover.append(image);
   const kicker = document.createElement('small');
   kicker.className = 'album-kicker';
-  kicker.textContent = album.project ? '共创项目' : album.artist === '团子' ? '照片相册' : '艺术家作品';
+  kicker.textContent = album.project ? '共创项目' : album.artist === '团子' ? '照片相册' : '';
   const title = document.createElement('strong');
   title.textContent = album.title;
-  const count = document.createElement('span');
-  count.className = 'album-image-count';
-  count.textContent = `${album.works.length} 张`;
-  card.append(cover, kicker, title, count);
+  card.append(cover);
+  if (kicker.textContent) card.append(kicker);
+  card.append(title);
   card.addEventListener('click', () => onOpen(card));
   return card;
 }
@@ -85,7 +82,6 @@ function albumCardNode(album, onOpen) {
 async function loadExhibition() {
   const grid = document.querySelector('#exhibition-grid');
   const collectiveGrid = document.querySelector('#collective-grid');
-  const count = document.querySelector('#work-count');
   const overview = document.querySelector('#exhibition-overview');
   const detail = document.querySelector('#exhibition-detail');
   const directory = document.querySelector('#artist-directory');
@@ -97,11 +93,10 @@ async function loadExhibition() {
     detail.hidden = !album;
     directory.hidden = !!album;
     if (!album) return;
-    document.querySelector('#exhibition-detail-label').textContent = album.project ? '共创项目' : album.artist === '团子' ? '照片相册' : '艺术家作品';
+    document.querySelector('#exhibition-detail-label').textContent = album.project ? '共创项目' : album.artist === '团子' ? '照片相册' : '';
     document.querySelector('#exhibition-detail-title').textContent = album.title;
-    document.querySelector('#exhibition-detail-count').textContent = `${album.works.length} 张图片`;
     document.querySelector('#exhibition-works').replaceChildren(
-      ...album.works.map((work, index) => artworkNode(work, index, album.works.length, album))
+      ...album.works.map(work => artworkNode(work, album))
     );
     document.querySelector('#exhibition-detail-title').focus({preventScroll: true});
     detail.scrollIntoView({behavior: 'instant'});
@@ -139,7 +134,6 @@ async function loadExhibition() {
     const collectiveCard = albumCardNode(albums.find(album => album.project), onOpen);
     collectiveCard.dataset.albumId = 'project-paint-professor';
     collectiveGrid.replaceChildren(collectiveCard);
-    count.textContent = `${albums.length} 本作品集 · ${works.length} 张图片`;
     route();
   } catch (error) {
     grid.innerHTML = '<p class="empty-gallery">极光艺术展暂时无法读取。</p>';
