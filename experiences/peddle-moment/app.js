@@ -1,9 +1,9 @@
 const poems = [
-  { title: '企鹅需要爱情', author: '胖胖皮', cover: 'assets/企鹅需要爱情1.png', text: 'assets/企鹅需要爱情2.png' },
-  { title: '某夜的月光和某个心脏', author: '胖胖皮', cover: 'assets/某夜的月光和某个心脏1.png', text: 'assets/某夜的月光和某个心脏2.png' },
-  { title: '鹅爱你，当然与你有关', author: '胖胖皮', cover: 'assets/鹅爱你，当然与你有关1.png', text: 'assets/鹅爱你，当然与你有关2.png' },
-  { title: '无题', author: '胖胖皮', cover: 'assets/无题1.png', text: 'assets/无题2.png' },
-  { title: '你就好像菩萨显灵', author: '胖胖皮', cover: 'assets/你就好像菩萨显灵1.png', text: 'assets/你就好像菩萨显灵2.png' },
+  { title: '企鹅需要爱情', author: '胖胖皮', thumb: 'assets/web/poem-01-cover-thumb.webp', cover: 'assets/web/poem-01-cover.webp', text: 'assets/web/poem-01-text.webp', width: 420, height: 562 },
+  { title: '某夜的月光和某个心脏', author: '胖胖皮', thumb: 'assets/web/poem-02-cover-thumb.webp', cover: 'assets/web/poem-02-cover.webp', text: 'assets/web/poem-02-text.webp', width: 420, height: 562 },
+  { title: '鹅爱你，当然与你有关', author: '胖胖皮', thumb: 'assets/web/poem-03-cover-thumb.webp', cover: 'assets/web/poem-03-cover.webp', text: 'assets/web/poem-03-text.webp', width: 420, height: 562 },
+  { title: '无题', author: '胖胖皮', thumb: 'assets/web/poem-04-cover-thumb.webp', cover: 'assets/web/poem-04-cover.webp', text: 'assets/web/poem-04-text.webp', width: 420, height: 700 },
+  { title: '你就好像菩萨显灵', author: '胖胖皮', thumb: 'assets/web/poem-05-cover-thumb.webp', cover: 'assets/web/poem-05-cover.webp', text: 'assets/web/poem-05-text.webp', width: 420, height: 909 },
 ];
 
 const grid = document.querySelector('#poem-grid');
@@ -24,7 +24,7 @@ function renderArchive() {
   grid.innerHTML = poems.map((poem, index) => `
     <article class="poem-record">
       <button class="poem-cover" type="button" data-poem-index="${index}" aria-label="阅读《${poem.title}》">
-        <img src="${encodeURI(poem.cover)}" alt="《${poem.title}》封面" loading="lazy" decoding="async">
+        <img src="${poem.thumb}" alt="《${poem.title}》封面" width="${poem.width}" height="${poem.height}" decoding="async">
       </button>
       <h3>${poem.title}</h3>
       <p>${poem.author}</p>
