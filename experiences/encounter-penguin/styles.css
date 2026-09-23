@@ -65,4 +65,4 @@ h1,h2 { font-family:Georgia,'Times New Roman',serif; font-weight:400; margin:0; 
 }
 @media(max-width:420px){.campus-brand{gap:7px}.campus-brand img{width:100px;height:36px}.campus-brand span{font-size:14px}.brand{font-size:10px;gap:5px}.brand-mark{height:36px}.channel-links{gap:4px}.channel-image{width:28px;height:28px}}
 
-.campus-subnav .external-link-indicator{margin-left:7px;padding:4px 6px;border:1px solid currentColor;border-radius:2px;color:var(--accent);font:600 10px/1 Arial,sans-serif;letter-spacing:0;white-space:nowrap}
+.campus-subnav .external-link-indicator{display:inline-block;margin-left:4px;color:var(--accent);font:400 .85em/1 Arial,sans-serif;vertical-align:super}

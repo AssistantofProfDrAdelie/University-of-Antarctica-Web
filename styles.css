@@ -39,3 +39,7 @@
 .secondary-identity,.motto-section,.channels-section{display:none}
 .year-group,.batch-group{scroll-margin-top:110px}
 @media(max-width:760px){.site-header{display:grid;grid-template-columns:1fr;gap:8px;min-height:96px;padding:7px 4vw}.brand{gap:7px;min-width:0}.brand-logo-trigger{width:120px;height:44px}.brand-name strong{font-size:19px}.site-header nav{justify-content:space-between;gap:8px}.institutional-node{flex:1;min-width:0;gap:5px}.institutional-node strong{font-size:11px;white-space:normal;line-height:1.1}.institutional-node small{font-size:8px;letter-spacing:0}.identity-portrait,.identity-qr{width:34px;height:34px}.hero{grid-template-columns:1fr;gap:30px}.hero-shield{justify-self:start;width:min(220px,64vw);margin-top:0}.institutional-closing{padding:42px 5vw 46px}.motto-image{max-height:130px}.year-group,.batch-group{scroll-margin-top:82px}}
+
+/* Keep the four section links ahead of the two account cards on narrow screens. */
+.nav-break{display:none}
+@media(max-width:760px){.site-header nav .nav-break{display:block;flex-basis:100%;height:0}.site-header nav .institutional-node{flex:0 1 calc(50% - 4px);min-width:0}.site-header nav .identity-copy{min-width:0}.site-header nav .institutional-node strong{overflow-wrap:anywhere}}

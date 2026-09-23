@@ -41,4 +41,14 @@
 .album-card:hover img{transform:translate(-2px,2px) rotate(-.35deg)}
 @media(max-width:600px){.album-cover{width:calc(100% - 10px);margin-top:11px}.album-cover::before{transform:translate(9px,-9px) rotate(1.2deg)}.album-cover::after{transform:translate(5px,-5px) rotate(-.6deg)}}
 
-.campus-subnav .external-link-indicator{margin-left:7px;padding:4px 6px;border:1px solid currentColor;border-radius:2px;color:var(--accent);font:600 10px/1 Arial,sans-serif;letter-spacing:0;white-space:nowrap}
+.campus-subnav .external-link-indicator{display:inline-block;margin-left:4px;color:var(--accent);font:400 .85em/1 Arial,sans-serif;vertical-align:super}
+
+/* Keep the section links and social accounts in the same order on every page. */
+.header-channels{display:flex;align-items:center;gap:18px}
+.header-channel{display:flex;align-items:center;gap:7px;color:var(--navy);text-decoration:none;white-space:nowrap;font-size:13px;line-height:1.1}
+.header-channel img{width:36px;height:36px;object-fit:contain;flex:none}
+.header-channel img.header-portrait{border-radius:50%;object-fit:cover;object-position:center 38%}
+.header-channel span{display:flex;flex-direction:column;gap:3px}
+.header-channel small{font:10px Arial,sans-serif;color:var(--muted)}
+@media(max-width:1100px){.campus-header,.alumni-header{flex-wrap:wrap}.header-channels{width:100%;justify-content:flex-end}}
+@media(max-width:600px){.header-channels{justify-content:space-between}.header-channel{white-space:normal;font-size:11px}.header-channel img{width:32px;height:32px}}
