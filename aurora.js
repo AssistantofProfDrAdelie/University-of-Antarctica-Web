@@ -238,7 +238,7 @@ async function loadAuroraArtists() {
     });
     grid.replaceChildren(...nodes);
   } catch (error) {
-    grid.innerHTML = '<p class="empty-gallery">艺术家名录暂时无法读取。</p>';
+    grid.innerHTML = '<p class="empty-gallery">极光艺术家暂时无法读取。</p>';
     console.error(error);
   }
 }
