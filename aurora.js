@@ -214,7 +214,8 @@ async function loadAuroraArtists() {
       article.className = 'aurora-certificate';
       const link = document.createElement('a');
       link.className = 'aurora-certificate-link';
-      link.href = `${grid.dataset.assets || '../'}${artist.certificate_path}`;
+      const encodedPath = artist.certificate_path.split('/').map(encodeURIComponent).join('/');
+      link.href = `${grid.dataset.assets || '../'}${encodedPath}`;
       link.setAttribute('data-aurora-lightbox', '');
       link.dataset.lightboxAlt = `${artist.artist_name}的极光艺术家荣誉证书`;
       link.setAttribute('aria-label', `查看${artist.artist_name}的极光艺术家荣誉证书`);
