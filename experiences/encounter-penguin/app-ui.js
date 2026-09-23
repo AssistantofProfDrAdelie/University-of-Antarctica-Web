@@ -87,7 +87,7 @@ function loadFile(file){
     if(generation!==encounterGeneration){URL.revokeObjectURL(url);return;}
     const max=1800,scale=Math.min(1,max/Math.max(image.width,image.height));
     source.width=visitor.width=Math.round(image.width*scale);source.height=visitor.height=Math.round(image.height*scale);
-    highQualitySmoothing(srcCtx);highQualitySmoothing(visitorCtx);photoFrame.style.maxWidth=`${source.width}px`;photoFrame.style.setProperty("--photo-aspect",String(source.width/source.height));
+    highQualitySmoothing(srcCtx);highQualitySmoothing(visitorCtx);photoFrame.style.maxWidth=`${source.width}px`;
     srcCtx.drawImage(image,0,0,source.width,source.height);visitorCtx.clearRect(0,0,visitor.width,visitor.height);
     URL.revokeObjectURL(url);loaded=true;fileStem=(file.name.replace(/\.[^.]+$/,"" )||"photograph")+"-professor-adelie";saveButton.download=`${fileStem}.png`;
     intro.hidden=true;encounter.hidden=false;encounter.scrollIntoView({behavior:"smooth",block:"start"});scheduleFirstEncounter(generation);
@@ -224,7 +224,7 @@ function animateEncounter(generation){
     drawProfessor(encounterChoice,motion.progress,motion.opacity,motion.tangent);
     const visiting=motion.visiting;
     saveWindowOpen=visiting;
-    if(visiting&&!savePrepared){savePrepared=true;recordEncounter();prepareSave(generation);}
+    if(visiting&&!savePrepared){savePrepared=true;prepareSave(generation);}
     if(!visiting)saveButton.hidden=true;
     if(!motion.done)animationFrame=requestAnimationFrame(frame);
     else{drawProfessor(encounterChoice,0);saveWindowOpen=false;saveButton.hidden=true;running=false;scheduleReturn(generation);}
@@ -255,12 +255,3 @@ document.querySelectorAll('[data-lightbox="identity"]').forEach(trigger=>trigger
 identityLightbox.addEventListener("click",event=>{if(event.target.closest("[data-close-lightbox]"))closeIdentityLightbox();});
 identityLightboxClose.addEventListener("click",closeIdentityLightbox);
 document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!identityLightbox.hidden)closeIdentityLightbox();});
-
-const penguinCountValue=$("#penguinCountValue"),penguinCountStorageKey="encounter-penguin-count-v1";
-let penguinEncounterCount=0;
-try{penguinEncounterCount=Math.max(0,parseInt(localStorage.getItem(penguinCountStorageKey)||"0",10)||0);}catch(error){}
-penguinCountValue.textContent=penguinEncounterCount.toLocaleString("en-US");
-function recordEncounter(){
-  penguinEncounterCount+=1;penguinCountValue.textContent=penguinEncounterCount.toLocaleString("en-US");
-  try{localStorage.setItem(penguinCountStorageKey,String(penguinEncounterCount));}catch(error){}
-}

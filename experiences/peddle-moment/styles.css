@@ -1,0 +1,112 @@
+:root {
+  color-scheme: light;
+  --navy: #123b59;
+  --navy-deep: #0c2e49;
+  --paper: #f1f7f9;
+  --surface: #fbfdfe;
+  --line: #b8cfd8;
+  --ink: #15313f;
+  --muted: #526b76;
+  --accent: #087985;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: Georgia, "Songti SC", "Noto Serif SC", serif;
+}
+body.reader-open { overflow: hidden; }
+button, a { font: inherit; }
+img { display: block; max-width: 100%; }
+
+.poetry-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  min-height: 74px;
+  padding: 10px clamp(22px, 5vw, 74px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  color: var(--navy);
+  background: rgba(251,253,254,.96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+.university-brand { display: block; width: 214px; height: 54px; overflow: hidden; }
+.university-brand img { width: 100%; height: 100%; object-fit: cover; }
+.return-link { display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; font-size: .9rem; letter-spacing: .08em; }
+.return-link svg, .icon-button svg, .reader-arrow svg { width: 22px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.return-link:hover, .return-link:focus-visible { color: var(--accent); }
+
+main { min-height: calc(100vh - 160px); }
+.poetry-hero {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(62px, 8vw, 116px) clamp(22px, 6vw, 92px) clamp(54px, 7vw, 92px);
+  border-bottom: 1px solid var(--line);
+}
+.hero-title h1 { margin: 0; color: var(--navy); font-size: clamp(3.8rem, 7.5vw, 7.2rem); font-weight: 400; line-height: .94; letter-spacing: .03em; }
+
+.poem-archive { max-width: 1440px; margin: 0 auto; padding: clamp(54px, 7vw, 96px) clamp(22px, 6vw, 92px) clamp(76px, 10vw, 136px); }
+.poem-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: start; gap: clamp(16px, 2.4vw, 34px); }
+.poem-record { min-width: 0; }
+.poem-cover { width: 100%; margin: 0; padding: 0; border: 0; background: #dbe7eb; cursor: zoom-in; box-shadow: 0 12px 32px rgba(18,59,89,.11); transition: transform .3s ease, box-shadow .3s ease; }
+.poem-cover img { width: 100%; height: auto; }
+.poem-cover:hover { transform: translateY(-5px); box-shadow: 0 19px 38px rgba(18,59,89,.17); }
+.poem-cover:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+.poem-record h3 { margin: 18px 0 6px; color: var(--navy); font-size: clamp(.98rem, 1.35vw, 1.18rem); font-weight: 400; line-height: 1.45; }
+.poem-record p { margin: 0; color: var(--muted); font-size: .82rem; letter-spacing: .12em; }
+.noscript { color: var(--muted); }
+
+footer { padding: 27px clamp(22px, 5vw, 74px); display: flex; justify-content: space-between; gap: 24px; color: #eaf5f7; background: var(--navy); font-size: .76rem; letter-spacing: .08em; }
+
+.reader { width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; color: var(--ink); background: rgba(241,247,249,.98); }
+.reader::backdrop { background: rgba(6,28,43,.76); }
+.reader-bar { min-height: 74px; padding: 12px clamp(18px, 4vw, 58px); display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); background: var(--surface); }
+.reader-bar p { margin: 0 0 4px; color: var(--accent); font: .7rem/1 system-ui, sans-serif; letter-spacing: .15em; }
+.reader-bar h2 { margin: 0; color: var(--navy); font-size: 1.15rem; font-weight: 400; letter-spacing: .05em; }
+.icon-button, .reader-arrow { display: grid; place-items: center; padding: 0; color: var(--navy); background: transparent; border: 1px solid var(--line); cursor: pointer; }
+.icon-button { width: 44px; height: 44px; }
+.reader-stage { min-height: calc(100dvh - 74px); padding: 28px clamp(14px, 3vw, 42px); display: grid; grid-template-columns: 56px minmax(0, 1fr) 56px; align-items: center; gap: clamp(10px, 2vw, 28px); }
+.reader-arrow { width: 54px; height: 54px; border-radius: 50%; }
+.reader-arrow:hover:not(:disabled), .reader-arrow:focus-visible, .icon-button:hover, .icon-button:focus-visible { color: white; background: var(--navy); border-color: var(--navy); }
+.reader-arrow:disabled { opacity: .25; cursor: default; }
+.reader-page { min-width: 0; height: calc(100dvh - 132px); margin: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; place-items: center; gap: 12px; }
+.reader-page img { max-width: 100%; max-height: 100%; width: auto; height: auto; box-shadow: 0 12px 42px rgba(18,59,89,.18); }
+.reader-page figcaption { color: var(--muted); font: .72rem/1 system-ui, sans-serif; letter-spacing: .12em; }
+
+@media (max-width: 980px) {
+  .poem-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 42px; }
+}
+
+@media (max-width: 680px) {
+  .poetry-header { min-height: 64px; padding: 8px 16px; }
+  .university-brand { width: 138px; height: 42px; }
+  .return-link { font-size: .72rem; letter-spacing: .03em; }
+  .return-link svg { width: 18px; }
+  .poetry-hero { padding: 54px 20px 48px; }
+  .hero-title h1 { font-size: clamp(3.35rem, 18vw, 5.2rem); }
+  .poem-archive { padding: 48px 18px 80px; }
+  .poem-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 14px; }
+  .poem-record h3 { margin-top: 13px; font-size: .92rem; }
+  .poem-record p { font-size: .72rem; }
+  footer { flex-direction: column; gap: 9px; padding-inline: 20px; }
+  .reader-bar { min-height: 68px; padding: 10px 14px; }
+  .reader-bar h2 { max-width: 72vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 1rem; }
+  .reader-stage { position: relative; min-height: calc(100dvh - 68px); padding: 14px 14px 18px; grid-template-columns: minmax(0, 1fr); }
+  .reader-arrow { position: fixed; z-index: 2; top: 52%; width: 40px; height: 40px; background: rgba(251,253,254,.88); }
+  #previous-page { left: 4px; }
+  #next-page { right: 4px; }
+  .reader-arrow svg { width: 18px; }
+  .reader-page { height: calc(100dvh - 110px); gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .poem-cover { transition: none; }
+}

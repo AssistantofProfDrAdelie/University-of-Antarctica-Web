@@ -7,11 +7,6 @@ body {
   color: #eeeae1;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.experience,
-.experience * {
-  -webkit-user-select: none;
-  user-select: none;
-}
 body::before {
   position: fixed;
   inset: 0;
@@ -19,40 +14,6 @@ body::before {
   content: "";
   opacity: .04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-.university-return {
-  position: fixed;
-  z-index: 10;
-  top: clamp(14px, 2.5vw, 28px);
-  left: clamp(14px, 2.5vw, 28px);
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  min-height: 36px;
-  padding: 0 12px;
-  border: 1px solid rgba(238, 234, 225, .48);
-  border-radius: 999px;
-  background: rgba(12, 12, 12, .82);
-  color: #d7d3ca;
-  font-size: 11px;
-  letter-spacing: .08em;
-  text-decoration: none;
-  backdrop-filter: blur(8px);
-  transition: color .2s ease, border-color .2s ease, background-color .2s ease;
-}
-.university-return span:first-child {
-  font-size: 14px;
-  line-height: 1;
-  transform: translateY(-1px);
-}
-.university-return:hover {
-  border-color: rgba(238, 234, 225, .42);
-  background: rgba(18, 18, 18, .76);
-  color: #eeeae1;
-}
-.university-return:focus-visible {
-  outline: 1px solid #eeeae1;
-  outline-offset: 3px;
 }
 .experience {
   width: 100%;
@@ -95,9 +56,6 @@ h1 {
   color: inherit;
   cursor: grab;
   touch-action: none;
-  -webkit-touch-callout: none;
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
   user-select: none;
   transition: transform .14s ease;
   -webkit-tap-highlight-color: transparent;
@@ -134,8 +92,6 @@ h1 {
   height: 100%;
   display: block;
   object-fit: cover;
-  pointer-events: none;
-  -webkit-user-drag: none;
   transform: translateY(8%);
 }
 .penguin-control {
@@ -186,11 +142,6 @@ h1 {
 }
 @keyframes breathe { to { opacity: .2; transform: scale(1.035); } }
 @media (max-width: 620px) {
-  .university-return {
-    min-height: 34px;
-    padding-inline: 10px;
-    font-size: 10px;
-  }
   .experience { padding-inline: 18px; }
   .artwork { width: min(76vw, 49vh); }
   h1 { font-size: clamp(27px, 9vw, 42px); }
