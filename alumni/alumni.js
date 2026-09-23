@@ -38,7 +38,8 @@
       const image = document.createElement("img");
       image.src = photo.thumb;
       image.alt = photo.alt;
-      image.loading = "eager";
+      image.loading = "lazy";
+      image.fetchPriority = "low";
       image.decoding = "async";
       button.append(image);
       button.addEventListener("click", () => openViewer(index));
