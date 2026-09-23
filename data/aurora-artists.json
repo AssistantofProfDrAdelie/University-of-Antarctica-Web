@@ -1,86 +1,107 @@
 [
   {
     "artist_name": "Amon",
-    "certificate_path": "极光艺术家/极光艺术家-Amon.png"
+    "certificate_path": "极光艺术家/极光艺术家-Amon.png",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c001.webp"
   },
   {
     "artist_name": "鸟好鸟坏",
-    "certificate_path": "极光艺术家/极光艺术家-鸟好鸟坏.PNG"
+    "certificate_path": "极光艺术家/极光艺术家-鸟好鸟坏.PNG",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c002.webp"
   },
   {
     "artist_name": "骷髅柴人",
-    "certificate_path": "极光艺术家/极光艺术家-骷髅柴人.PNG"
+    "certificate_path": "极光艺术家/极光艺术家-骷髅柴人.PNG",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c003.webp"
   },
   {
     "artist_name": "skny",
-    "certificate_path": "极光艺术家/极光艺术家-skny.PNG"
+    "certificate_path": "极光艺术家/极光艺术家-skny.PNG",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c004.webp"
   },
   {
     "artist_name": "第六封信",
-    "certificate_path": "极光艺术家/极光艺术家-第六封信.PNG"
+    "certificate_path": "极光艺术家/极光艺术家-第六封信.PNG",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c005.webp"
   },
   {
     "artist_name": "柏闲也",
-    "certificate_path": "极光艺术家/极光艺术家-柏闲也.PNG"
+    "certificate_path": "极光艺术家/极光艺术家-柏闲也.PNG",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c006.webp"
   },
   {
     "artist_name": "叶无殊",
-    "certificate_path": "极光艺术家/极光艺术家-叶无殊.PNG"
+    "certificate_path": "极光艺术家/极光艺术家-叶无殊.PNG",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c007.webp"
   },
   {
     "artist_name": "Mariella",
-    "certificate_path": "极光艺术家/极光艺术家-Mariella.png"
+    "certificate_path": "极光艺术家/极光艺术家-Mariella.png",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c008.webp"
   },
   {
     "artist_name": "卡波鼠博士",
-    "certificate_path": "极光艺术家/极光艺术家-卡波鼠博士.PNG"
+    "certificate_path": "极光艺术家/极光艺术家-卡波鼠博士.PNG",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c009.webp"
   },
   {
     "artist_name": "燃海",
-    "certificate_path": "极光艺术家/极光艺术家-燃海.PNG"
+    "certificate_path": "极光艺术家/极光艺术家-燃海.PNG",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c010.webp"
   },
   {
     "artist_name": "Hyggelgloo",
-    "certificate_path": "极光艺术家/极光艺术家-Hyggelgloo.PNG"
+    "certificate_path": "极光艺术家/极光艺术家-Hyggelgloo.PNG",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c011.webp"
   },
   {
     "artist_name": "萝卜萝卜马",
-    "certificate_path": "极光艺术家/极光艺术家-萝卜萝卜马.PNG"
+    "certificate_path": "极光艺术家/极光艺术家-萝卜萝卜马.PNG",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c012.webp"
   },
   {
     "artist_name": "晚风",
-    "certificate_path": "极光艺术家/极光艺术家-晚风.PNG"
+    "certificate_path": "极光艺术家/极光艺术家-晚风.PNG",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c013.webp"
   },
   {
     "artist_name": "团子",
-    "certificate_path": "极光艺术家/极光艺术家-团子.jpeg"
+    "certificate_path": "极光艺术家/极光艺术家-团子.jpeg",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c014.webp"
   },
   {
     "artist_name": "未来小道士",
-    "certificate_path": "极光艺术家/极光艺术家-未来小道士.jpeg"
+    "certificate_path": "极光艺术家/极光艺术家-未来小道士.jpeg",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c015.webp"
   },
   {
     "artist_name": "小琉",
-    "certificate_path": "极光艺术家/极光艺术家-小琉.jpeg"
+    "certificate_path": "极光艺术家/极光艺术家-小琉.jpeg",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c016.webp"
   },
   {
     "artist_name": "魅力棕熊姨",
-    "certificate_path": "极光艺术家/极光艺术家-魅力棕熊姨.jpeg"
+    "certificate_path": "极光艺术家/极光艺术家-魅力棕熊姨.jpeg",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c017.webp"
   },
   {
     "artist_name": "幽灵",
-    "certificate_path": "极光艺术家/极光艺术家-幽灵.jpeg"
+    "certificate_path": "极光艺术家/极光艺术家-幽灵.jpeg",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c018.webp"
   },
   {
     "artist_name": "7%溶剂",
-    "certificate_path": "极光艺术家/极光艺术家-7%溶剂.jpeg"
+    "certificate_path": "极光艺术家/极光艺术家-7%溶剂.jpeg",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c019.webp"
   },
   {
     "artist_name": "ICEBEBE艾斯比比",
-    "certificate_path": "极光艺术家/极光艺术家-ICEBEBE艾斯比比.jpeg"
+    "certificate_path": "极光艺术家/极光艺术家-ICEBEBE艾斯比比.jpeg",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c020.webp"
   },
   {
     "artist_name": "睡觉闪闪",
-    "certificate_path": "极光艺术家/极光艺术家-睡觉闪闪.png"
+    "certificate_path": "极光艺术家/极光艺术家-睡觉闪闪.png",
+    "thumbnail_path": "aurora/assets/certificates/thumb/c021.webp"
   }
 ]

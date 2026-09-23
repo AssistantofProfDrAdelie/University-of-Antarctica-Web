@@ -48,7 +48,7 @@ function artworkNode(work, album, assetBase = './') {
   link.setAttribute('data-aurora-lightbox', '');
   link.dataset.lightboxAlt = `${work.artist}的${album.artist === '团子' ? '照片' : '作品'}`;
   const img = document.createElement('img');
-  img.src = `${assetBase}${work.full}`;
+  img.src = `${assetBase}${work.thumb}`;
   img.alt = link.dataset.lightboxAlt;
   img.loading = 'lazy';
   img.decoding = 'async';
@@ -92,6 +92,7 @@ async function loadExhibition() {
   const viewer = document.querySelector('#exhibition-viewer');
   const viewerImage = document.querySelector('#exhibition-viewer-image');
   const viewerTitle = document.querySelector('#exhibition-viewer-title');
+  const viewerCredit = document.querySelector('#exhibition-viewer-credit');
   const viewerIndex = document.querySelector('#exhibition-viewer-index');
   const thumbs = document.querySelector('#exhibition-viewer-thumbs');
   const closeButton = document.querySelector('#exhibition-viewer-close');
@@ -112,7 +113,7 @@ async function loadExhibition() {
     const thumbButtons = album.works.map((work, index) => {
       const button = document.createElement('button');
       button.type = 'button';
-      button.setAttribute('aria-label', `查看${album.title}的第${index + 1}张作品`);
+      button.setAttribute('aria-label', album.project ? `查看${work.artist}参与画画教授的第${index + 1}张作品` : `查看${album.title}的第${index + 1}张作品`);
       const image = document.createElement('img');
       image.src = `./${work.thumb}`;
       image.alt = '';
@@ -125,10 +126,12 @@ async function loadExhibition() {
       const work = album.works[index];
       viewer.classList.remove('is-landscape');
       viewerImage.src = `./${work.full}`;
-      viewerImage.alt = `${album.title}的作品`;
+      viewerImage.alt = album.project ? `${work.artist}参与画画教授的作品` : `${album.title}的作品`;
+      viewerCredit.textContent = album.project ? work.artist : '';
       thumbButtons.forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === index)));
     };
     thumbs.replaceChildren(...thumbButtons);
+    viewerCredit.hidden = !album.project;
     viewerIndex.hidden = album.works.length < 2;
     showWork(0);
     viewer.hidden = false;
@@ -176,6 +179,9 @@ async function loadExhibition() {
       if (cover) artistWorks.unshift(...artistWorks.splice(artistWorks.indexOf(cover), 1));
       return {id: `artist-${artistWorks[0].id}`, title: artist === '晚风' ? '晚風' : artist, artist, project: false, works: artistWorks};
     });
+    const collectiveWorks = works.filter(work => work.project === '画画教授')
+      .sort((a, b) => Number(b.artist === '企鹅研究员') - Number(a.artist === '企鹅研究员'));
+    albums.push({id: 'project-paint-professor', title: '画画教授', artist: null, project: true, works: collectiveWorks});
     grid.replaceChildren(...albums.map(album => albumCardNode(album, card => openViewer(album, card))));
     const linkedAlbum = albums.find(album => `#${album.id}` === location.hash);
     if (linkedAlbum) openViewer(linkedAlbum, null);
@@ -220,7 +226,7 @@ async function loadAuroraArtists() {
       link.dataset.lightboxAlt = `${artist.artist_name}的极光艺术家荣誉证书`;
       link.setAttribute('aria-label', `查看${artist.artist_name}的极光艺术家荣誉证书`);
       const image = document.createElement('img');
-      image.src = link.href;
+      image.src = `${grid.dataset.assets || '../'}${artist.thumbnail_path}`;
       image.alt = link.dataset.lightboxAlt;
       image.loading = 'lazy';
       image.decoding = 'async';
@@ -240,7 +246,6 @@ async function loadAuroraArtists() {
 setupLightbox({modalId: '#identity-lightbox', imageId: '#identity-lightbox-image', closeId: '#identity-lightbox-close', triggerSelector: '[data-lightbox="identity"]', closeAttribute: 'data-close-lightbox'});
 setupLightbox({modalId: '#aurora-lightbox', imageId: '#aurora-lightbox-image', closeId: '#aurora-lightbox-close', triggerSelector: '[data-aurora-lightbox]', closeAttribute: 'data-close-aurora-lightbox'});
 if (location.hash === '#artist-directory') location.replace('./artists/');
-if (location.hash === '#project-paint-professor') location.replace('./paint-professor/');
 loadExhibition();
 loadAuroraArtists();
 loadCollectiveProject();
