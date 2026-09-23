@@ -12,6 +12,7 @@ html{scroll-padding-top:125px}
 .aurora-hero-links{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:36px}
 .aurora-hero-links a{color:var(--navy);text-decoration:none;font-size:14px;border-bottom:1px solid currentColor;padding-bottom:5px}
 .aurora-hero-links a:first-child{color:var(--accent)}
+.aurora-hero-links a.dark-side-link{font-family:"STKaiti","Kaiti SC","KaiTi",cursive;font-size:18px;font-weight:600;letter-spacing:.12em;color:#26343b}
 .aurora-hero-links a:hover{color:var(--navy)}
 .aurora-hero-links a:focus-visible,.exhibition-tools select:focus-visible,.directory-details summary:focus-visible,.aurora-certificate-link:focus-visible,.artwork-link:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 .aurora-exhibition{padding:76px 6vw 92px}
