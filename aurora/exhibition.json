@@ -432,5 +432,12 @@
     "project": null,
     "full": "assets/works/full/w063.webp",
     "thumb": "assets/works/thumb/w063.webp"
+  },
+  {
+    "id": "w064",
+    "artist": "企鹅研究员",
+    "project": "画画教授",
+    "full": "assets/works/full/w064.webp",
+    "thumb": "assets/works/thumb/w064.webp"
   }
 ]

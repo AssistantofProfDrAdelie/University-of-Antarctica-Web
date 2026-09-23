@@ -111,6 +111,11 @@ html{scroll-padding-top:125px}
 .exhibition-album-card .album-kicker+strong{margin-top:0}
 .exhibition-album-card:focus-visible,.exhibition-back:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
 .collective-heading{border-top:1px solid var(--line);margin-top:72px;padding-top:34px}
+.collective-project-link{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:8px 0 12px;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--line)}
+.collective-project-link strong{font-size:clamp(24px,3vw,32px);font-weight:400}
+.collective-project-link span{color:var(--accent);font-size:13px;white-space:nowrap}
+.collective-project-link:hover strong{color:var(--accent)}
+.collective-project-link:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 .collective-albums{max-width:360px}
 .exhibition-detail[hidden]{display:none}
 .exhibition-detail{border-top:1px solid var(--line);padding-top:28px}
@@ -136,11 +141,15 @@ html{scroll-padding-top:125px}
 .aurora-hero{grid-template-columns:minmax(0,1fr) minmax(300px,1fr);gap:clamp(35px,6vw,80px)}
 .curator-credit{margin:30px 0 0;color:var(--muted);font:12px Arial,sans-serif;letter-spacing:.08em}
 .artist-directory-page{min-height:65vh;border-top:0;padding-top:76px}
+.collective-project-page .exhibition-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 24px}
+.collective-project-page .artwork-link{min-height:0;padding:0;background:transparent;border:0}
+.collective-project-page .artwork-link img{display:block;width:100%;height:440px;max-height:none;object-fit:contain;background:var(--paper)}
+.collective-project-page .artwork figcaption{padding:9px 0 0;color:var(--muted);font:11px Arial,sans-serif}
 .artist-directory-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:42px}
 .artist-directory-heading h1{margin:0;color:var(--navy);font-size:clamp(36px,5vw,54px);font-weight:400}
 .artist-directory-heading a{padding-bottom:5px;color:var(--accent);font-size:14px;text-decoration:none;border-bottom:1px solid currentColor;white-space:nowrap}
 .artist-directory-heading a:hover{color:var(--navy)}
-@media(max-width:760px){.artist-directory-page{padding-top:58px}.artist-directory-heading{align-items:flex-start;flex-direction:column;gap:18px;margin-bottom:30px}}
+@media(max-width:760px){.artist-directory-page{padding-top:58px}.artist-directory-heading{align-items:flex-start;flex-direction:column;gap:18px;margin-bottom:30px}.collective-project-page .exhibition-grid{grid-template-columns:1fr}.collective-project-page .artwork-link img{height:420px}}
 .aurora-hero-art{margin:0;padding:12px;background:var(--surface);box-shadow:0 12px 35px #173c7010;transform:rotate(1.3deg)}
 .aurora-hero-art img{display:block;width:100%;height:360px;object-fit:contain;background:var(--paper)}
 .aurora-hero-art figcaption{display:flex;justify-content:space-between;gap:12px;padding:13px 4px 2px;color:var(--muted);font:12px Arial,sans-serif}

@@ -39,16 +39,16 @@ function setupLightbox({modalId, imageId, closeId, triggerSelector, closeAttribu
   });
 }
 
-function artworkNode(work, album) {
+function artworkNode(work, album, assetBase = './') {
   const figure = document.createElement('figure');
   figure.className = 'artwork';
   const link = document.createElement('a');
   link.className = 'artwork-link';
-  link.href = `./${work.full}`;
+  link.href = `${assetBase}${work.full}`;
   link.setAttribute('data-aurora-lightbox', '');
   link.dataset.lightboxAlt = `${work.artist}的${album.artist === '团子' ? '照片' : '作品'}`;
   const img = document.createElement('img');
-  img.src = `./${work.full}`;
+  img.src = `${assetBase}${work.full}`;
   img.alt = link.dataset.lightboxAlt;
   img.loading = 'lazy';
   img.decoding = 'async';
@@ -89,7 +89,6 @@ function albumCardNode(album, onOpen) {
 async function loadExhibition() {
   const grid = document.querySelector('#exhibition-grid');
   if (!grid) return;
-  const collectiveGrid = document.querySelector('#collective-grid');
   const overview = document.querySelector('#exhibition-overview');
   const detail = document.querySelector('#exhibition-detail');
   let albums = [];
@@ -135,24 +134,33 @@ async function loadExhibition() {
       if (cover) artistWorks.unshift(...artistWorks.splice(artistWorks.indexOf(cover), 1));
       return {id: `artist-${artistWorks[0].id}`, title: artist === '晚风' ? '晚風' : artist, artist, project: false, works: artistWorks};
     });
-    const collective = works.filter(work => work.project === '画画教授')
-      .sort((a, b) => Number(b.artist === '企鹅研究员') - Number(a.artist === '企鹅研究员'));
-    albums.push({id: 'project-paint-professor', title: '画画教授', artist: null, project: true, works: collective});
     const onOpen = card => {
       lastTrigger = card;
       location.hash = card.dataset.albumId;
     };
-    grid.replaceChildren(...albums.filter(album => !album.project).map(album => {
+    grid.replaceChildren(...albums.map(album => {
       const card = albumCardNode(album, onOpen);
       card.dataset.albumId = album.id;
       return card;
     }));
-    const collectiveCard = albumCardNode(albums.find(album => album.project), onOpen);
-    collectiveCard.dataset.albumId = 'project-paint-professor';
-    collectiveGrid.replaceChildren(collectiveCard);
     route();
   } catch (error) {
     grid.innerHTML = '<p class="empty-gallery">极光艺术展暂时无法读取。</p>';
+    console.error(error);
+  }
+}
+
+async function loadCollectiveProject() {
+  const grid = document.querySelector('#collective-works');
+  if (!grid) return;
+  try {
+    const response = await fetch('../exhibition.json');
+    if (!response.ok) throw new Error(`Exhibition data: ${response.status}`);
+    const works = (await response.json()).filter(work => work.project === '画画教授');
+    works.sort((a, b) => Number(b.artist === '企鹅研究员') - Number(a.artist === '企鹅研究员'));
+    grid.replaceChildren(...works.map(work => artworkNode(work, {artist: null, title: '画画教授'}, '../')));
+  } catch (error) {
+    grid.innerHTML = '<p class="empty-gallery">画画教授作品暂时无法读取。</p>';
     console.error(error);
   }
 }
@@ -196,5 +204,7 @@ async function loadAuroraArtists() {
 setupLightbox({modalId: '#identity-lightbox', imageId: '#identity-lightbox-image', closeId: '#identity-lightbox-close', triggerSelector: '[data-lightbox="identity"]', closeAttribute: 'data-close-lightbox'});
 setupLightbox({modalId: '#aurora-lightbox', imageId: '#aurora-lightbox-image', closeId: '#aurora-lightbox-close', triggerSelector: '[data-aurora-lightbox]', closeAttribute: 'data-close-aurora-lightbox'});
 if (location.hash === '#artist-directory') location.replace('./artists/');
+if (location.hash === '#project-paint-professor') location.replace('./paint-professor/');
 loadExhibition();
 loadAuroraArtists();
+loadCollectiveProject();
