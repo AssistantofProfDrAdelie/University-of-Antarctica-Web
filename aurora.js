@@ -48,7 +48,7 @@ function artworkNode(work, album) {
   link.append(img);
   const caption = document.createElement('figcaption');
   const label = document.createElement('span');
-  label.textContent = work.project ? work.artist : album.artist === '团子' ? '团子' : album.artist;
+  label.textContent = work.project ? work.artist : album.title;
   caption.append(label);
   figure.append(link, caption);
   return figure;
@@ -69,7 +69,7 @@ function albumCardNode(album, onOpen) {
   cover.append(image);
   const kicker = document.createElement('small');
   kicker.className = 'album-kicker';
-  kicker.textContent = album.project ? '共创项目' : album.artist === '团子' ? '照片相册' : '';
+  kicker.textContent = album.project ? '共创项目' : '';
   const title = document.createElement('strong');
   title.textContent = album.title;
   card.append(cover);
@@ -93,7 +93,7 @@ async function loadExhibition() {
     detail.hidden = !album;
     directory.hidden = !!album;
     if (!album) return;
-    document.querySelector('#exhibition-detail-label').textContent = album.project ? '共创项目' : album.artist === '团子' ? '照片相册' : '';
+    document.querySelector('#exhibition-detail-label').textContent = album.project ? '共创项目' : '';
     document.querySelector('#exhibition-detail-title').textContent = album.title;
     document.querySelector('#exhibition-works').replaceChildren(
       ...album.works.map(work => artworkNode(work, album))
@@ -117,7 +117,10 @@ async function loadExhibition() {
       .sort((a, b) => Number(b === 'Amon') - Number(a === 'Amon') || a.localeCompare(b, 'zh-CN'));
     albums = artists.map(artist => {
       const artistWorks = individual.filter(work => work.artist === artist);
-      return {id: `artist-${artistWorks[0].id}`, title: artist === '团子' ? '团子的相册' : artist, artist, project: false, works: artistWorks};
+      const coverIds = {'第六封信': 'w034', '卡波鼠博士': 'w013', '骷髅柴人': 'w033', '魅力棕熊姨': 'w016', '幽灵': 'w021', '叶无殊': 'w004', 'ICEBEBE艾斯比比': 'w052'};
+      const cover = artistWorks.find(work => work.id === coverIds[artist]);
+      if (cover) artistWorks.unshift(...artistWorks.splice(artistWorks.indexOf(cover), 1));
+      return {id: `artist-${artistWorks[0].id}`, title: artist === '晚风' ? '晚風' : artist, artist, project: false, works: artistWorks};
     });
     const collective = works.filter(work => work.project === '画画教授')
       .sort((a, b) => Number(b.artist === '企鹅研究员') - Number(a.artist === '企鹅研究员'));
@@ -165,7 +168,7 @@ async function loadAuroraArtists() {
       image.decoding = 'async';
       link.append(image);
       const name = document.createElement('p');
-      name.textContent = artist.artist_name;
+      name.textContent = artist.artist_name === '晚风' ? '晚風' : artist.artist_name;
       article.append(link, name);
       return article;
     });

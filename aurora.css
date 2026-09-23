@@ -107,7 +107,7 @@ html{scroll-padding-top:125px}
 .exhibition-album-card.single-work .exhibition-album-cover::before,.exhibition-album-card.single-work .exhibition-album-cover::after{content:none}
 .exhibition-album-card:hover .exhibition-album-cover img{transform:translate(-2px,2px) rotate(-.35deg)}
 .exhibition-album-card .album-kicker{display:block;margin:18px 0 8px;font:11px Arial,sans-serif;letter-spacing:.09em;color:var(--accent)}
-.exhibition-album-card strong{display:block;margin-top:12px;font-size:16px;line-height:1.5;font-weight:400;overflow-wrap:anywhere}
+.exhibition-album-card strong{display:block;margin-top:12px;color:var(--muted);font:11px/1.5 Arial,sans-serif;letter-spacing:.09em;overflow-wrap:anywhere}
 .exhibition-album-card .album-kicker+strong{margin-top:0}
 .exhibition-album-card:focus-visible,.exhibition-back:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
 .collective-heading{border-top:1px solid var(--line);margin-top:72px;padding-top:34px}
@@ -116,12 +116,12 @@ html{scroll-padding-top:125px}
 .exhibition-detail{border-top:1px solid var(--line);padding-top:28px}
 .exhibition-back{padding:8px 0;border:0;background:transparent;color:var(--navy);font:14px Georgia,"Songti SC",serif;cursor:pointer}
 .exhibition-detail-heading{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:30px 0 34px}
-.exhibition-detail-heading h3{margin:0;color:var(--navy);font-size:clamp(22px,2.5vw,28px);font-weight:400;overflow-wrap:anywhere}
+.exhibition-detail-heading h3{margin:0;color:var(--muted);font:14px/1.5 Arial,sans-serif;letter-spacing:.04em;overflow-wrap:anywhere}
 .exhibition-detail-heading>span{font:12px Arial,sans-serif;color:var(--muted);white-space:nowrap}
 .exhibition-detail .artwork-link{min-height:200px}
 .exhibition-detail .artwork-link img{max-height:520px}
 @media(max-width:900px){.exhibition-album-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.exhibition-album-grid{gap:30px 16px}.exhibition-album-cover{width:calc(100% - 10px);margin-top:11px}.exhibition-album-cover::before{transform:translate(9px,-9px) rotate(1.2deg)}.exhibition-album-cover::after{transform:translate(5px,-5px) rotate(-.6deg)}.exhibition-album-card strong{font-size:14px}.exhibition-album-card .album-kicker{font-size:10px}.exhibition-detail-heading{align-items:flex-start}.exhibition-detail-heading>span{padding-top:8px}.collective-albums{max-width:none}}
+@media(max-width:600px){.exhibition-album-grid{gap:30px 16px}.exhibition-album-cover{width:calc(100% - 10px);margin-top:11px}.exhibition-album-cover::before{transform:translate(9px,-9px) rotate(1.2deg)}.exhibition-album-cover::after{transform:translate(5px,-5px) rotate(-.6deg)}.exhibition-detail-heading{align-items:flex-start}.exhibition-detail-heading>span{padding-top:8px}.collective-albums{max-width:none}}
 @media(max-width:480px){.exhibition-album-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.exhibition-detail .exhibition-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.exhibition-album-cover img{transition:none}}
 .exhibition-detail{scroll-margin-top:205px}
