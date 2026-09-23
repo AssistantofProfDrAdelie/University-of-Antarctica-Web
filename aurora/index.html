@@ -7,7 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../styles.css?v=phase-2-8">
   <link rel="stylesheet" href="../directory-batches.css?v=phase-2-2">
-  <link rel="stylesheet" href="../aurora.css?v=exhibition-6">
+  <link rel="stylesheet" href="../aurora.css?v=exhibition-10">
   <link rel="stylesheet" href="../huddle.css?v=1-1">
 </head>
 <body>
@@ -58,11 +58,6 @@
         <div id="exhibition-grid" class="exhibition-album-grid" aria-live="polite"></div>
         <div class="collective-heading"><p class="eyebrow">COLLECTIVE PROJECT</p><a class="collective-project-link" href="./paint-professor/"><strong>画画教授</strong><span>查看作品 ↗</span></a></div>
       </div>
-      <section id="exhibition-detail" class="exhibition-detail" hidden aria-labelledby="exhibition-detail-title">
-        <button type="button" id="back-exhibition" class="exhibition-back">← 返回极光艺术展</button>
-        <div class="exhibition-detail-heading"><div><p id="exhibition-detail-label" class="eyebrow"></p><h3 id="exhibition-detail-title" tabindex="-1"></h3></div></div>
-        <div id="exhibition-works" class="exhibition-grid"></div>
-      </section>
     </section>
 
   </main>
@@ -88,7 +83,15 @@
       <img id="aurora-lightbox-image" src="" alt="">
     </div>
   </div>
-  <script src="../aurora.js?v=exhibition-6"></script>
+  <div class="exhibition-viewer" id="exhibition-viewer" hidden role="dialog" aria-modal="true" aria-labelledby="exhibition-viewer-title">
+    <div class="exhibition-viewer-backdrop" data-close-exhibition-viewer></div>
+    <div class="exhibition-viewer-dialog">
+      <div class="exhibition-viewer-heading"><h2 id="exhibition-viewer-title"></h2><button id="exhibition-viewer-close" type="button" aria-label="关闭作品预览">×</button></div>
+      <div class="exhibition-viewer-stage"><img id="exhibition-viewer-image" alt=""></div>
+      <div class="exhibition-viewer-index" id="exhibition-viewer-index" hidden><p>作品一览</p><div class="exhibition-viewer-thumbs" id="exhibition-viewer-thumbs" aria-label="选择作品"></div></div>
+    </div>
+  </div>
+  <script src="../aurora.js?v=exhibition-8"></script>
   <script src="../huddle.js?v=1-1"></script>
 </body>
 </html>

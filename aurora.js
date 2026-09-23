@@ -65,7 +65,7 @@ function albumCardNode(album, onOpen) {
   const card = document.createElement('button');
   card.className = `exhibition-album-card${album.works.length === 1 ? ' single-work' : ''}`;
   card.type = 'button';
-  card.setAttribute('aria-label', `打开${album.title}`);
+  card.setAttribute('aria-label', `查看${album.title}的作品`);
   const cover = document.createElement('span');
   cover.className = 'exhibition-album-cover';
   const image = document.createElement('img');
@@ -89,30 +89,72 @@ function albumCardNode(album, onOpen) {
 async function loadExhibition() {
   const grid = document.querySelector('#exhibition-grid');
   if (!grid) return;
-  const overview = document.querySelector('#exhibition-overview');
-  const detail = document.querySelector('#exhibition-detail');
-  let albums = [];
+  const viewer = document.querySelector('#exhibition-viewer');
+  const viewerImage = document.querySelector('#exhibition-viewer-image');
+  const viewerTitle = document.querySelector('#exhibition-viewer-title');
+  const viewerIndex = document.querySelector('#exhibition-viewer-index');
+  const thumbs = document.querySelector('#exhibition-viewer-thumbs');
+  const closeButton = document.querySelector('#exhibition-viewer-close');
   let lastTrigger = null;
-  const route = () => {
-    const album = albums.find(item => `#${item.id}` === location.hash);
-    overview.hidden = !!album;
-    detail.hidden = !album;
-    if (!album) return;
-    document.querySelector('#exhibition-detail-label').textContent = album.project ? '共创项目' : '';
-    document.querySelector('#exhibition-detail-title').textContent = album.title;
-    document.querySelector('#exhibition-works').replaceChildren(
-      ...album.works.map(work => artworkNode(work, album))
-    );
-    document.querySelector('#exhibition-detail-title').focus({preventScroll: true});
-    detail.scrollIntoView({behavior: 'instant'});
-  };
-  document.querySelector('#back-exhibition').addEventListener('click', () => {
-    history.replaceState(null, '', '#exhibition');
-    route();
-    document.querySelector('#exhibition').scrollIntoView({behavior: 'instant'});
-    lastTrigger?.focus({preventScroll: true});
+  viewerImage.addEventListener('load', () => {
+    viewer.classList.toggle('is-landscape', viewerImage.naturalWidth > viewerImage.naturalHeight);
   });
-  window.addEventListener('hashchange', route);
+  const closeViewer = () => {
+    viewer.hidden = true;
+    viewerImage.removeAttribute('src');
+    thumbs.replaceChildren();
+    document.body.classList.remove('exhibition-viewer-open');
+    lastTrigger?.focus({preventScroll: true});
+  };
+  const openViewer = (album, trigger) => {
+    lastTrigger = trigger;
+    viewerTitle.textContent = album.title;
+    const thumbButtons = album.works.map((work, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('aria-label', `查看${album.title}的第${index + 1}张作品`);
+      const image = document.createElement('img');
+      image.src = `./${work.thumb}`;
+      image.alt = '';
+      image.loading = 'lazy';
+      button.append(image);
+      button.addEventListener('click', () => showWork(index));
+      return button;
+    });
+    const showWork = index => {
+      const work = album.works[index];
+      viewer.classList.remove('is-landscape');
+      viewerImage.src = `./${work.full}`;
+      viewerImage.alt = `${album.title}的作品`;
+      thumbButtons.forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === index)));
+    };
+    thumbs.replaceChildren(...thumbButtons);
+    viewerIndex.hidden = album.works.length < 2;
+    showWork(0);
+    viewer.hidden = false;
+    document.body.classList.add('exhibition-viewer-open');
+    closeButton.focus();
+  };
+  closeButton.addEventListener('click', closeViewer);
+  viewer.addEventListener('click', event => {
+    if (event.target === viewer || event.target.matches('[data-close-exhibition-viewer]')) closeViewer();
+  });
+  document.addEventListener('keydown', event => {
+    if (viewer.hidden) return;
+    if (event.key === 'Escape') closeViewer();
+    if (event.key === 'Tab') {
+      const controls = [closeButton, ...thumbs.querySelectorAll('button')];
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
   try {
     const response = await fetch('./exhibition.json');
     if (!response.ok) throw new Error(`Exhibition data: ${response.status}`);
@@ -127,23 +169,16 @@ async function loadExhibition() {
         if (bIndex >= 0) return 1;
         return a.localeCompare(b, 'zh-CN');
       });
-    albums = artists.map(artist => {
+    const albums = artists.map(artist => {
       const artistWorks = individual.filter(work => work.artist === artist);
       const coverIds = {'第六封信': 'w034', '卡波鼠博士': 'w013', '骷髅柴人': 'w033', '魅力棕熊姨': 'w016', '幽灵': 'w021', '叶无殊': 'w004', 'ICEBEBE艾斯比比': 'w052'};
       const cover = artistWorks.find(work => work.id === coverIds[artist]);
       if (cover) artistWorks.unshift(...artistWorks.splice(artistWorks.indexOf(cover), 1));
       return {id: `artist-${artistWorks[0].id}`, title: artist === '晚风' ? '晚風' : artist, artist, project: false, works: artistWorks};
     });
-    const onOpen = card => {
-      lastTrigger = card;
-      location.hash = card.dataset.albumId;
-    };
-    grid.replaceChildren(...albums.map(album => {
-      const card = albumCardNode(album, onOpen);
-      card.dataset.albumId = album.id;
-      return card;
-    }));
-    route();
+    grid.replaceChildren(...albums.map(album => albumCardNode(album, card => openViewer(album, card))));
+    const linkedAlbum = albums.find(album => `#${album.id}` === location.hash);
+    if (linkedAlbum) openViewer(linkedAlbum, null);
   } catch (error) {
     grid.innerHTML = '<p class="empty-gallery">极光艺术展暂时无法读取。</p>';
     console.error(error);
