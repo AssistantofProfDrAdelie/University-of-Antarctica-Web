@@ -88,17 +88,16 @@ function albumCardNode(album, onOpen) {
 
 async function loadExhibition() {
   const grid = document.querySelector('#exhibition-grid');
+  if (!grid) return;
   const collectiveGrid = document.querySelector('#collective-grid');
   const overview = document.querySelector('#exhibition-overview');
   const detail = document.querySelector('#exhibition-detail');
-  const directory = document.querySelector('#artist-directory');
   let albums = [];
   let lastTrigger = null;
   const route = () => {
     const album = albums.find(item => `#${item.id}` === location.hash);
     overview.hidden = !!album;
     detail.hidden = !album;
-    directory.hidden = !!album;
     if (!album) return;
     document.querySelector('#exhibition-detail-label').textContent = album.project ? '共创项目' : '';
     document.querySelector('#exhibition-detail-title').textContent = album.title;
@@ -160,18 +159,19 @@ async function loadExhibition() {
 
 async function loadAuroraArtists() {
   const grid = document.querySelector('#aurora-grid');
+  if (!grid) return;
   const count = document.querySelector('#artist-count');
   try {
-    const response = await fetch('../data/aurora-artists.json');
+    const response = await fetch(grid.dataset.source || '../data/aurora-artists.json');
     if (!response.ok) throw new Error(`Aurora artist data: ${response.status}`);
     const artists = await response.json();
-    count.textContent = `${artists.length} 位艺术家`;
+    if (count) count.textContent = `${artists.length} 位艺术家`;
     const nodes = artists.map(artist => {
       const article = document.createElement('article');
       article.className = 'aurora-certificate';
       const link = document.createElement('a');
       link.className = 'aurora-certificate-link';
-      link.href = `../${artist.certificate_path}`;
+      link.href = `${grid.dataset.assets || '../'}${artist.certificate_path}`;
       link.setAttribute('data-aurora-lightbox', '');
       link.dataset.lightboxAlt = `${artist.artist_name}的极光艺术家荣誉证书`;
       link.setAttribute('aria-label', `查看${artist.artist_name}的极光艺术家荣誉证书`);
@@ -195,5 +195,6 @@ async function loadAuroraArtists() {
 
 setupLightbox({modalId: '#identity-lightbox', imageId: '#identity-lightbox-image', closeId: '#identity-lightbox-close', triggerSelector: '[data-lightbox="identity"]', closeAttribute: 'data-close-lightbox'});
 setupLightbox({modalId: '#aurora-lightbox', imageId: '#aurora-lightbox-image', closeId: '#aurora-lightbox-close', triggerSelector: '[data-aurora-lightbox]', closeAttribute: 'data-close-aurora-lightbox'});
+if (location.hash === '#artist-directory') location.replace('./artists/');
 loadExhibition();
 loadAuroraArtists();
