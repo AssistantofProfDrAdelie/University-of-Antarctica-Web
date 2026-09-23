@@ -15,6 +15,22 @@ body::before {
   opacity: .04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+.return-link {
+  position: fixed;
+  z-index: 2;
+  top: clamp(18px, 3vw, 34px);
+  left: clamp(18px, 3vw, 40px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #898782;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.return-link:hover { color: #eeeae1; }
+.return-link:focus-visible { outline: 1px solid rgba(238,234,225,.85); outline-offset: 7px; }
 .experience {
   width: 100%;
   min-height: 100svh;
