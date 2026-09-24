@@ -192,7 +192,7 @@ async function loadExhibition() {
     const linkedAlbum = albums.find(album => `#${album.id}` === location.hash);
     if (linkedAlbum) openViewer(linkedAlbum, null);
   } catch (error) {
-    grid.innerHTML = `<p class="empty-gallery">${collectivePage ? '共创项目' : '极光艺术展'}暂时无法读取。</p>`;
+    grid.innerHTML = `<p class="empty-gallery">${collectivePage ? '一起画画' : '极光画廊'}暂时无法读取。</p>`;
     console.error(error);
   }
 }

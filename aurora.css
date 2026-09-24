@@ -176,3 +176,8 @@ body.exhibition-viewer-open{overflow:hidden}
 .exhibition-viewer button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:600px){.exhibition-viewer{padding:6px}.exhibition-viewer-dialog{height:calc(100dvh - 12px);padding:10px;gap:9px}.exhibition-viewer-thumbs{gap:7px}.exhibition-viewer-thumbs button{flex-basis:68px;width:68px;height:62px}}
 @media(max-width:600px){.exhibition-viewer.is-landscape .exhibition-viewer-dialog{height:min(480px,calc(100dvh - 12px))}}
+.curator-column{align-self:center}
+.curator-artists-link{display:inline-flex;align-items:center;gap:12px;margin:18px 0 0 28px;padding:0 0 5px;color:var(--navy);border-bottom:1px solid currentColor;text-decoration:none;font-size:14px}
+.curator-artists-link:hover{color:var(--accent)}
+.curator-artists-link:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@media(max-width:760px){.curator-artists-link{margin-left:0}}
