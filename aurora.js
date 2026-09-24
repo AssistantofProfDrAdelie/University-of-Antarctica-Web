@@ -204,20 +204,15 @@ async function loadCollectiveHistory() {
     const response = await fetch('../collectives.json');
     if (!response.ok) throw new Error(`Collective works: ${response.status}`);
     const works = await response.json();
-    const groups = ['画画教授', '画画芋圆', '画画企鹅'].map(project => {
-      const section = document.createElement('section');
-      section.className = 'collective-history-group';
-      const heading = document.createElement('h3');
-      heading.textContent = project;
-      const grid = document.createElement('div');
-      grid.className = 'collective-history-grid';
-      for (const work of works.filter(item => item.project === project)) {
+    const templateIds = new Set(['w057', 'w064', 'w065', 'w073']);
+    const drawings = works.filter(work => !templateIds.has(work.id));
+    const figures = drawings.map(work => {
         const figure = document.createElement('figure');
         figure.className = 'collective-history-work';
         const link = document.createElement('a');
         link.href = `../${work.full}`;
         link.setAttribute('data-aurora-lightbox', '');
-        link.dataset.lightboxAlt = `${project}作品${work.artist ? `，作者${work.artist}` : ''}`;
+        link.dataset.lightboxAlt = `画作${work.artist ? `，作者${work.artist}` : ''}`;
         link.setAttribute('aria-label', `放大查看${link.dataset.lightboxAlt}`);
         const image = document.createElement('img');
         image.src = `../${work.thumb}`;
@@ -231,14 +226,11 @@ async function loadCollectiveHistory() {
           caption.textContent = work.artist;
           figure.append(caption);
         }
-        grid.append(figure);
-      }
-      section.append(heading, grid);
-      return section;
+        return figure;
     });
-    root.replaceChildren(...groups);
+    root.replaceChildren(...figures);
   } catch (error) {
-    root.innerHTML = '<p class="empty-gallery">历史画作暂时无法读取。</p>';
+    root.innerHTML = '<p class="empty-gallery">大家的画作暂时无法读取。</p>';
     console.error(error);
   }
 }

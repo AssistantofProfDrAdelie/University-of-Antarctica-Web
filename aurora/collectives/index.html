@@ -7,7 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../../styles.css?v=nav-order-1">
   <link rel="stylesheet" href="../../directory-batches.css?v=phase-2-2">
-  <link rel="stylesheet" href="../../aurora.css?v=palette-history-1">
+  <link rel="stylesheet" href="../../aurora.css?v=four-drawings-1">
   <link rel="stylesheet" href="../../huddle.css?v=1-1">
 </head>
 <body>
@@ -41,21 +41,18 @@
         <div><p class="eyebrow">COLLECTIVE ART</p><h1 id="draw-page-title">一起画画</h1></div>
         <a href="../">← 返回极光艺术馆</a>
       </div>
-      <div class="draw-intro-row"><p class="draw-intro">选一个角色，画出你的版本。完成后可以下载 PNG 图片。</p><a href="#history">查看历史画作 ↓</a></div>
+      <div class="draw-intro-row"><p class="draw-intro">选一个角色，画出你的版本。完成后可以下载 PNG 图片。</p><a href="#history">查看大家的画作 ↓</a></div>
       <div class="draw-projects" role="group" aria-label="选择一起画画的角色">
-        <button class="draw-project is-selected" type="button" data-project="professor" aria-pressed="true"><img src="../assets/works/thumb/w057.webp" alt=""><span>画画教授</span></button>
-        <button class="draw-project" type="button" data-project="yuyuan" aria-pressed="false"><img src="../assets/works/thumb/w065.webp" alt=""><span>画画芋圆</span></button>
-        <button class="draw-project" type="button" data-project="penguin" aria-pressed="false"><img src="../assets/works/thumb/w073.webp" alt=""><span>画画企鹅</span></button>
+        <button class="draw-project is-selected" type="button" data-template="professor-1" aria-pressed="true"><img src="../assets/works/thumb/w057.webp" alt=""><span>画画阿德利教授</span></button>
+        <button class="draw-project" type="button" data-template="professor-2" aria-pressed="false"><img src="../assets/works/thumb/w064.webp" alt=""><span>画画帝加索</span></button>
+        <button class="draw-project" type="button" data-template="yuyuan" aria-pressed="false"><img src="../assets/works/thumb/w065.webp" alt=""><span>画画芋圆</span></button>
+        <button class="draw-project" type="button" data-template="penguin" aria-pressed="false"><img src="../assets/works/thumb/w073.webp" alt=""><span>画画帝宝</span></button>
       </div>
 
       <section class="draw-workspace" aria-labelledby="draw-workspace-title">
         <div class="draw-workspace-heading">
-          <div><p class="eyebrow">DRAW TOGETHER</p><h2 id="draw-workspace-title">画画教授</h2></div>
+          <div><p class="eyebrow">DRAW TOGETHER</p><h2 id="draw-workspace-title">画画阿德利教授</h2></div>
           <p>画好后记得下载保存。</p>
-        </div>
-        <div class="draw-template-options" id="draw-template-options" role="group" aria-label="选择底图">
-          <button type="button" data-template="professor-1" aria-pressed="true">画画阿德利教授</button>
-          <button type="button" data-template="professor-2" aria-pressed="false">画画帝加索</button>
         </div>
         <div class="draw-layout">
           <div class="draw-tools" aria-label="绘画工具">
@@ -90,7 +87,7 @@
           <div class="draw-board-wrap">
             <div class="draw-board" id="draw-board" aria-busy="true">
               <canvas id="draw-canvas" tabindex="0" aria-label="绘画画布，可用鼠标或手指绘画"></canvas>
-              <img id="draw-base" alt="画画教授底图" draggable="false">
+              <img id="draw-base" alt="画画阿德利教授底图" draggable="false">
             </div>
           </div>
         </div>
@@ -98,9 +95,9 @@
     </section>
     <section class="aurora-directory draw-past-works" id="history" aria-labelledby="draw-past-title">
       <div class="aurora-section-heading">
-        <div><p class="eyebrow">PAST DRAWINGS</p><h2 id="draw-past-title">历史画作</h2></div>
+        <div><p class="eyebrow">OUR DRAWINGS</p><h2 id="draw-past-title">大家的画作</h2></div>
       </div>
-      <div id="collectives-grid" class="collective-history" aria-live="polite"></div>
+      <div id="collectives-grid" class="collective-history-grid" aria-live="polite"></div>
     </section>
   </main>
 
@@ -120,13 +117,13 @@
   <div class="aurora-lightbox" id="aurora-lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="aurora-lightbox-title">
     <div class="aurora-lightbox-backdrop" data-close-aurora-lightbox></div>
     <div class="aurora-lightbox-dialog">
-      <h2 id="aurora-lightbox-title" class="visually-hidden">历史画作预览</h2>
+      <h2 id="aurora-lightbox-title" class="visually-hidden">画作预览</h2>
       <button class="aurora-lightbox-close" id="aurora-lightbox-close" type="button" aria-label="关闭画作预览">×</button>
       <img id="aurora-lightbox-image" src="" alt="">
     </div>
   </div>
-  <script src="../../aurora.js?v=flat-history-1"></script>
-  <script src="../draw.js?v=palette-1"></script>
+  <script src="../../aurora.js?v=four-drawings-1"></script>
+  <script src="../draw.js?v=four-drawings-1"></script>
   <script src="../../huddle.js?v=1-1"></script>
 </body>
 </html>

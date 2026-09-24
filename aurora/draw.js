@@ -1,14 +1,9 @@
 (() => {
-  const projects = {
-    professor: {title: '画画教授', defaultTemplate: 'professor-1'},
-    yuyuan: {title: '画画芋圆', defaultTemplate: 'yuyuan'},
-    penguin: {title: '画画企鹅', defaultTemplate: 'penguin'}
-  };
   const templates = {
-    'professor-1': {project: 'professor', title: '画画阿德利教授', image: '../assets/works/full/w057.webp'},
-    'professor-2': {project: 'professor', title: '画画帝加索', image: '../assets/works/full/w064.webp'},
-    yuyuan: {project: 'yuyuan', title: '画画芋圆', image: '../assets/works/full/w065.webp'},
-    penguin: {project: 'penguin', title: '画画企鹅', image: '../assets/works/full/w073.webp'}
+    'professor-1': {title: '画画阿德利教授', image: '../assets/works/full/w057.webp'},
+    'professor-2': {title: '画画帝加索', image: '../assets/works/full/w064.webp'},
+    yuyuan: {title: '画画芋圆', image: '../assets/works/full/w065.webp'},
+    penguin: {title: '画画帝宝', image: '../assets/works/full/w073.webp'}
   };
   const canvas = document.querySelector('#draw-canvas');
   if (!canvas) return;
@@ -16,7 +11,6 @@
   const base = document.querySelector('#draw-base');
   const board = document.querySelector('#draw-board');
   const heading = document.querySelector('#draw-workspace-title');
-  const templateOptions = document.querySelector('#draw-template-options');
   const brushButton = document.querySelector('#draw-brush');
   const eraserButton = document.querySelector('#draw-eraser');
   const sizeInput = document.querySelector('#draw-size');
@@ -26,7 +20,6 @@
   const downloadButton = document.querySelector('#draw-download');
   const status = document.querySelector('#draw-status');
   const projectButtons = [...document.querySelectorAll('.draw-project')];
-  const templateButtons = [...templateOptions.querySelectorAll('[data-template]')];
   const colorButtons = [...document.querySelectorAll('.draw-color')];
   const paletteField = document.querySelector('#draw-palette-field');
   const paletteMarker = document.querySelector('#draw-palette-marker');
@@ -40,9 +33,7 @@
     if (stored && typeof stored === 'object' && !Array.isArray(stored)) drawings = stored;
   } catch (_) { /* A saved draft should never prevent drawing. */ }
 
-  let project = 'professor';
   let template = 'professor-1';
-  let lastProfessorTemplate = 'professor-1';
   let tool = 'brush';
   let color = '#263f59';
   let hsv = {h: 210, s: 0.59, v: 0.35};
@@ -256,8 +247,12 @@
   const selectTemplate = key => {
     finishStroke();
     template = key;
-    if (key.startsWith('professor-')) lastProfessorTemplate = key;
-    templateButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.template === key)));
+    heading.textContent = templates[key].title;
+    projectButtons.forEach(button => {
+      const selected = button.dataset.template === key;
+      button.classList.toggle('is-selected', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
     board.setAttribute('aria-busy', 'true');
     downloadButton.disabled = true;
     status.textContent = '正在准备画布…';
@@ -279,19 +274,7 @@
     base.alt = `${templates[key].title}底图`;
     base.src = templates[key].image;
   };
-  const selectProject = key => {
-    project = key;
-    heading.textContent = projects[key].title;
-    projectButtons.forEach(button => {
-      const selected = button.dataset.project === key;
-      button.classList.toggle('is-selected', selected);
-      button.setAttribute('aria-pressed', String(selected));
-    });
-    templateOptions.hidden = key !== 'professor';
-    selectTemplate(key === 'professor' ? lastProfessorTemplate : projects[key].defaultTemplate);
-  };
-  projectButtons.forEach(button => button.addEventListener('click', () => selectProject(button.dataset.project)));
-  templateButtons.forEach(button => button.addEventListener('click', () => selectTemplate(button.dataset.template)));
+  projectButtons.forEach(button => button.addEventListener('click', () => selectTemplate(button.dataset.template)));
 
   downloadButton.addEventListener('click', () => {
     if (!base.naturalWidth) return;
@@ -319,5 +302,5 @@
     }, 'image/png');
   });
 
-  selectProject('professor');
+  selectTemplate('professor-1');
 })();
