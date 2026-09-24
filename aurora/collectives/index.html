@@ -7,7 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../../styles.css?v=nav-order-1">
   <link rel="stylesheet" href="../../directory-batches.css?v=phase-2-2">
-  <link rel="stylesheet" href="../../aurora.css?v=collectives-1">
+  <link rel="stylesheet" href="../../aurora.css?v=draw-1">
   <link rel="stylesheet" href="../../huddle.css?v=1-1">
 </head>
 <body>
@@ -36,12 +36,59 @@
   </header>
 
   <main>
-    <section class="aurora-directory artist-directory-page" aria-labelledby="artist-directory-title">
+    <section class="aurora-directory artist-directory-page draw-page" aria-labelledby="draw-page-title">
       <div class="artist-directory-heading">
-        <div><p class="eyebrow">COLLECTIVE ART</p><h1 id="artist-directory-title">一起画画</h1></div>
+        <div><p class="eyebrow">COLLECTIVE ART</p><h1 id="draw-page-title">一起画画</h1></div>
         <a href="../">← 返回极光艺术馆</a>
       </div>
-      <div id="collectives-grid" class="exhibition-album-grid" aria-live="polite"></div>
+      <p class="draw-intro">选一个角色，画出你的版本。完成后可以下载 PNG 图片。</p>
+      <div class="draw-projects" role="group" aria-label="选择一起画画的角色">
+        <button class="draw-project is-selected" type="button" data-project="professor" aria-pressed="true"><img src="../assets/works/thumb/w057.webp" alt=""><span>画画教授</span></button>
+        <button class="draw-project" type="button" data-project="yuyuan" aria-pressed="false"><img src="../assets/works/thumb/w065.webp" alt=""><span>画画芋圆</span></button>
+        <button class="draw-project" type="button" data-project="penguin" aria-pressed="false"><img src="../assets/works/thumb/w073.webp" alt=""><span>画画企鹅</span></button>
+      </div>
+
+      <section class="draw-workspace" aria-labelledby="draw-workspace-title">
+        <div class="draw-workspace-heading">
+          <div><p class="eyebrow">DRAW TOGETHER</p><h2 id="draw-workspace-title">画画教授</h2></div>
+          <p>画好后记得下载保存。</p>
+        </div>
+        <div class="draw-template-options" id="draw-template-options" role="group" aria-label="选择底图">
+          <button type="button" data-template="professor-1" aria-pressed="true">画画阿德利教授</button>
+          <button type="button" data-template="professor-2" aria-pressed="false">画画帝加索</button>
+        </div>
+        <div class="draw-layout">
+          <div class="draw-tools" aria-label="绘画工具">
+            <div class="draw-tool-row" role="group" aria-label="绘画方式">
+              <button type="button" id="draw-brush" class="is-active" aria-pressed="true">画笔</button>
+              <button type="button" id="draw-eraser" aria-pressed="false">橡皮</button>
+            </div>
+            <fieldset class="draw-colors"><legend>颜色</legend>
+              <button type="button" class="draw-color is-selected" data-color="#263f59" aria-label="深蓝色" aria-pressed="true" style="--swatch:#263f59"></button>
+              <button type="button" class="draw-color" data-color="#f16d67" aria-label="珊瑚红" aria-pressed="false" style="--swatch:#f16d67"></button>
+              <button type="button" class="draw-color" data-color="#f6b94d" aria-label="金黄色" aria-pressed="false" style="--swatch:#f6b94d"></button>
+              <button type="button" class="draw-color" data-color="#80a99a" aria-label="松绿色" aria-pressed="false" style="--swatch:#80a99a"></button>
+              <button type="button" class="draw-color" data-color="#90a7d8" aria-label="浅蓝色" aria-pressed="false" style="--swatch:#90a7d8"></button>
+              <button type="button" class="draw-color" data-color="#c7a4bc" aria-label="浅紫色" aria-pressed="false" style="--swatch:#c7a4bc"></button>
+              <label class="draw-custom-color">自选 <input type="color" id="draw-custom-color" value="#263f59" aria-label="自选画笔颜色"></label>
+            </fieldset>
+            <label class="draw-size-label" for="draw-size">笔触粗细 <output id="draw-size-value">12</output></label>
+            <input type="range" id="draw-size" min="3" max="48" value="12">
+            <div class="draw-history">
+              <button type="button" id="draw-undo" disabled>撤销</button>
+              <button type="button" id="draw-clear" disabled>清空画笔</button>
+            </div>
+            <button type="button" id="draw-download" class="draw-download" disabled>下载我的画作</button>
+            <p class="draw-status" id="draw-status" role="status" aria-live="polite"></p>
+          </div>
+          <div class="draw-board-wrap">
+            <div class="draw-board" id="draw-board" aria-busy="true">
+              <canvas id="draw-canvas" tabindex="0" aria-label="绘画画布，可用鼠标或手指绘画"></canvas>
+              <img id="draw-base" alt="画画教授底图" draggable="false">
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
   </main>
 
@@ -58,24 +105,8 @@
       <img id="identity-lightbox-image" src="" alt="">
     </div>
   </div>
-  <div class="aurora-lightbox" id="aurora-lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="aurora-lightbox-title">
-    <div class="aurora-lightbox-backdrop" data-close-aurora-lightbox></div>
-    <div class="aurora-lightbox-dialog">
-      <h2 id="aurora-lightbox-title" class="visually-hidden">一起画画图片预览</h2>
-      <button class="aurora-lightbox-close" id="aurora-lightbox-close" type="button" aria-label="关闭证书预览">×</button>
-      <img id="aurora-lightbox-image" src="" alt="">
-    </div>
-  </div>
-  <div class="exhibition-viewer" id="exhibition-viewer" hidden role="dialog" aria-modal="true" aria-labelledby="exhibition-viewer-title">
-    <div class="exhibition-viewer-backdrop" data-close-exhibition-viewer></div>
-    <div class="exhibition-viewer-dialog">
-      <div class="exhibition-viewer-heading"><h2 id="exhibition-viewer-title"></h2><button id="exhibition-viewer-close" type="button" aria-label="关闭作品预览">×</button></div>
-      <div class="exhibition-viewer-stage"><img id="exhibition-viewer-image" alt=""></div>
-      <p class="exhibition-viewer-credit" id="exhibition-viewer-credit" hidden></p>
-      <div class="exhibition-viewer-index" id="exhibition-viewer-index" hidden><p>作品一览</p><div class="exhibition-viewer-thumbs" id="exhibition-viewer-thumbs" aria-label="选择作品"></div></div>
-    </div>
-  </div>
   <script src="../../aurora.js?v=collectives-1"></script>
+  <script src="../draw.js?v=1"></script>
   <script src="../../huddle.js?v=1-1"></script>
 </body>
 </html>
