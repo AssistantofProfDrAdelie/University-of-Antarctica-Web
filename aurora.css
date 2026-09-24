@@ -184,7 +184,11 @@ body.exhibition-viewer-open{overflow:hidden}
 
 /* Drawing studio for the three collective projects. */
 .draw-page{max-width:1500px;margin:0 auto}
-.draw-intro{margin:-14px 0 28px;color:var(--muted);font-size:15px;line-height:1.7}
+.draw-past-works{max-width:1500px;margin:0 auto;padding-top:52px;scroll-margin-top:90px}
+.draw-intro-row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;margin:-14px 0 28px}
+.draw-intro{margin:0;color:var(--muted);font-size:15px;line-height:1.7}
+.draw-intro-row a{flex:none;color:var(--navy);border-bottom:1px solid currentColor;padding-bottom:4px;text-decoration:none;font-size:13px}
+.draw-intro-row a:hover{color:var(--accent)}
 .draw-projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:48px}
 .draw-project{display:flex;align-items:center;gap:18px;min-width:0;padding:12px;border:1px solid var(--line);background:var(--surface);color:var(--navy);font:17px Georgia,"Songti SC",serif;text-align:left;cursor:pointer}
 .draw-project img{display:block;width:92px;height:104px;flex:none;object-fit:contain;background:#fff}
@@ -222,4 +226,4 @@ body.exhibition-viewer-open{overflow:hidden}
 .draw-board img{z-index:2;pointer-events:none;object-fit:contain;mix-blend-mode:multiply;user-select:none}
 .draw-page button:focus-visible,.draw-page input:focus-visible,.draw-board canvas:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:900px){.draw-project{gap:10px;font-size:15px}.draw-project img{width:65px;height:82px}}
-@media(max-width:760px){.draw-projects{gap:10px;margin-bottom:34px}.draw-project{display:block;padding:7px;font-size:13px}.draw-project img{width:100%;height:90px;margin-bottom:8px}.draw-layout{grid-template-columns:1fr;gap:18px}.draw-tools{position:static;display:flex;flex-wrap:wrap;align-items:center;gap:12px}.draw-colors{min-width:200px;flex:1}.draw-size-label{width:100%}#draw-size{margin:-8px 0 0}.draw-history{flex:1 1 100%}.draw-history button{flex:1}.draw-download{width:100%;flex:1 1 100%}.draw-status{width:100%}.draw-board-wrap{padding:10px}.draw-workspace-heading{align-items:start;flex-direction:column;gap:5px}}
+@media(max-width:760px){.draw-intro-row{align-items:flex-start;flex-direction:column;gap:8px}.draw-projects{gap:10px;margin-bottom:34px}.draw-project{display:block;padding:7px;font-size:13px}.draw-project img{width:100%;height:90px;margin-bottom:8px}.draw-layout{grid-template-columns:1fr;gap:18px}.draw-tools{position:static;display:flex;flex-wrap:wrap;align-items:center;gap:12px}.draw-colors{min-width:200px;flex:1}.draw-size-label{width:100%}#draw-size{margin:-8px 0 0}.draw-history{flex:1 1 100%}.draw-history button{flex:1}.draw-download{width:100%;flex:1 1 100%}.draw-status{width:100%}.draw-board-wrap{padding:10px}.draw-workspace-heading{align-items:start;flex-direction:column;gap:5px}}

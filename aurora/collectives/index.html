@@ -7,7 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../../styles.css?v=nav-order-1">
   <link rel="stylesheet" href="../../directory-batches.css?v=phase-2-2">
-  <link rel="stylesheet" href="../../aurora.css?v=draw-1">
+  <link rel="stylesheet" href="../../aurora.css?v=draw-history-1">
   <link rel="stylesheet" href="../../huddle.css?v=1-1">
 </head>
 <body>
@@ -41,7 +41,7 @@
         <div><p class="eyebrow">COLLECTIVE ART</p><h1 id="draw-page-title">一起画画</h1></div>
         <a href="../">← 返回极光艺术馆</a>
       </div>
-      <p class="draw-intro">选一个角色，画出你的版本。完成后可以下载 PNG 图片。</p>
+      <div class="draw-intro-row"><p class="draw-intro">选一个角色，画出你的版本。完成后可以下载 PNG 图片。</p><a href="#history">查看历史画作 ↓</a></div>
       <div class="draw-projects" role="group" aria-label="选择一起画画的角色">
         <button class="draw-project is-selected" type="button" data-project="professor" aria-pressed="true"><img src="../assets/works/thumb/w057.webp" alt=""><span>画画教授</span></button>
         <button class="draw-project" type="button" data-project="yuyuan" aria-pressed="false"><img src="../assets/works/thumb/w065.webp" alt=""><span>画画芋圆</span></button>
@@ -90,6 +90,12 @@
         </div>
       </section>
     </section>
+    <section class="aurora-directory draw-past-works" id="history" aria-labelledby="draw-past-title">
+      <div class="aurora-section-heading">
+        <div><p class="eyebrow">PAST DRAWINGS</p><h2 id="draw-past-title">历史画作</h2></div>
+      </div>
+      <div id="collectives-grid" class="exhibition-album-grid" aria-live="polite"></div>
+    </section>
   </main>
 
   <section class="institutional-closing" aria-label="南极大学校训">
@@ -105,7 +111,16 @@
       <img id="identity-lightbox-image" src="" alt="">
     </div>
   </div>
-  <script src="../../aurora.js?v=collectives-1"></script>
+  <div class="exhibition-viewer" id="exhibition-viewer" hidden role="dialog" aria-modal="true" aria-labelledby="exhibition-viewer-title">
+    <div class="exhibition-viewer-backdrop" data-close-exhibition-viewer></div>
+    <div class="exhibition-viewer-dialog">
+      <div class="exhibition-viewer-heading"><h2 id="exhibition-viewer-title"></h2><button id="exhibition-viewer-close" type="button" aria-label="关闭作品预览">×</button></div>
+      <div class="exhibition-viewer-stage"><img id="exhibition-viewer-image" alt=""></div>
+      <p class="exhibition-viewer-credit" id="exhibition-viewer-credit" hidden></p>
+      <div class="exhibition-viewer-index" id="exhibition-viewer-index" hidden><p>作品一览</p><div class="exhibition-viewer-thumbs" id="exhibition-viewer-thumbs" aria-label="选择作品"></div></div>
+    </div>
+  </div>
+  <script src="../../aurora.js?v=draw-history-1"></script>
   <script src="../draw.js?v=1"></script>
   <script src="../../huddle.js?v=1-1"></script>
 </body>
