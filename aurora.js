@@ -162,7 +162,7 @@ async function loadExhibition() {
     }
   });
   try {
-    const response = await fetch(collectivePage ? '../collectives.json' : './exhibition.json');
+    const response = await fetch(collectivePage ? '../collectives.json?v=collective-credits-1' : './exhibition.json?v=collective-credits-1');
     if (!response.ok) throw new Error(`Exhibition data: ${response.status}`);
     const works = await response.json();
     const individual = works.filter(work => !work.project);
@@ -201,27 +201,29 @@ async function loadCollectiveHistory() {
   const root = document.querySelector('#collectives-grid');
   if (!root) return;
   try {
-    const response = await fetch('../collectives.json');
+    const response = await fetch('../collectives.json?v=collective-credits-1');
     if (!response.ok) throw new Error(`Collective works: ${response.status}`);
     const works = await response.json();
     const templateIds = new Set(['w057', 'w064', 'w065', 'w073']);
     const drawings = works.filter(work => !templateIds.has(work.id));
     const figures = drawings.map(work => {
-        const figure = document.createElement('figure');
-        figure.className = 'collective-history-work';
-        const link = document.createElement('a');
-        link.href = `../${work.full}`;
-        link.setAttribute('data-aurora-lightbox', '');
-        link.dataset.lightboxAlt = '一起画画作品';
-        link.setAttribute('aria-label', `放大查看${link.dataset.lightboxAlt}`);
-        const image = document.createElement('img');
-        image.src = `../${work.thumb}`;
-        image.alt = link.dataset.lightboxAlt;
-        image.loading = 'lazy';
-        image.decoding = 'async';
-        link.append(image);
-        figure.append(link);
-        return figure;
+      const figure = document.createElement('figure');
+      figure.className = 'collective-history-work';
+      const link = document.createElement('a');
+      link.href = `../${work.full}`;
+      link.setAttribute('data-aurora-lightbox', '');
+      link.dataset.lightboxAlt = `一起画画作品，作者${work.artist}`;
+      link.setAttribute('aria-label', `放大查看${link.dataset.lightboxAlt}`);
+      const image = document.createElement('img');
+      image.src = `../${work.thumb}`;
+      image.alt = link.dataset.lightboxAlt;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      link.append(image);
+      const caption = document.createElement('figcaption');
+      caption.textContent = work.artist;
+      figure.append(link, caption);
+      return figure;
     });
     root.replaceChildren(...figures);
   } catch (error) {
@@ -234,7 +236,7 @@ async function loadCollectiveProject() {
   const grid = document.querySelector('#collective-works');
   if (!grid) return;
   try {
-    const response = await fetch('../exhibition.json');
+    const response = await fetch('../exhibition.json?v=collective-credits-1');
     if (!response.ok) throw new Error(`Exhibition data: ${response.status}`);
     const works = (await response.json()).filter(work => work.project === '画画教授');
     works.sort((a, b) => Number(b.artist === '企鹅研究员') - Number(a.artist === '企鹅研究员'));
