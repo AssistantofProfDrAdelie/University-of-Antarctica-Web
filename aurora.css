@@ -190,8 +190,7 @@ body.exhibition-viewer-open{overflow:hidden}
 .collective-history-work a{display:grid;place-items:center;height:420px;padding:10px;border:1px solid var(--line);background:var(--surface);cursor:zoom-in}
 .collective-history-work a:hover{border-color:var(--accent)}
 .collective-history-work a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
-.collective-history-work img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
-.collective-history-work figcaption{margin-top:8px;color:var(--muted);font:11px Arial,sans-serif}
+.collective-history-work img{display:block;min-width:0;min-height:0;width:100%;height:100%;object-fit:contain}
 .draw-intro-row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;margin:-14px 0 28px}
 .draw-intro{margin:0;color:var(--muted);font-size:15px;line-height:1.7}
 .draw-intro-row a{flex:none;color:var(--navy);border-bottom:1px solid currentColor;padding-bottom:4px;text-decoration:none;font-size:13px}

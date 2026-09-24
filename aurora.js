@@ -212,7 +212,7 @@ async function loadCollectiveHistory() {
         const link = document.createElement('a');
         link.href = `../${work.full}`;
         link.setAttribute('data-aurora-lightbox', '');
-        link.dataset.lightboxAlt = `画作${work.artist ? `，作者${work.artist}` : ''}`;
+        link.dataset.lightboxAlt = '一起画画作品';
         link.setAttribute('aria-label', `放大查看${link.dataset.lightboxAlt}`);
         const image = document.createElement('img');
         image.src = `../${work.thumb}`;
@@ -221,11 +221,6 @@ async function loadCollectiveHistory() {
         image.decoding = 'async';
         link.append(image);
         figure.append(link);
-        if (work.artist) {
-          const caption = document.createElement('figcaption');
-          caption.textContent = work.artist;
-          figure.append(caption);
-        }
         return figure;
     });
     root.replaceChildren(...figures);
