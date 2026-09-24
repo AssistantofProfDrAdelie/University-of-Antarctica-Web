@@ -87,7 +87,7 @@ function albumCardNode(album, onOpen, assetBase = './') {
 }
 
 async function loadExhibition() {
-  const grid = document.querySelector('#exhibition-grid, #collectives-grid');
+  const grid = document.querySelector('#exhibition-grid');
   if (!grid) return;
   const collectivePage = grid.id === 'collectives-grid';
   const assetBase = collectivePage ? '../' : './';
@@ -197,6 +197,52 @@ async function loadExhibition() {
   }
 }
 
+async function loadCollectiveHistory() {
+  const root = document.querySelector('#collectives-grid');
+  if (!root) return;
+  try {
+    const response = await fetch('../collectives.json');
+    if (!response.ok) throw new Error(`Collective works: ${response.status}`);
+    const works = await response.json();
+    const groups = ['画画教授', '画画芋圆', '画画企鹅'].map(project => {
+      const section = document.createElement('section');
+      section.className = 'collective-history-group';
+      const heading = document.createElement('h3');
+      heading.textContent = project;
+      const grid = document.createElement('div');
+      grid.className = 'collective-history-grid';
+      for (const work of works.filter(item => item.project === project)) {
+        const figure = document.createElement('figure');
+        figure.className = 'collective-history-work';
+        const link = document.createElement('a');
+        link.href = `../${work.full}`;
+        link.setAttribute('data-aurora-lightbox', '');
+        link.dataset.lightboxAlt = `${project}作品${work.artist ? `，作者${work.artist}` : ''}`;
+        link.setAttribute('aria-label', `放大查看${link.dataset.lightboxAlt}`);
+        const image = document.createElement('img');
+        image.src = `../${work.thumb}`;
+        image.alt = link.dataset.lightboxAlt;
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        link.append(image);
+        figure.append(link);
+        if (work.artist) {
+          const caption = document.createElement('figcaption');
+          caption.textContent = work.artist;
+          figure.append(caption);
+        }
+        grid.append(figure);
+      }
+      section.append(heading, grid);
+      return section;
+    });
+    root.replaceChildren(...groups);
+  } catch (error) {
+    root.innerHTML = '<p class="empty-gallery">历史画作暂时无法读取。</p>';
+    console.error(error);
+  }
+}
+
 async function loadCollectiveProject() {
   const grid = document.querySelector('#collective-works');
   if (!grid) return;
@@ -253,5 +299,6 @@ setupLightbox({modalId: '#identity-lightbox', imageId: '#identity-lightbox-image
 setupLightbox({modalId: '#aurora-lightbox', imageId: '#aurora-lightbox-image', closeId: '#aurora-lightbox-close', triggerSelector: '[data-aurora-lightbox]', closeAttribute: 'data-close-aurora-lightbox'});
 if (location.hash === '#artist-directory') location.replace('./artists/');
 loadExhibition();
+loadCollectiveHistory();
 loadAuroraArtists();
 loadCollectiveProject();

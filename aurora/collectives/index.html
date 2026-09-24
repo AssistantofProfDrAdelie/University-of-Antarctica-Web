@@ -7,7 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../../styles.css?v=nav-order-1">
   <link rel="stylesheet" href="../../directory-batches.css?v=phase-2-2">
-  <link rel="stylesheet" href="../../aurora.css?v=draw-history-1">
+  <link rel="stylesheet" href="../../aurora.css?v=palette-history-1">
   <link rel="stylesheet" href="../../huddle.css?v=1-1">
 </head>
 <body>
@@ -70,7 +70,13 @@
               <button type="button" class="draw-color" data-color="#80a99a" aria-label="松绿色" aria-pressed="false" style="--swatch:#80a99a"></button>
               <button type="button" class="draw-color" data-color="#90a7d8" aria-label="浅蓝色" aria-pressed="false" style="--swatch:#90a7d8"></button>
               <button type="button" class="draw-color" data-color="#c7a4bc" aria-label="浅紫色" aria-pressed="false" style="--swatch:#c7a4bc"></button>
-              <label class="draw-custom-color">自选 <input type="color" id="draw-custom-color" value="#263f59" aria-label="自选画笔颜色"></label>
+              <div class="draw-palette">
+                <p>调色盘</p>
+                <div class="draw-palette-field" id="draw-palette-field" tabindex="0" role="slider" aria-label="调色盘，左右调整饱和度，上下调整明暗" aria-valuemin="0" aria-valuemax="100" aria-valuenow="59" aria-valuetext="饱和度 59%，明度 35%"><span class="draw-palette-marker" id="draw-palette-marker"></span></div>
+                <label class="draw-hue-label" for="draw-hue">色相</label>
+                <input type="range" id="draw-hue" min="0" max="359" value="210" aria-label="选择色相">
+                <div class="draw-current-color"><span id="draw-current-swatch" aria-hidden="true"></span><input type="text" id="draw-hex" value="#263F59" maxlength="7" spellcheck="false" aria-label="十六进制颜色值"></div>
+              </div>
             </fieldset>
             <label class="draw-size-label" for="draw-size">笔触粗细 <output id="draw-size-value">12</output></label>
             <input type="range" id="draw-size" min="3" max="48" value="12">
@@ -94,7 +100,7 @@
       <div class="aurora-section-heading">
         <div><p class="eyebrow">PAST DRAWINGS</p><h2 id="draw-past-title">历史画作</h2></div>
       </div>
-      <div id="collectives-grid" class="exhibition-album-grid" aria-live="polite"></div>
+      <div id="collectives-grid" class="collective-history" aria-live="polite"></div>
     </section>
   </main>
 
@@ -111,17 +117,16 @@
       <img id="identity-lightbox-image" src="" alt="">
     </div>
   </div>
-  <div class="exhibition-viewer" id="exhibition-viewer" hidden role="dialog" aria-modal="true" aria-labelledby="exhibition-viewer-title">
-    <div class="exhibition-viewer-backdrop" data-close-exhibition-viewer></div>
-    <div class="exhibition-viewer-dialog">
-      <div class="exhibition-viewer-heading"><h2 id="exhibition-viewer-title"></h2><button id="exhibition-viewer-close" type="button" aria-label="关闭作品预览">×</button></div>
-      <div class="exhibition-viewer-stage"><img id="exhibition-viewer-image" alt=""></div>
-      <p class="exhibition-viewer-credit" id="exhibition-viewer-credit" hidden></p>
-      <div class="exhibition-viewer-index" id="exhibition-viewer-index" hidden><p>作品一览</p><div class="exhibition-viewer-thumbs" id="exhibition-viewer-thumbs" aria-label="选择作品"></div></div>
+  <div class="aurora-lightbox" id="aurora-lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="aurora-lightbox-title">
+    <div class="aurora-lightbox-backdrop" data-close-aurora-lightbox></div>
+    <div class="aurora-lightbox-dialog">
+      <h2 id="aurora-lightbox-title" class="visually-hidden">历史画作预览</h2>
+      <button class="aurora-lightbox-close" id="aurora-lightbox-close" type="button" aria-label="关闭画作预览">×</button>
+      <img id="aurora-lightbox-image" src="" alt="">
     </div>
   </div>
-  <script src="../../aurora.js?v=draw-history-1"></script>
-  <script src="../draw.js?v=1"></script>
+  <script src="../../aurora.js?v=flat-history-1"></script>
+  <script src="../draw.js?v=palette-1"></script>
   <script src="../../huddle.js?v=1-1"></script>
 </body>
 </html>

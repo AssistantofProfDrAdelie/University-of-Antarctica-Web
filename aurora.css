@@ -185,6 +185,15 @@ body.exhibition-viewer-open{overflow:hidden}
 /* Drawing studio for the three collective projects. */
 .draw-page{max-width:1500px;margin:0 auto}
 .draw-past-works{max-width:1500px;margin:0 auto;padding-top:52px;scroll-margin-top:90px}
+.collective-history-group+.collective-history-group{margin-top:62px;padding-top:42px;border-top:1px solid var(--line)}
+.collective-history-group h3{margin:0 0 22px;color:var(--navy);font-size:26px;font-weight:400}
+.collective-history-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 22px;align-items:start}
+.collective-history-work{min-width:0;margin:0}
+.collective-history-work a{display:grid;place-items:center;height:420px;padding:10px;border:1px solid var(--line);background:var(--surface);cursor:zoom-in}
+.collective-history-work a:hover{border-color:var(--accent)}
+.collective-history-work a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.collective-history-work img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.collective-history-work figcaption{margin-top:8px;color:var(--muted);font:11px Arial,sans-serif}
 .draw-intro-row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;margin:-14px 0 28px}
 .draw-intro{margin:0;color:var(--muted);font-size:15px;line-height:1.7}
 .draw-intro-row a{flex:none;color:var(--navy);border-bottom:1px solid currentColor;padding-bottom:4px;text-decoration:none;font-size:13px}
@@ -210,8 +219,17 @@ body.exhibition-viewer-open{overflow:hidden}
 .draw-colors legend{width:100%;padding:0 0 11px;color:var(--navy);font-size:13px}
 .draw-color{width:30px;height:30px;border:1px solid #607b8c;background:var(--swatch);border-radius:50%;cursor:pointer}
 .draw-color.is-selected{outline:2px solid var(--accent);outline-offset:3px}
-.draw-custom-color{display:flex;align-items:center;gap:6px;width:100%;margin-top:7px;color:var(--muted);font-size:12px}
-.draw-custom-color input{width:34px;height:30px;padding:0;border:0;background:transparent;cursor:pointer}
+.draw-palette{display:grid;gap:8px;width:100%;margin-top:6px;padding-top:12px;border-top:1px solid var(--line)}
+.draw-palette p{margin:0;color:var(--navy);font-size:13px}
+.draw-palette-field{position:relative;width:100%;height:116px;border:1px solid var(--line);background:linear-gradient(to top,#000,transparent),linear-gradient(to right,#fff,transparent),hsl(var(--palette-hue,210deg) 100% 50%);cursor:crosshair;touch-action:none}
+.draw-palette-marker{position:absolute;width:14px;height:14px;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #243b4e,0 1px 4px #0008;transform:translate(-50%,-50%);pointer-events:none}
+.draw-hue-label{color:var(--muted);font-size:12px}
+#draw-hue{width:100%;height:12px;margin:0 0 4px;appearance:none;border:1px solid var(--line);border-radius:12px;background:linear-gradient(to right,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);cursor:pointer}
+#draw-hue::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border:2px solid #fff;border-radius:50%;background:#263f59;box-shadow:0 0 0 1px #243b4e}
+#draw-hue::-moz-range-thumb{width:14px;height:14px;border:2px solid #fff;border-radius:50%;background:#263f59;box-shadow:0 0 0 1px #243b4e}
+.draw-current-color{display:flex;align-items:center;gap:8px}
+.draw-current-color span{width:30px;height:30px;flex:none;border:1px solid var(--line);background:#263f59}
+.draw-current-color input{min-width:0;width:100%;padding:6px 5px;border:1px solid var(--line);background:#fff;color:var(--navy);font:12px Arial,sans-serif;letter-spacing:.03em;text-transform:uppercase}
 .draw-size-label{display:flex;justify-content:space-between;gap:10px;color:var(--navy);font-size:13px}
 .draw-size-label output{color:var(--muted)}
 #draw-size{width:100%;margin:-11px 0 2px;accent-color:var(--accent)}
@@ -227,3 +245,6 @@ body.exhibition-viewer-open{overflow:hidden}
 .draw-page button:focus-visible,.draw-page input:focus-visible,.draw-board canvas:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:900px){.draw-project{gap:10px;font-size:15px}.draw-project img{width:65px;height:82px}}
 @media(max-width:760px){.draw-intro-row{align-items:flex-start;flex-direction:column;gap:8px}.draw-projects{gap:10px;margin-bottom:34px}.draw-project{display:block;padding:7px;font-size:13px}.draw-project img{width:100%;height:90px;margin-bottom:8px}.draw-layout{grid-template-columns:1fr;gap:18px}.draw-tools{position:static;display:flex;flex-wrap:wrap;align-items:center;gap:12px}.draw-colors{min-width:200px;flex:1}.draw-size-label{width:100%}#draw-size{margin:-8px 0 0}.draw-history{flex:1 1 100%}.draw-history button{flex:1}.draw-download{width:100%;flex:1 1 100%}.draw-status{width:100%}.draw-board-wrap{padding:10px}.draw-workspace-heading{align-items:start;flex-direction:column;gap:5px}}
+@media(max-height:850px){.draw-tools{position:static}}
+@media(max-width:900px){.collective-history-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.collective-history-work a{height:350px}}
+@media(max-width:600px){.collective-history-grid{gap:18px 12px}.collective-history-work a{height:245px;padding:6px}.collective-history-group+.collective-history-group{margin-top:42px;padding-top:30px}}
