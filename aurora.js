@@ -61,7 +61,7 @@ function artworkNode(work, album, assetBase = './') {
   return figure;
 }
 
-function albumCardNode(album, onOpen) {
+function albumCardNode(album, onOpen, assetBase = './') {
   const card = document.createElement('button');
   card.className = `exhibition-album-card${album.works.length === 1 ? ' single-work' : ''}`;
   card.type = 'button';
@@ -69,14 +69,14 @@ function albumCardNode(album, onOpen) {
   const cover = document.createElement('span');
   cover.className = 'exhibition-album-cover';
   const image = document.createElement('img');
-  image.src = `./${album.works[0].thumb}`;
+  image.src = `${assetBase}${album.works[0].thumb}`;
   image.alt = album.title;
   image.loading = 'lazy';
   image.decoding = 'async';
   cover.append(image);
   const kicker = document.createElement('small');
   kicker.className = 'album-kicker';
-  kicker.textContent = album.project ? '共创项目' : '';
+  kicker.textContent = '';
   const title = document.createElement('strong');
   title.textContent = album.title;
   card.append(cover);
@@ -87,8 +87,10 @@ function albumCardNode(album, onOpen) {
 }
 
 async function loadExhibition() {
-  const grid = document.querySelector('#exhibition-grid');
+  const grid = document.querySelector('#exhibition-grid, #collectives-grid');
   if (!grid) return;
+  const collectivePage = grid.id === 'collectives-grid';
+  const assetBase = collectivePage ? '../' : './';
   const viewer = document.querySelector('#exhibition-viewer');
   const viewerImage = document.querySelector('#exhibition-viewer-image');
   const viewerTitle = document.querySelector('#exhibition-viewer-title');
@@ -113,9 +115,9 @@ async function loadExhibition() {
     const thumbButtons = album.works.map((work, index) => {
       const button = document.createElement('button');
       button.type = 'button';
-      button.setAttribute('aria-label', album.project ? `查看${work.artist}参与画画教授的第${index + 1}张作品` : `查看${album.title}的第${index + 1}张作品`);
+      button.setAttribute('aria-label', `查看${album.title}的第${index + 1}张作品`);
       const image = document.createElement('img');
-      image.src = `./${work.thumb}`;
+      image.src = `${assetBase}${work.thumb}`;
       image.alt = '';
       image.loading = 'lazy';
       button.append(image);
@@ -125,9 +127,10 @@ async function loadExhibition() {
     const showWork = index => {
       const work = album.works[index];
       viewer.classList.remove('is-landscape');
-      viewerImage.src = `./${work.full}`;
-      viewerImage.alt = album.project ? `${work.artist}参与画画教授的作品` : `${album.title}的作品`;
-      viewerCredit.textContent = album.project ? work.artist : '';
+      viewerImage.src = `${assetBase}${work.full}`;
+      viewerImage.alt = `${album.title}的作品${work.artist ? `，作者${work.artist}` : ''}`;
+      viewerCredit.textContent = album.project ? (work.artist || '') : '';
+      viewerCredit.hidden = !viewerCredit.textContent;
       thumbButtons.forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === index)));
     };
     thumbs.replaceChildren(...thumbButtons);
@@ -159,7 +162,7 @@ async function loadExhibition() {
     }
   });
   try {
-    const response = await fetch('./exhibition.json');
+    const response = await fetch(collectivePage ? '../collectives.json' : './exhibition.json');
     if (!response.ok) throw new Error(`Exhibition data: ${response.status}`);
     const works = await response.json();
     const individual = works.filter(work => !work.project);
@@ -179,14 +182,17 @@ async function loadExhibition() {
       if (cover) artistWorks.unshift(...artistWorks.splice(artistWorks.indexOf(cover), 1));
       return {id: `artist-${artistWorks[0].id}`, title: artist === '晚风' ? '晚風' : artist, artist, project: false, works: artistWorks};
     });
-    const collectiveWorks = works.filter(work => work.project === '画画教授')
-      .sort((a, b) => Number(b.artist === '企鹅研究员') - Number(a.artist === '企鹅研究员'));
-    albums.push({id: 'project-paint-professor', title: '画画教授', artist: null, project: true, works: collectiveWorks});
-    grid.replaceChildren(...albums.map(album => albumCardNode(album, card => openViewer(album, card))));
+    if (collectivePage) {
+      for (const project of ['画画教授', '画画芋圆', '画画企鹅']) {
+        const projectWorks = works.filter(work => work.project === project);
+        albums.push({id: `project-${{'画画教授': 'paint-professor', '画画芋圆': 'paint-yuyuan', '画画企鹅': 'paint-penguin'}[project]}`, title: project, project: true, works: projectWorks});
+      }
+    }
+    grid.replaceChildren(...(collectivePage ? albums.filter(album => album.project) : albums).map(album => albumCardNode(album, card => openViewer(album, card), assetBase)));
     const linkedAlbum = albums.find(album => `#${album.id}` === location.hash);
     if (linkedAlbum) openViewer(linkedAlbum, null);
   } catch (error) {
-    grid.innerHTML = '<p class="empty-gallery">极光艺术展暂时无法读取。</p>';
+    grid.innerHTML = `<p class="empty-gallery">${collectivePage ? '共创项目' : '极光艺术展'}暂时无法读取。</p>`;
     console.error(error);
   }
 }
