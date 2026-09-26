@@ -2,16 +2,17 @@
   'use strict';
   const $ = id => document.getElementById(id);
   let albums = [], year = 'all', selected = null, position = 0, lastTrigger = null, heroPosition = 0, heroTimer = null;
-  const dateText = album => album.date ? album.date.slice(0,7).replace('-', '.') : '时间待确认';
+  const dateText = album => album.datePending ? '时间待确认' : album.date ? album.date.slice(0,7).replace('-', '.') : '时间待确认';
+  const mediaText = album => `${album.photos.length} 张照片${album.videos?.length ? ` · ${album.videos.length} 段视频` : ''}`;
   const node = (tag, className, text) => { const el = document.createElement(tag); if(className) el.className = className; if(text !== undefined) el.textContent = text; return el; };
   const image = (photo, alt, large = false) => {const img = node('img'); img.src = large ? photo.src : photo.thumb; img.alt = alt; img.loading = large ? 'eager' : 'lazy'; img.decoding = 'async'; return img;};
   function renderAlbums() {
     const filtered = albums.filter(a => year === 'all' || a.date?.startsWith(year)).sort((a,b) => $('sort').value === 'asc' ? (a.date || '9999').localeCompare(b.date || '9999') : (b.date || '').localeCompare(a.date || ''));
-    $('album-count').textContent = `${filtered.length} 本相册 · ${filtered.reduce((n,a) => n+a.photos.length,0)} 张照片`;
+    $('album-count').textContent = `${filtered.length} 本相册 · ${filtered.reduce((n,a) => n+a.photos.length,0)} 张照片 · ${filtered.reduce((n,a) => n+(a.videos?.length || 0),0)} 段视频`;
     $('album-grid').replaceChildren(); $('separate-grid').replaceChildren();
     filtered.forEach(album => {
       const card = node('button', 'album-card'); card.type = 'button';
-      card.setAttribute('aria-label', `打开${album.title}相册，${album.photos.length}张照片`);
+      card.setAttribute('aria-label', `打开${album.title}相册，${mediaText(album)}`);
       const cover = node('div', 'album-cover');
       if(album.photos.length) cover.append(image(album.photos[0], album.title));
       else {const empty = node('div','empty-cover'); empty.append(node('span','','○'),node('small','','等待下一张回忆')); cover.append(empty);}
@@ -26,13 +27,21 @@
     $('albums').hidden = !!selected; $('album-detail').hidden = !selected;
     if(!selected) return;
     $('detail-title').textContent=selected.title; $('detail-meta').textContent=dateText(selected);
-    $('detail-location').textContent=selected.location; $('detail-count').textContent=`${selected.photos.length} 张照片`;
+    $('detail-location').textContent=selected.location; $('detail-count').textContent=mediaText(selected);
     $('photo-grid').replaceChildren(...selected.photos.map((photo,i)=>{
       const button=node('button','photo-tile'); button.setAttribute('aria-label',`查看${selected.title}第${i+1}张照片`);
       button.append(image(photo,`${selected.title} · 合影 ${i+1}`),node('span','',`${String(i+1).padStart(3,'0')} / ${String(selected.photos.length).padStart(3,'0')} · ${photo.id.slice(0,6)}`));
       button.addEventListener('click',()=>{position=i;showPhoto();$('viewer').showModal();}); return button;
     }));
-    if(!selected.photos.length) $('photo-grid').append(node('p','empty-message','这场相聚已经记下，合影正在整理中。'));
+    (selected.videos || []).forEach((video,i)=>{
+      const tile=node('div','video-tile');
+      const player=node('video'); player.controls=true; player.preload='none'; player.playsInline=true; player.poster=video.poster;
+      const source=node('source'); source.src=video.src; source.type='video/mp4'; player.append(source);
+      player.setAttribute('aria-label',`${selected.title} · 视频 ${i+1}`);
+      tile.append(player,node('span','',`视频 ${String(i+1).padStart(2,'0')} / ${String(selected.videos.length).padStart(2,'0')}`));
+      $('photo-grid').append(tile);
+    });
+    if(!selected.photos.length && !selected.videos?.length) $('photo-grid').append(node('p','empty-message','这场相聚已经记下，合影正在整理中。'));
     $('detail-title').focus({preventScroll:true}); $('album-detail').scrollIntoView({behavior:'instant'});
   }
   function showPhoto(){const photo=selected.photos[position]; $('viewer-image').src=photo.src; $('viewer-image').alt=`${selected.title} · 第 ${position+1} 张合影`; $('viewer-title').textContent=selected.title; $('viewer-count').textContent=`${position+1} / ${selected.photos.length} · ${dateText(selected)}`; $('previous-photo').disabled=position===0; $('next-photo').disabled=position===selected.photos.length-1;}
@@ -61,7 +70,7 @@
   $('previous-photo').addEventListener('click',()=>step(-1));$('next-photo').addEventListener('click',()=>step(1));
   $('viewer').addEventListener('keydown',event=>{if(event.key==='ArrowLeft'){event.preventDefault();step(-1);}if(event.key==='ArrowRight'){event.preventDefault();step(1);}});
   window.addEventListener('hashchange',route);
-  fetch('albums.json?v=20260922-4').then(response=>{if(!response.ok)throw Error(response.status);return response.json();}).then(data=>{
+  fetch('albums.json?v=20260926-1').then(response=>{if(!response.ok)throw Error(response.status);return response.json();}).then(data=>{
     albums=data;renderAlbums();
     renderHero();
     route();

@@ -1683,5 +1683,62 @@
         "thumb": "assets/e38c2764c2af2211-thumb.jpg"
       }
     ]
+  },
+  {
+    "id": "event-19",
+    "date": "2026-09-26",
+    "title": "2026年中秋企鹅会",
+    "location": "地点待确认",
+    "datePending": true,
+    "category": "与鹅同行",
+    "photos": [
+      {
+        "id": "422078fafb7dbe9a",
+        "src": "assets/422078fafb7dbe9a.jpg",
+        "thumb": "assets/422078fafb7dbe9a-thumb.jpg"
+      },
+      {
+        "id": "2431fdfa2f66858b",
+        "src": "assets/2431fdfa2f66858b.jpg",
+        "thumb": "assets/2431fdfa2f66858b-thumb.jpg"
+      },
+      {
+        "id": "b3b170229e1f0df8",
+        "src": "assets/b3b170229e1f0df8.jpg",
+        "thumb": "assets/b3b170229e1f0df8-thumb.jpg"
+      },
+      {
+        "id": "0fdedd601900bac2",
+        "src": "assets/0fdedd601900bac2.jpg",
+        "thumb": "assets/0fdedd601900bac2-thumb.jpg"
+      },
+      {
+        "id": "43d9b37ac95f9696",
+        "src": "assets/43d9b37ac95f9696.jpg",
+        "thumb": "assets/43d9b37ac95f9696-thumb.jpg"
+      },
+      {
+        "id": "b19a1d9bfada0b88",
+        "src": "assets/b19a1d9bfada0b88.jpg",
+        "thumb": "assets/b19a1d9bfada0b88-thumb.jpg"
+      },
+      {
+        "id": "ef133ddcf0c0d8de",
+        "src": "assets/ef133ddcf0c0d8de.jpg",
+        "thumb": "assets/ef133ddcf0c0d8de-thumb.jpg"
+      }
+    ],
+    "videos": [
+      {
+        "id": "e6eebc5ff87129be",
+        "src": "assets/e6eebc5ff87129be.mp4",
+        "poster": "assets/e6eebc5ff87129be-poster.jpg"
+      },
+      {
+        "id": "f01a459b80936cbc",
+        "src": "assets/f01a459b80936cbc.mp4",
+        "poster": "assets/f01a459b80936cbc-poster.jpg"
+      }
+    ]
   }
 ]
