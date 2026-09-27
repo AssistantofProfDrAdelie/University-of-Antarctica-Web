@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>阿德利能飞 · 南极大学</title>
-  <link rel="stylesheet" href="style.css?v=20260927-1">
+  <link rel="stylesheet" href="style.css?v=20260927-2">
 </head>
 <body>
   <div class="page">
@@ -16,13 +16,12 @@
 
     <main>
       <section class="game-shell" aria-label="阿德利能飞游戏">
-        <p class="instruction">按住并拖动企鹅，让 5 只同色企鹅聚在一起。</p>
         <div class="board-wrap">
           <canvas id="game" width="960" height="600" aria-label="企鹅从四周走向中央。按住并拖动企鹅，让同一群落的五只企鹅聚集。"></canvas>
-          <div class="modal" id="modal" hidden>
+          <div class="modal" id="modal">
             <div class="modal-card">
-              <p id="modalBody" hidden>按住并拖动企鹅；几秒后它会挣脱。</p>
-              <button id="primaryButton" type="button" aria-label="继续游戏"><span aria-hidden="true">▶</span></button>
+              <p id="modalBody">按住并拖动企鹅，让 5 只同色企鹅聚在一起。</p>
+              <button id="primaryButton" type="button" aria-label="开始游戏"><span aria-hidden="true">▶</span><span id="primaryLabel">开始</span></button>
             </div>
           </div>
         </div>
@@ -33,13 +32,13 @@
           </div>
           <div class="actions">
             <button id="pauseButton" class="icon-button" type="button" aria-label="暂停" disabled>Ⅱ</button>
-            <button id="restartButton" class="icon-button" type="button" aria-label="重新开始">↻</button>
+            <button id="restartButton" class="icon-button" type="button" aria-label="重新开始" disabled>↻</button>
           </div>
         </div>
       </section>
       <p class="credit">改编自 <a href="https://commons.wikimedia.org/wiki/File:Ad%C3%A9lie_penguin_(Pygoscelis_adeliae)_in_Antarctica.webm" target="_blank" rel="noopener noreferrer">Lauren Farmer 影像</a> · <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC BY 3.0</a></p>
     </main>
   </div>
-  <script type="module" src="game.js"></script>
+  <script type="module" src="game.js?v=20260927-2"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@ const ctx = canvas.getContext('2d');
 const modal = document.querySelector('#modal');
 const modalBody = document.querySelector('#modalBody');
 const primaryButton = document.querySelector('#primaryButton');
+const primaryLabel = document.querySelector('#primaryLabel');
 const pauseButton = document.querySelector('#pauseButton');
 const restartButton = document.querySelector('#restartButton');
 const helpButton = document.querySelector('#helpButton');
@@ -89,6 +90,7 @@ function begin() {
   modal.hidden = true;
   modalBody.hidden = true;
   pauseButton.disabled = false;
+  restartButton.disabled = false;
   syncPauseButton();
 }
 
@@ -116,8 +118,10 @@ helpButton.addEventListener('click', () => {
     syncPauseButton();
   }
   modalBody.hidden = false;
+  modalBody.textContent = '按住并拖动企鹅；几秒后它会挣脱。';
   modal.hidden = false;
   primaryButton.setAttribute('aria-label', helpOpen ? '继续游戏' : '开始游戏');
+  primaryLabel.textContent = helpOpen ? '继续' : '开始';
   pauseButton.disabled = true;
 });
 
@@ -285,5 +289,4 @@ function frame(time) {
   render();
   requestAnimationFrame(frame);
 }
-begin();
 requestAnimationFrame(frame);

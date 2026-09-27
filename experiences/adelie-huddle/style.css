@@ -8,15 +8,14 @@ body{margin:0;min-width:320px}
 .icon-button:hover:enabled,.icon-button:hover{background:#dceae7}
 .icon-button:disabled{opacity:.4;cursor:default}
 .game-shell{background:#fff;border:1px solid #bdd0d1;box-shadow:0 18px 44px #315a6620}
-.instruction{margin:0;padding:10px 12px;text-align:center;white-space:nowrap;color:#42636b;background:#f5faf8;font-size:14px;line-height:1.3}
 .board-wrap{position:relative;aspect-ratio:8/5;overflow:hidden;background:#eaf4f5}
 .board-wrap canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab;image-rendering:pixelated}
 .board-wrap canvas:active{cursor:grabbing}
 .modal{position:absolute;inset:0;display:grid;place-items:center;background:#dcebe9ad;backdrop-filter:blur(3px)}
 .modal[hidden],.modal-card p[hidden]{display:none}
-.modal-card{min-width:130px;max-width:min(320px,calc(100% - 32px));padding:20px;background:#f8fbfa;border:1px solid #a9c4c5;box-shadow:0 18px 50px #21475935;text-align:center}
-.modal-card p{font-size:14px;line-height:1.6;color:#58727b;margin:0 0 16px}
-.modal-card button{width:66px;height:54px;border:0;background:#194f61;color:#fff;font:24px/1 Arial,sans-serif;cursor:pointer}
+.modal-card{width:max-content;max-width:min(460px,calc(100% - 24px));padding:24px 28px;background:#f8fbfa;border:1px solid #a9c4c5;box-shadow:0 18px 50px #21475935;text-align:center}
+.modal-card p{font-size:15px;line-height:1.6;color:#355e68;margin:0 0 18px}
+.modal-card button{min-width:104px;height:46px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 20px;border:0;background:#194f61;color:#fff;font:16px/1 Arial,"PingFang SC","Microsoft YaHei",sans-serif;cursor:pointer}
 .modal-card button:hover{background:#0c3949}
 .toolbar{display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:8px 16px}
 .colony-markers{display:flex;align-items:flex-start;flex:1;flex-wrap:wrap;gap:8px 16px;min-height:11px;min-width:0}
@@ -31,5 +30,4 @@ body{margin:0;min-width:320px}
 .credit{font-size:11px;color:#799196;text-align:center;margin:12px 0 0}
 .credit a{color:#46767c;text-decoration:none}.credit a:hover{text-decoration:underline}
 @media(max-width:740px){.page{padding:0 10px 22px}.masthead{height:62px}#ruleDiagram{width:min(240px,calc(100vw - 112px));height:auto}.game-shell{margin:0 -10px;border-left:0;border-right:0}.toolbar{padding:8px 12px}.modal-card{padding:16px}.credit{padding:0 8px}}
-@media(max-width:400px){.instruction{padding-inline:4px;font-size:12px}}
 @media(prefers-reduced-motion:reduce){.modal{backdrop-filter:none}}
