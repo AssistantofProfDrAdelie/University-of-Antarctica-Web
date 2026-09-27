@@ -15,10 +15,20 @@ const launchCount = document.querySelector('#launchCount');
 const launchIcon = document.querySelector('#launchIcon');
 const ruleDiagram = document.querySelector('#ruleDiagram');
 
-const game = createGame();
+const compactBoard = window.matchMedia('(max-width: 600px)').matches;
+if (compactBoard) {
+  canvas.width = 600;
+  canvas.height = 720;
+  canvas.parentElement.style.aspectRatio = '5 / 6';
+}
+const game = createGame(compactBoard ? {
+  width: 600, height: 720, maxPopulation: 34,
+  radius: 20, linkDistance: 48, grabRadius: 35,
+} : {});
 const sprite = new Image();
 sprite.src = '../adelie-motion-lab/assets/sheet_8f_64.png';
 const COLORS = ['#d66d62', '#65a9bd', '#daa94e', '#9c81bd', '#4b9534'];
+const PENGUIN_SIZE = 54;
 let paused = false;
 let helpOpen = false;
 let lastTime = 0;
@@ -146,12 +156,14 @@ window.addEventListener('blur', () => { releasePointer(); if (game.phase === 'pl
 document.addEventListener('visibilitychange', () => { if (document.hidden && game.phase === 'playing') { releasePointer(); paused = true; syncPauseButton(); } });
 
 function drawBackground() {
-  const snow = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  ctx.save();
+  ctx.scale(canvas.width / 960, canvas.height / 600);
+  const snow = ctx.createLinearGradient(0, 0, 0, 600);
   snow.addColorStop(0, '#deedf1');
   snow.addColorStop(.45, '#edf6f5');
   snow.addColorStop(1, '#f8fbf8');
   ctx.fillStyle = snow;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(0, 0, 960, 600);
   // Broad wind-shaped snowdrifts give depth without dividing the playfield.
   ctx.fillStyle = '#e1eff1';
   ctx.beginPath();
@@ -181,16 +193,17 @@ function drawBackground() {
   }
   ctx.fillStyle = '#c9dfe3';
   for (let i = 0; i < 82; i++) {
-    const x = (i * 223 + 71) % canvas.width;
-    const y = (i * 137 + 39) % canvas.height;
+    const x = (i * 223 + 71) % 960;
+    const y = (i * 137 + 39) % 600;
     ctx.fillRect(x, y, i % 7 === 0 ? 3 : 2, 1);
   }
   ctx.fillStyle = '#ffffff';
   for (let i = 0; i < 30; i++) {
-    const x = (i * 193 + 31 + animationTime * (7 + i % 5)) % canvas.width;
-    const y = (i * 271 + 17 + animationTime * (13 + i % 4)) % canvas.height;
+    const x = (i * 193 + 31 + animationTime * (7 + i % 5)) % 960;
+    const y = (i * 271 + 17 + animationTime * (13 + i % 4)) % 600;
     ctx.fillRect(Math.round(x), Math.round(y), i % 5 === 0 ? 3 : 2, i % 5 === 0 ? 3 : 2);
   }
+  ctx.restore();
 }
 
 function colorOf(penguin) {
@@ -250,7 +263,7 @@ function drawPenguin(p) {
   if (sprite.complete && sprite.naturalWidth) {
     const frame = held ? Math.floor(animationTime * 19) % 8 : Math.floor(animationTime * 8 + p.id * .9) % 8;
     ctx.imageSmoothingEnabled = false;
-    ctx.drawImage(sprite, frame * 64, 0, 64, 64, -23, -27, 46, 46);
+    ctx.drawImage(sprite, frame * 64, 0, 64, 64, -PENGUIN_SIZE / 2, -31, PENGUIN_SIZE, PENGUIN_SIZE);
   } else {
     ctx.fillStyle = '#1d2d38';
     ctx.beginPath(); ctx.ellipse(0, -7, 12, 20, -.15, 0, Math.PI * 2); ctx.fill();
