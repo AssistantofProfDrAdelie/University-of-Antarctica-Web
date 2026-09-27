@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>阿德利能飞 · 南极大学</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <a class="icon-button" href="../../campus/" aria-label="返回校园活动">←</a>
+      <canvas id="ruleDiagram" width="240" height="56" role="img" aria-label="五只同颜色企鹅聚在一起，火箭升天"></canvas>
+      <button class="icon-button" id="helpButton" type="button" aria-label="玩法说明">?</button>
+    </header>
+
+    <main>
+      <section class="game-shell" aria-label="阿德利能飞游戏">
+        <div class="board-wrap">
+          <canvas id="game" width="960" height="600" aria-label="企鹅从四周走向中央。按住并拖动企鹅，让同一群落的五只企鹅聚集。"></canvas>
+          <div class="modal" id="modal" hidden>
+            <div class="modal-card">
+              <p id="modalBody" hidden>按住并拖动企鹅；几秒后它会挣脱。</p>
+              <button id="primaryButton" type="button" aria-label="继续游戏"><span aria-hidden="true">▶</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="toolbar">
+          <div class="colony-markers" id="colonyMarkers" role="img" aria-label="场上还没有企鹅"></div>
+          <div class="launch-counter" id="launchCounter" role="img" aria-label="已升天 0 只企鹅">
+            <canvas id="launchIcon" width="26" height="35" aria-hidden="true"></canvas><output id="launchCount">0</output>
+          </div>
+          <div class="actions">
+            <button id="pauseButton" class="icon-button" type="button" aria-label="暂停" disabled>Ⅱ</button>
+            <button id="restartButton" class="icon-button" type="button" aria-label="重新开始">↻</button>
+          </div>
+        </div>
+      </section>
+      <p class="credit">改编自 <a href="https://commons.wikimedia.org/wiki/File:Ad%C3%A9lie_penguin_(Pygoscelis_adeliae)_in_Antarctica.webm" target="_blank" rel="noopener noreferrer">Lauren Farmer 影像</a> · <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC BY 3.0</a></p>
+    </main>
+  </div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>

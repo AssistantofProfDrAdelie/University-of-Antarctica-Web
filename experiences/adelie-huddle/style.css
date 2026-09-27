@@ -1,0 +1,33 @@
+:root{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;color:#203544;background:#e8f0ef;font-synthesis:none}
+*{box-sizing:border-box}
+body{margin:0;min-width:320px}
+.page{max-width:1160px;margin:auto;padding:0 28px 30px}
+.masthead{height:72px;display:flex;align-items:center;justify-content:space-between}
+#ruleDiagram{display:block;width:240px;height:56px;image-rendering:pixelated}
+.icon-button{display:grid;place-items:center;width:34px;height:34px;padding:0;border:1px solid #b4cccd;background:#f5faf8;color:#325963;text-decoration:none;font:22px/1 Arial,sans-serif;cursor:pointer}
+.icon-button:hover:enabled,.icon-button:hover{background:#dceae7}
+.icon-button:disabled{opacity:.4;cursor:default}
+.game-shell{background:#fff;border:1px solid #bdd0d1;box-shadow:0 18px 44px #315a6620}
+.board-wrap{position:relative;aspect-ratio:8/5;overflow:hidden;background:#eaf4f5}
+.board-wrap canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab;image-rendering:pixelated}
+.board-wrap canvas:active{cursor:grabbing}
+.modal{position:absolute;inset:0;display:grid;place-items:center;background:#dcebe9ad;backdrop-filter:blur(3px)}
+.modal[hidden],.modal-card p[hidden]{display:none}
+.modal-card{min-width:130px;max-width:min(320px,calc(100% - 32px));padding:20px;background:#f8fbfa;border:1px solid #a9c4c5;box-shadow:0 18px 50px #21475935;text-align:center}
+.modal-card p{font-size:14px;line-height:1.6;color:#58727b;margin:0 0 16px}
+.modal-card button{width:66px;height:54px;border:0;background:#194f61;color:#fff;font:24px/1 Arial,sans-serif;cursor:pointer}
+.modal-card button:hover{background:#0c3949}
+.toolbar{display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:8px 16px}
+.colony-markers{display:flex;align-items:flex-start;flex:1;flex-wrap:wrap;gap:8px 16px;min-height:11px;min-width:0}
+.colony-group{display:grid;grid-auto-rows:11px;gap:5px;align-content:start}
+.launch-counter{display:flex;align-items:center;gap:4px;margin-right:12px;padding-left:12px;border-left:1px solid #c9dcd9;color:#315e68;font-size:18px;font-variant-numeric:tabular-nums}
+.launch-counter canvas{display:block;width:26px;height:35px;image-rendering:pixelated}
+.launch-counter output{min-width:1ch}
+.actions{display:flex;align-items:center;gap:3px}
+.marker{display:block;flex:none;width:11px;height:11px;border:2px solid #f8fbfa;border-radius:50%;box-shadow:0 0 0 1px #9eb7b8}
+.actions{gap:8px}
+.actions .icon-button{width:32px;height:32px;font-size:20px}
+.credit{font-size:11px;color:#799196;text-align:center;margin:12px 0 0}
+.credit a{color:#46767c;text-decoration:none}.credit a:hover{text-decoration:underline}
+@media(max-width:740px){.page{padding:0 10px 22px}.masthead{height:62px}#ruleDiagram{width:min(240px,calc(100vw - 112px));height:auto}.game-shell{margin:0 -10px;border-left:0;border-right:0}.toolbar{padding:8px 12px}.modal-card{padding:16px}.credit{padding:0 8px}}
+@media(prefers-reduced-motion:reduce){.modal{backdrop-filter:none}}
