@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+data/
+assets/reference_frame.jpg
+assets/key_crops.png
+assets/key_silhouettes.png
