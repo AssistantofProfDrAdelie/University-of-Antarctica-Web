@@ -8,6 +8,9 @@ const poems = [
   { title: '企鹅的一部分由月亮构成', author: 'boo妈', thumb: 'assets/web/poem-07-cover-thumb.webp', cover: 'assets/web/poem-07-cover.webp', text: 'assets/web/poem-07-text.webp', width: 420, height: 561 },
   { title: '风轻轻淌过黎明', author: '胖胖皮', thumb: 'assets/web/poem-08-cover-thumb.webp', cover: 'assets/web/poem-08-cover.webp', text: 'assets/web/poem-08-text.webp', width: 420, height: 561 },
   { title: '我想成为晚间的树叶', author: '进击的企鹅、只一小企鹅', thumb: 'assets/web/poem-09-cover-thumb.webp', cover: 'assets/web/poem-09-cover.webp', text: 'assets/web/poem-09-text.webp', width: 420, height: 560 },
+  { title: '旅行', author: '烂企鹅', thumb: 'assets/web/poem-10-cover-thumb.webp', pages: ['assets/web/poem-10-cover.webp', 'assets/web/poem-10-text-1.webp'], width: 420, height: 560 },
+  { title: '殉道者', author: '烂企鹅', thumb: 'assets/web/poem-11-cover-thumb.webp', pages: ['assets/web/poem-11-cover.webp', 'assets/web/poem-11-text-1.webp', 'assets/web/poem-11-text-2.webp', 'assets/web/poem-11-text-3.webp', 'assets/web/poem-11-text-4.webp'], width: 420, height: 560 },
+  { title: '贝加尔湖之水', author: '烂企鹅', thumb: 'assets/web/poem-12-cover-thumb.webp', pages: ['assets/web/poem-12-cover.webp', 'assets/web/poem-12-text-1.webp'], width: 420, height: 560 },
 ];
 
 const grid = document.querySelector('#poem-grid');
@@ -38,19 +41,20 @@ function renderArchive() {
 
 function currentPages() {
   const poem = poems[poemIndex];
-  return [poem.cover, poem.text];
+  return poem.pages || [poem.cover, poem.text];
 }
 
 function renderReader() {
   const poem = poems[poemIndex];
+  const pages = currentPages();
   const pageName = pageIndex === 0 ? '封面' : '正文';
   readerTitle.textContent = poem.title;
   readerPosition.textContent = `${poemIndex + 1} / ${poems.length} · ${poem.author}`;
-  readerImage.src = currentPages()[pageIndex];
-  readerImage.alt = `《${poem.title}》${pageName}`;
-  readerCaption.textContent = `${pageName} · ${pageIndex + 1} / 2`;
+  readerImage.src = pages[pageIndex];
+  readerImage.alt = `《${poem.title}》${pageName}${pageIndex ? `第${pageIndex}页` : ''}`;
+  readerCaption.textContent = `${pageName} · ${pageIndex + 1} / ${pages.length}`;
   previousPage.disabled = poemIndex === 0 && pageIndex === 0;
-  nextPage.disabled = poemIndex === poems.length - 1 && pageIndex === 1;
+  nextPage.disabled = poemIndex === poems.length - 1 && pageIndex === pages.length - 1;
 }
 
 function openPoem(index, trigger) {
@@ -70,15 +74,15 @@ function closePoem() {
 
 function movePage(direction) {
   if (direction > 0) {
-    if (pageIndex === 0) pageIndex = 1;
+    if (pageIndex < currentPages().length - 1) pageIndex += 1;
     else if (poemIndex < poems.length - 1) {
       poemIndex += 1;
       pageIndex = 0;
     }
-  } else if (pageIndex === 1) pageIndex = 0;
+  } else if (pageIndex > 0) pageIndex -= 1;
   else if (poemIndex > 0) {
     poemIndex -= 1;
-    pageIndex = 1;
+    pageIndex = currentPages().length - 1;
   }
   renderReader();
 }
