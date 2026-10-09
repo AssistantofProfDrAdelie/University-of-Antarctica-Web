@@ -658,6 +658,34 @@
     }
   },
   {
+    "name_cn": "可乐",
+    "name_en": null,
+    "major_cn": "南极饮品调制技术",
+    "major_en": "Antarctic Beverage Preparation Technology",
+    "admission_year": 2026,
+    "admission_batch": "第二十一批录取通知书",
+    "admission_date": "2026-09-21",
+    "original_order": 279,
+    "source": {
+      "filename": "第二十一期-可乐-2026-09-21.png",
+      "path": "南极大学录取通知书/2026年/第二十一批录取通知书/第二十一期-可乐-2026-09-21.png"
+    }
+  },
+  {
+    "name_cn": "小小马",
+    "name_en": null,
+    "major_cn": "冰面防滑胎制造",
+    "major_en": "Ice-surface Anti-slip Tire Manufacturing",
+    "admission_year": 2026,
+    "admission_batch": "第二十一批录取通知书",
+    "admission_date": "2026-09-21",
+    "original_order": 280,
+    "source": {
+      "filename": "第二十一期-小小马-2026-09-21.png",
+      "path": "南极大学录取通知书/2026年/第二十一批录取通知书/第二十一期-小小马-2026-09-21.png"
+    }
+  },
+  {
     "name_cn": "论文写不出来鹅",
     "name_en": null,
     "major_cn": "爱斯基摩冰屋钢琴演奏",
