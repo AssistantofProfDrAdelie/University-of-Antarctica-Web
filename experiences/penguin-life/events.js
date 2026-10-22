@@ -327,6 +327,1076 @@ const events = [
       { label: '请大家来旧照片坐坐', result: '照片从此挤了一点，但再也不显得空。', effects: { bond: 16 }, set: { photoVisited: true } },
       { label: '站在两张照片之间', result: '摄影师说这里没有取景。朋友说有你就有。', effects: { dignity: 10, bond: 10 }, set: { photoBetween: true } }
     ]
+  },
+
+  // 物种专属命运与可重复游玩的随机替换事件。
+  {
+    "id": "emperor-4",
+    "age": 4,
+    "title": "皇位是一把折叠椅",
+    "text": "你作为帝企鹅收到一把折叠椅。通知说这就是皇位，展开后即视为即位。你看了看说明书，最大承重竟然包括整个帝国。",
+    "choices": [
+      {
+        "label": "先坐下，看看管谁",
+        "result": "臣民名单只有椅子。你宣布免除它的站立义务。椅子很感动，折了。",
+        "effects": {
+          "dignity": 9,
+          "penguin": -4
+        },
+        "set": {
+          "speciesQuest": "emperor",
+          "imperialChair": true
+        }
+      },
+      {
+        "label": "把皇位借给石头",
+        "result": "石头在位期间没有发表过一次讲话，支持率稳定在地壳以上。你成为摄政企鹅。",
+        "effects": {
+          "bond": 8,
+          "dignity": 4
+        },
+        "set": {
+          "speciesQuest": "emperor",
+          "regentStone": true
+        }
+      },
+      {
+        "label": "申请皇帝失业保险",
+        "result": "工作人员找不到你的帝国，认定你已失去工作场所。每月补贴一枚不存在的金币。",
+        "effects": {
+          "food": 7,
+          "penguin": -6
+        },
+        "set": {
+          "speciesQuest": "emperor",
+          "unemployedEmperor": true
+        }
+      }
+    ],
+    "requires": {
+      "species": "emperor"
+    }
+  },
+  {
+    "id": "emperor-12",
+    "age": 12,
+    "title": "你的帝国要求报销",
+    "text": "海关寄来一封信：你名下的帝国出差去了昨天，需要你报销往返时差。发票抬头是「朕有限公司」。",
+    "choices": [
+      {
+        "label": "按天报销昨天",
+        "result": "财务问昨天住了几晚。你填「明晚」。时间报销系统当场放假。",
+        "effects": {
+          "dignity": 8,
+          "food": 6
+        },
+        "set": {
+          "speciesLegacy": "emperor-time"
+        }
+      },
+      {
+        "label": "宣布本鹅不参与时间管理",
+        "result": "帝国把你列为历史遗留问题。历史每周来一次，帮你把鱼热好。",
+        "effects": {
+          "bond": 10,
+          "penguin": -5
+        },
+        "set": {
+          "speciesLegacy": "emperor-history"
+        }
+      },
+      {
+        "label": "把皇位改成计时工",
+        "result": "你每天只当两小时皇帝。剩下二十二小时由椅子值班，政策更加贴地。",
+        "effects": {
+          "food": 10,
+          "dignity": -3
+        },
+        "set": {
+          "speciesLegacy": "emperor-shift"
+        }
+      }
+    ],
+    "requires": {
+      "species": "emperor"
+    }
+  },
+  {
+    "id": "emperor-20",
+    "age": 20,
+    "title": "退休时必须归还黄昏",
+    "text": "皇帝退休窗口要求归还任内使用的全部黄昏。你说黄昏每天都自己走了。窗口说口头离职不算。",
+    "choices": [
+      {
+        "label": "给太阳补开离职证明",
+        "result": "太阳终于可以准时下班。大家发现夜晚一直在门口等工位。",
+        "effects": {
+          "bond": 13,
+          "dignity": 8
+        },
+        "set": {
+          "speciesEnding": "emperor-sunset"
+        }
+      },
+      {
+        "label": "把自己折回那把椅子",
+        "result": "你变成一把很有帝王气质的折叠椅。朋友坐下时，你仍会说「免礼」。",
+        "effects": {
+          "penguin": -15,
+          "dignity": 12
+        },
+        "set": {
+          "speciesEnding": "emperor-chair"
+        }
+      },
+      {
+        "label": "申请以企鹅身份重新入职",
+        "result": "系统提示转岗成功。帝国保留了你的位置，职位名称是「会回来吃饭的那个」。",
+        "effects": {
+          "bond": 14,
+          "food": 6
+        },
+        "set": {
+          "speciesEnding": "emperor-penguin"
+        }
+      }
+    ],
+    "requires": {
+      "species": "emperor",
+      "speciesQuest": "emperor"
+    }
+  },
+  {
+    "id": "adelie-4",
+    "age": 4,
+    "title": "石头宣布自己是法定货币",
+    "text": "阿德利登记处把你捡的石头认定为一百块。你问一百什么，登记处说先别问，这样经济才能运转。",
+    "choices": [
+      {
+        "label": "存进地壳银行",
+        "result": "柜员是一条裂缝。它吞下石头，给你开了一张山脉存单。到账周期：三千万年。",
+        "effects": {
+          "dignity": 7,
+          "food": -3
+        },
+        "set": {
+          "speciesQuest": "adelie",
+          "crustDeposit": true
+        }
+      },
+      {
+        "label": "用石头买另一块石头",
+        "result": "你找回一块更小的石头作为零钱。交易结束后，地面少了一个明显的点。",
+        "effects": {
+          "food": 5,
+          "bond": 4
+        },
+        "set": {
+          "speciesQuest": "adelie",
+          "stoneExchange": true
+        }
+      },
+      {
+        "label": "宣布暂时实行鱼本位",
+        "result": "鱼表示反对被固定。它们认为自己至少应该是流动资产。",
+        "effects": {
+          "food": 8,
+          "penguin": -4
+        },
+        "set": {
+          "speciesQuest": "adelie",
+          "fishStandard": true
+        }
+      }
+    ],
+    "requires": {
+      "species": "adelie"
+    }
+  },
+  {
+    "id": "adelie-12",
+    "age": 12,
+    "title": "地壳总行调高大陆利率",
+    "text": "你年轻时办理的石头业务触发板块级审计。地壳总行要求你解释：为什么你的资产每天向东移动两厘米。",
+    "choices": [
+      {
+        "label": "说这是资产自主择业",
+        "result": "亚洲板块向你投递简历。你以办公面积不足为由，婉拒了一块大陆。",
+        "effects": {
+          "dignity": 10,
+          "penguin": -6
+        },
+        "set": {
+          "speciesLegacy": "adelie-continent"
+        }
+      },
+      {
+        "label": "要求以原地不动结算",
+        "result": "地球为配合你停止了半秒。半秒随后要求加班费，你第一次欠时间钱。",
+        "effects": {
+          "bond": 6,
+          "food": -4
+        },
+        "set": {
+          "speciesLegacy": "adelie-second"
+        }
+      },
+      {
+        "label": "把利息兑成一座小山",
+        "result": "小山每天跟在你后面。你不再有背景，它就是你的背景。",
+        "effects": {
+          "bond": 11,
+          "dignity": 5
+        },
+        "set": {
+          "speciesLegacy": "adelie-mountain"
+        }
+      }
+    ],
+    "requires": {
+      "species": "adelie"
+    }
+  },
+  {
+    "id": "adelie-20",
+    "age": 20,
+    "title": "一块大陆前来认领你",
+    "text": "地质部门发现你其实属于石头的私人收藏。石头只借出了你二十年，现在准备带你参加矿物展。",
+    "choices": [
+      {
+        "label": "在展签上写「活体零钱」",
+        "result": "你被摆在最显眼的位置。游客投鱼喂你，地壳银行认为这是现金流。",
+        "effects": {
+          "food": 15,
+          "dignity": 6
+        },
+        "set": {
+          "speciesEnding": "adelie-change"
+        }
+      },
+      {
+        "label": "申请成为石头的法定监护鹅",
+        "result": "法院认定双方互为监护。你负责鱼，石头负责永远在场。",
+        "effects": {
+          "bond": 16,
+          "penguin": 4
+        },
+        "set": {
+          "speciesEnding": "adelie-guardian"
+        }
+      },
+      {
+        "label": "把展览直接开在原地",
+        "result": "地球宣布永久参展。你成为唯一不需要搬运的巡回展策展鹅。",
+        "effects": {
+          "dignity": 14,
+          "penguin": -8
+        },
+        "set": {
+          "speciesEnding": "adelie-earth"
+        }
+      }
+    ],
+    "requires": {
+      "species": "adelie",
+      "speciesQuest": "adelie"
+    }
+  },
+  {
+    "id": "gentoo-4",
+    "age": 4,
+    "title": "你游出了上一页",
+    "text": "你是一只巴布亚企鹅。第一次认真游泳，发现海水后面有个「上一页」按钮。你到岸时，比出发早了七分钟。",
+    "choices": [
+      {
+        "label": "把七分钟存起来",
+        "result": "你把七分钟装进口袋。口袋从此每逢周一就先下班。",
+        "effects": {
+          "food": 7,
+          "dignity": 4
+        },
+        "set": {
+          "speciesQuest": "gentoo",
+          "savedMinutes": true
+        }
+      },
+      {
+        "label": "回去提醒自己别游太快",
+        "result": "你们在水里相遇，双方都说「借过」。海面因重复用户暂停服务。",
+        "effects": {
+          "bond": 8,
+          "penguin": -7
+        },
+        "set": {
+          "speciesQuest": "gentoo",
+          "metSelf": true
+        }
+      },
+      {
+        "label": "假装没有看到按钮",
+        "result": "浏览记录里仍留下一个你。你开始收到来自自己童年的好友申请。",
+        "effects": {
+          "dignity": 6,
+          "bond": 5
+        },
+        "set": {
+          "speciesQuest": "gentoo",
+          "historySelf": true
+        }
+      }
+    ],
+    "requires": {
+      "species": "gentoo"
+    }
+  },
+  {
+    "id": "gentoo-12",
+    "age": 12,
+    "title": "光速向你发出律师函",
+    "text": "光速认为你未经许可使用了它的工作方式。庭审安排在明天，你昨天已经出庭，今天只需领取结果。",
+    "choices": [
+      {
+        "label": "要求光速证明它比我快",
+        "result": "光还没赶到，你已签收胜诉通知。法官认定这属于抢答，庭审重新开始。",
+        "effects": {
+          "dignity": 11,
+          "penguin": -7
+        },
+        "set": {
+          "speciesLegacy": "gentoo-light"
+        }
+      },
+      {
+        "label": "把速度借给静止的石头",
+        "result": "石头忽然出现在远方，仍然一动不动。物理系集体申请年假。",
+        "effects": {
+          "bond": 10,
+          "food": 4
+        },
+        "set": {
+          "speciesLegacy": "gentoo-faststone"
+        }
+      },
+      {
+        "label": "退回多出来的昨天",
+        "result": "昨天被你退回之后，周历多出一格空白。全校决定在里面睡午觉。",
+        "effects": {
+          "bond": 12,
+          "dignity": 4
+        },
+        "set": {
+          "speciesLegacy": "gentoo-calendar"
+        }
+      }
+    ],
+    "requires": {
+      "species": "gentoo"
+    }
+  },
+  {
+    "id": "gentoo-20",
+    "age": 20,
+    "title": "你已经退休了两次",
+    "text": "退休办发现你多游了一圈，人生末尾排在了人生开头。你昨天收到的祝福，是自己明年寄的。",
+    "choices": [
+      {
+        "label": "按原路游回来",
+        "result": "你把所有早到的再见还给了原主。朋友终于能在你出现时说「你来了」。",
+        "effects": {
+          "bond": 15,
+          "penguin": 6
+        },
+        "set": {
+          "speciesEnding": "gentoo-ontime"
+        }
+      },
+      {
+        "label": "开通昨日快递",
+        "result": "你的快递保证昨天送达，退款也在购买之前到账。顾客暂时不需要买东西。",
+        "effects": {
+          "food": 15,
+          "dignity": 7
+        },
+        "set": {
+          "speciesEnding": "gentoo-yesterday"
+        }
+      },
+      {
+        "label": "把终点留给下一只企鹅",
+        "result": "后来者游到这里时，发现终点是一张你留的纸条：「急什么，鱼还没热。」",
+        "effects": {
+          "bond": 14,
+          "dignity": 8
+        },
+        "set": {
+          "speciesEnding": "gentoo-finish"
+        }
+      }
+    ],
+    "requires": {
+      "species": "gentoo",
+      "speciesQuest": "gentoo"
+    }
+  },
+  {
+    "id": "chinstrap-4",
+    "age": 4,
+    "title": "你的下巴被划为边境",
+    "text": "你是一只帽带企鹅，下巴那条黑线被地图部门识别为国界。今天吃的鱼需要先从嘴办理入境。",
+    "choices": [
+      {
+        "label": "给鱼盖一个消化签证",
+        "result": "签证有效期到晚饭。鱼很快成为本鹅不可分割的一部分，地理老师拒绝解释。",
+        "effects": {
+          "food": 12,
+          "penguin": -5
+        },
+        "set": {
+          "speciesQuest": "chinstrap",
+          "fishVisa": true
+        }
+      },
+      {
+        "label": "向下巴申请过境权",
+        "result": "下巴同意，但要求每天留下两秒沉默。你从此拥有了一个很像思考的习惯。",
+        "effects": {
+          "dignity": 8,
+          "bond": 4
+        },
+        "set": {
+          "speciesQuest": "chinstrap",
+          "chinTreaty": true
+        }
+      },
+      {
+        "label": "把头歪到线的另一侧",
+        "result": "你发现自己已经出国。身体仍在国内，正在替你收快递。",
+        "effects": {
+          "penguin": -8,
+          "dignity": 7
+        },
+        "set": {
+          "speciesQuest": "chinstrap",
+          "headAbroad": true
+        }
+      }
+    ],
+    "requires": {
+      "species": "chinstrap"
+    }
+  },
+  {
+    "id": "chinstrap-12",
+    "age": 12,
+    "title": "鼻子和肚子发生贸易摩擦",
+    "text": "下巴边检截获三条未申报的鱼。肚子宣称这是内部事务，鼻子要求召开嗅觉峰会。你只是想吃午饭。",
+    "choices": [
+      {
+        "label": "召开全鹅内部协商",
+        "result": "各器官按顺序发言。尾巴坚持自己有一票，但始终没等到麦克风。",
+        "effects": {
+          "bond": 9,
+          "dignity": 7
+        },
+        "set": {
+          "speciesLegacy": "chinstrap-parliament"
+        }
+      },
+      {
+        "label": "让鱼走绿色通道",
+        "result": "鱼被涂绿后顺利通关。海洋对此开展了一次颜色税改革。",
+        "effects": {
+          "food": 13,
+          "penguin": -5
+        },
+        "set": {
+          "speciesLegacy": "chinstrap-green"
+        }
+      },
+      {
+        "label": "宣布午饭属于公共海域",
+        "result": "所有鹅都来你嘴边围观。你赶紧宣布下午茶属于私人领海。",
+        "effects": {
+          "bond": 12,
+          "food": -4
+        },
+        "set": {
+          "speciesLegacy": "chinstrap-sea"
+        }
+      }
+    ],
+    "requires": {
+      "species": "chinstrap"
+    }
+  },
+  {
+    "id": "chinstrap-20",
+    "age": 20,
+    "title": "你成为一条可以拥抱的国界",
+    "text": "地图部门申请把你的下巴印进新版地图。你问以后怎么见朋友，对方递来一本跨境拥抱操作手册。",
+    "choices": [
+      {
+        "label": "宣布所有朋友免签",
+        "result": "当天入境量创历史新高。你被抱成一团，边检终于感到了温暖。",
+        "effects": {
+          "bond": 18,
+          "dignity": 5
+        },
+        "set": {
+          "speciesEnding": "chinstrap-visa"
+        }
+      },
+      {
+        "label": "把黑线留给地图，自己去散步",
+        "result": "你第一次没有国界地吃完一条鱼。地图上的线仍很认真地代班。",
+        "effects": {
+          "food": 12,
+          "penguin": 6
+        },
+        "set": {
+          "speciesEnding": "chinstrap-map"
+        }
+      },
+      {
+        "label": "把整片海登记为家属",
+        "result": "海在紧急联系人栏签了字。每次涨潮，都像它过来问你吃没吃。",
+        "effects": {
+          "bond": 15,
+          "penguin": -8
+        },
+        "set": {
+          "speciesEnding": "chinstrap-ocean"
+        }
+      }
+    ],
+    "requires": {
+      "species": "chinstrap",
+      "speciesQuest": "chinstrap"
+    }
+  },
+  {
+    "id": "rockhopper-4",
+    "age": 4,
+    "title": "眉毛宣布自治",
+    "text": "你是一只跳岩企鹅。你的眉毛比你先跳起来，宣布成立眉毛自治区。它们暂时仍使用你的头作为办公地址。",
+    "choices": [
+      {
+        "label": "承认它们，建立外交关系",
+        "result": "两边眉毛分别派来一名大使。你发现它们之间也有历史遗留问题。",
+        "effects": {
+          "bond": 9,
+          "penguin": -5
+        },
+        "set": {
+          "speciesQuest": "rockhopper",
+          "browDiplomacy": true
+        }
+      },
+      {
+        "label": "召开全脸代表大会",
+        "result": "眼睛闭会，嘴保持沉默。眉毛以全票通过了「下次再说」。",
+        "effects": {
+          "dignity": 9,
+          "bond": 4
+        },
+        "set": {
+          "speciesQuest": "rockhopper",
+          "faceCongress": true
+        }
+      },
+      {
+        "label": "自己也宣布从头部独立",
+        "result": "头表示欢迎。你成为自己楼上的邻居，房租由颈部统一代收。",
+        "effects": {
+          "dignity": 6,
+          "penguin": -9
+        },
+        "set": {
+          "speciesQuest": "rockhopper",
+          "headNeighbour": true
+        }
+      }
+    ],
+    "requires": {
+      "species": "rockhopper"
+    }
+  },
+  {
+    "id": "rockhopper-12",
+    "age": 12,
+    "title": "眉毛参加了学生会选举",
+    "text": "你的左眉竞选南极大学学生会主席，右眉负责反对。它们都要求你在表情管理上保持中立。",
+    "choices": [
+      {
+        "label": "以本鹅名义投弃权票",
+        "result": "眉毛要求你不要躲在眼皮后面。你的脸第一次出现了公开透明的争吵。",
+        "effects": {
+          "dignity": 8,
+          "penguin": -4
+        },
+        "set": {
+          "speciesLegacy": "rockhopper-neutral"
+        }
+      },
+      {
+        "label": "支持把上课改成跳课",
+        "result": "提案通过。全校改为跳着上课，出勤率和海拔同时上升。",
+        "effects": {
+          "bond": 12,
+          "dignity": 5
+        },
+        "set": {
+          "speciesLegacy": "rockhopper-jump"
+        }
+      },
+      {
+        "label": "让两边眉毛轮流上台",
+        "result": "它们共同组成联合眉阁。你只要抬头，就能召开一次内阁会议。",
+        "effects": {
+          "dignity": 11,
+          "bond": 7
+        },
+        "set": {
+          "speciesLegacy": "rockhopper-cabinet"
+        }
+      }
+    ],
+    "requires": {
+      "species": "rockhopper"
+    }
+  },
+  {
+    "id": "rockhopper-20",
+    "age": 20,
+    "title": "眉毛外交终于取得突破",
+    "text": "左右眉毛签署永久停火协议，决定一起向上长。联合声明说，这是为了给你留出更大的天空。",
+    "choices": [
+      {
+        "label": "给它们各颁一张退休证",
+        "result": "两边眉毛搬到照片上养老。你终于能毫无政治含义地眨眼。",
+        "effects": {
+          "dignity": 12,
+          "penguin": 5
+        },
+        "set": {
+          "speciesEnding": "rockhopper-retired"
+        }
+      },
+      {
+        "label": "接受提名，担任全脸秘书长",
+        "result": "你的第一项工作是调停鼻孔之间的通风争端。眉毛说它们看好你。",
+        "effects": {
+          "dignity": 15,
+          "bond": 5
+        },
+        "set": {
+          "speciesEnding": "rockhopper-secretary"
+        }
+      },
+      {
+        "label": "把协议折成两只小翅膀",
+        "result": "眉毛替你飞了一小段。你仍然站在原地，但整个表情已经出过远门。",
+        "effects": {
+          "bond": 15,
+          "penguin": -10
+        },
+        "set": {
+          "speciesEnding": "rockhopper-flying"
+        }
+      }
+    ],
+    "requires": {
+      "species": "rockhopper",
+      "speciesQuest": "rockhopper"
+    }
+  },
+  {
+    "id": "little-4",
+    "age": 4,
+    "title": "你的身高按厘米收费",
+    "text": "你是一只小蓝企鹅。物业认为你占用的高度属于低空资源，寄来一张「垂直空间使用费」账单。",
+    "choices": [
+      {
+        "label": "缩进一个标点符号里",
+        "result": "你藏进句号。物业把账单寄给这句话，这句话到现在还没说完",
+        "effects": {
+          "dignity": 7,
+          "penguin": -8
+        },
+        "set": {
+          "speciesQuest": "little",
+          "punctuationHome": true
+        }
+      },
+      {
+        "label": "要求按影子高度计费",
+        "result": "太阳一落山，你的住房面积归零。物业陪你等了一整夜的日出。",
+        "effects": {
+          "food": 7,
+          "dignity": 6
+        },
+        "set": {
+          "speciesQuest": "little",
+          "shadowLease": true
+        }
+      },
+      {
+        "label": "联合小鱼成立厘米工会",
+        "result": "工会宣布每一厘米都应被看见。第一场游行在尺子上顺利举行。",
+        "effects": {
+          "bond": 12,
+          "dignity": 4
+        },
+        "set": {
+          "speciesQuest": "little",
+          "centimetreUnion": true
+        }
+      }
+    ],
+    "requires": {
+      "species": "little"
+    }
+  },
+  {
+    "id": "little-12",
+    "age": 12,
+    "title": "你被认定为法律漏洞",
+    "text": "你太小，从规章的字缝里走了过去。法务部认定你是活体漏洞，要求你立刻补上自己。",
+    "choices": [
+      {
+        "label": "在漏洞旁边开一扇门",
+        "result": "大家终于有路可走。法务部给门颁发了「合规漏洞」证书。",
+        "effects": {
+          "bond": 13,
+          "dignity": 5
+        },
+        "set": {
+          "speciesLegacy": "little-door"
+        }
+      },
+      {
+        "label": "申请把字体调大",
+        "result": "字变大了，漏洞也变大了。你带着全家从「不得」二字中间搬了家。",
+        "effects": {
+          "bond": 11,
+          "penguin": -7
+        },
+        "set": {
+          "speciesLegacy": "little-font"
+        }
+      },
+      {
+        "label": "把自己写进规章的脚注",
+        "result": "从此每条严肃规定下面都有一只小蓝企鹅。读到最后的鹅才会发现你。",
+        "effects": {
+          "dignity": 12,
+          "penguin": -5
+        },
+        "set": {
+          "speciesLegacy": "little-footnote"
+        }
+      }
+    ],
+    "requires": {
+      "species": "little"
+    }
+  },
+  {
+    "id": "little-20",
+    "age": 20,
+    "title": "你在巨大的世界里拥有一扇小门",
+    "text": "你年轻时留下的字缝成为官方通道。大企鹅要求扩建，你发现那会拆掉自己最喜欢的一个逗号。",
+    "choices": [
+      {
+        "label": "保留逗号，让大家侧身过",
+        "result": "每只大企鹅都学会低一点头。逗号也学会等一等后面的人。",
+        "effects": {
+          "bond": 17,
+          "dignity": 6
+        },
+        "set": {
+          "speciesEnding": "little-comma"
+        }
+      },
+      {
+        "label": "把门开到句子外面",
+        "result": "你走出了这段介绍。旁白赶紧跟上，问外面还算不算上班。",
+        "effects": {
+          "penguin": -15,
+          "dignity": 11
+        },
+        "set": {
+          "speciesEnding": "little-outside"
+        }
+      },
+      {
+        "label": "把世界缩小到适合拥抱",
+        "result": "房子、山、规章都缩小了。只有朋友没有变，抱你的时候仍然很小心。",
+        "effects": {
+          "bond": 16,
+          "penguin": -8
+        },
+        "set": {
+          "speciesEnding": "little-world"
+        }
+      }
+    ],
+    "requires": {
+      "species": "little",
+      "speciesQuest": "little"
+    }
+  },
+  {
+    "id": "sea-buffering",
+    "age": 3,
+    "title": "海面正在加载",
+    "text": "你准备下海，海面却停在百分之九十九。进度条说最后百分之一需要你同意成为海的一部分。",
+    "choices": [
+      {
+        "label": "同意，但保留个人鱼权",
+        "result": "海把你加入用户协议。你每次游泳，都会收到一条自己同意过的鱼。",
+        "effects": {
+          "food": 11,
+          "penguin": -5
+        },
+        "set": {
+          "seaTerms": true
+        }
+      },
+      {
+        "label": "刷新整片海",
+        "result": "浪从头再来了一遍。岸边的鹅对自己的出场位置很不满意。",
+        "effects": {
+          "dignity": 8,
+          "bond": -3
+        },
+        "set": {
+          "seaRefresh": true
+        }
+      },
+      {
+        "label": "切换到离线海洋",
+        "result": "你在冰面上游了半天。海承认你有离线经验，补发一张湿润证明。",
+        "effects": {
+          "dignity": 6,
+          "penguin": -7
+        },
+        "set": {
+          "offlineOcean": true
+        }
+      }
+    ],
+    "variant": true
+  },
+  {
+    "id": "perimeter-outage",
+    "age": 9,
+    "title": "你的周长突然停电",
+    "text": "你绕着自己走了一圈，发现周长没有亮。维修员说你的边界欠费，今晚可能与附近企鹅连成一片。",
+    "choices": [
+      {
+        "label": "和邻居共用一个轮廓",
+        "result": "你们暂时成为同一只企鹅的两间卧室。晚饭时内部交通拥堵。",
+        "effects": {
+          "bond": 12,
+          "penguin": -8
+        },
+        "set": {
+          "sharedOutline": true
+        }
+      },
+      {
+        "label": "拿鱼给边界充电",
+        "result": "轮廓亮了。所有鱼都以为你是捕鱼灯，主动来投诉光污染。",
+        "effects": {
+          "food": 10,
+          "dignity": -4
+        },
+        "set": {
+          "chargedBorder": true
+        }
+      },
+      {
+        "label": "趁没边界，散开一会儿",
+        "result": "你把自己摊成一小片天气。朋友问今天怎么这么像你。",
+        "effects": {
+          "dignity": 8,
+          "penguin": -10
+        },
+        "set": {
+          "becameWeather": true
+        }
+      }
+    ],
+    "variant": true
+  },
+  {
+    "id": "tuesday-delete",
+    "age": 13,
+    "title": "星期二被误删了",
+    "text": "管理员清理日历时把星期二拖进了回收站。所有周二出生的鹅开始半透明，你的午饭只剩下「午」。",
+    "choices": [
+      {
+        "label": "从回收站认领星期二",
+        "result": "星期二回来后坚持叫你家长。你每周要开一次日历家长会。",
+        "effects": {
+          "bond": 10,
+          "dignity": 4
+        },
+        "set": {
+          "adoptedTuesday": true
+        }
+      },
+      {
+        "label": "把星期三复制一份",
+        "result": "第二个星期三自己改名叫星期三副本。周末要求增加一个岗位。",
+        "effects": {
+          "food": 8,
+          "penguin": -8
+        },
+        "set": {
+          "copiedWednesday": true
+        }
+      },
+      {
+        "label": "请大家先过一个标点",
+        "result": "全群落在逗号里休息了一天。事情没有解决，但语气缓和了。",
+        "effects": {
+          "bond": 8,
+          "dignity": 8
+        },
+        "set": {
+          "punctuationDay": true
+        }
+      }
+    ],
+    "variant": true
+  },
+  {
+    "id": "sea-scans-you",
+    "age": 14,
+    "title": "海扫了你一下",
+    "text": "你站在岸边，身上的羽毛排列恰好成为二维码。海扫了你一下，跳转到一份已经读完的企鹅使用说明。",
+    "choices": [
+      {
+        "label": "要求海先关注再看",
+        "result": "海关注了你。退潮时取关，涨潮时又关注，粉丝数极不稳定。",
+        "effects": {
+          "bond": 10,
+          "penguin": -5
+        },
+        "set": {
+          "oceanFollower": true
+        }
+      },
+      {
+        "label": "把说明书设为仅自己可见",
+        "result": "你也看不到自己。朋友按照记忆勾勒你的轮廓，画得稍微胖了一点。",
+        "effects": {
+          "bond": 11,
+          "dignity": -4
+        },
+        "set": {
+          "privatePenguin": true
+        }
+      },
+      {
+        "label": "更新到下一个企鹅版本",
+        "result": "系统提示「请勿在换羽时关闭企鹅」。你原地重启，鱼保持了登录状态。",
+        "effects": {
+          "dignity": 9,
+          "penguin": -9
+        },
+        "set": {
+          "penguinUpdate": true
+        }
+      }
+    ],
+    "variant": true
+  },
+  {
+    "id": "gravity-renewal",
+    "age": 19,
+    "title": "重力自动续费失败",
+    "text": "你的重力会员到期，脚底出现「体验版」水印。你每走三步就悬空一次，地面在下面举着续费二维码。",
+    "choices": [
+      {
+        "label": "申请教育优惠",
+        "result": "你展示当年滑倒的学习记录。重力认可你的长期投入，赠送终身落地权。",
+        "effects": {
+          "dignity": 10,
+          "penguin": 5
+        },
+        "set": {
+          "gravityScholar": true
+        }
+      },
+      {
+        "label": "改用朋友的家庭套餐",
+        "result": "朋友把你拉回冰上。你们从此共享同一个「放不下」。",
+        "effects": {
+          "bond": 15,
+          "penguin": -5
+        },
+        "set": {
+          "gravityFamily": true
+        }
+      },
+      {
+        "label": "取消订阅，先飘着",
+        "result": "你发现天空里全是忘记续费的鹅。大家已经成立物业，收费项目是高度。",
+        "effects": {
+          "bond": 10,
+          "penguin": -12
+        },
+        "set": {
+          "floatingTenant": true
+        }
+      }
+    ],
+    "variant": true
+  },
+  {
+    "id": "narrator-resignation",
+    "age": 22,
+    "title": "旁白申请离职",
+    "text": "陪你二十二年的旁白说自己想去当省略号。它的最后一项工作，是问你能不能替它描述一次自己。",
+    "choices": [
+      {
+        "label": "说「它一直都在」",
+        "result": "旁白沉默很久，打出六个点。每个点都是它坐下来的样子。",
+        "effects": {
+          "bond": 14,
+          "dignity": 6
+        },
+        "set": {
+          "narratorEllipsis": true
+        }
+      },
+      {
+        "label": "批准离职，我自己讲",
+        "result": "你第一次叫出下一年的标题。世界愣了一下，开始认真准备。",
+        "effects": {
+          "dignity": 14,
+          "penguin": -6
+        },
+        "set": {
+          "selfNarrator": true
+        }
+      },
+      {
+        "label": "邀请它作为角色留下",
+        "result": "一只叫旁白的企鹅从句子后面走出来。它终于能吃到自己描写了多年的鱼。",
+        "effects": {
+          "bond": 16,
+          "food": -4
+        },
+        "set": {
+          "narratorPenguin": true
+        }
+      }
+    ],
+    "variant": true
   }
 ];
 

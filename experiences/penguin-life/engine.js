@@ -13,18 +13,40 @@
     {id:'stone', label:'石头觉得你可靠', description:'你的信用记录目前由地质部门保管。'},
     {id:'slip', label:'滑倒可计学分', description:'地面是你的第一位导师。'}
   ];
+  const species = [
+    {id:'emperor',label:'帝企鹅',tagline:'皇位自动续费',description:'你没有帝国，但每月都会收到皇位账单。',trait:'体面 +12；欠费不会退位，只会转为试用皇帝。',index:0,bonus:{dignity:12},ending:'帝国不存在，朕正常参保',status:['皇位尚未激活','王冠试用中，禁止退订','皇位已纳入失业保险']},
+    {id:'adelie',label:'阿德利企鹅',tagline:'石头本位制',description:'你认为石头可以解决一切。石头暂未反对。',trait:'鹅缘 +12；石头账户由地质部门监管。',index:1,bonus:{bond:12},ending:'地壳是我的活期存款',status:['石头账户待开户','石头已上市，山体拒绝拆股','板块正在进行年度审计']},
+    {id:'gentoo',label:'巴布亚企鹅',tagline:'因游得快被海限速',description:'你比消息先到。消息要求你等一下它。',trait:'饱腹 +12；海里的测速仪对你保持关注。',index:2,bonus:{food:12},ending:'因超速被吊销时间',status:['海尚未安装测速仪','你的速度已引起光的注意','昨天正在追赶本鹅']},
+    {id:'chinstrap',label:'帽带企鹅',tagline:'下巴线即国境线',description:'下巴的一条黑线，被地图部门画成了边界。',trait:'含鹅量 +12；张嘴前请办理出入境。',index:3,bonus:{penguin:12},ending:'本人是一个口岸',status:['下巴暂未建关','张嘴属于跨境业务','下巴口岸全年无休']},
+    {id:'rockhopper',label:'跳岩企鹅',tagline:'眉毛拥有独立意见',description:'两侧眉毛各有一个学生会，都不代表你。',trait:'体面 +8、鹅缘 +4；理发需经三方会签。',index:4,bonus:{dignity:8,bond:4},ending:'眉毛执政，本鹅旁听',status:['眉毛正在筹备选举','左眉已对右眉发起质询','本体已成为眉毛的附属机构']},
+    {id:'little',label:'小蓝企鹅',tagline:'体积小，法律漏洞大',description:'你不是不见了，只是尚未达到系统的最小识别尺寸。',trait:'含鹅量 -12、鹅缘 +12；可从规章的字缝经过。',index:5,bonus:{penguin:-12,bond:12},ending:'小到不构成任何问题',status:['系统正在放大本鹅','你已进入规则的字缝','宏观世界申请与你会面']}
+  ];
+  function speciesFor(seed,id) {
+    if(id!==undefined && id!==null && !species.some(p=>p.id===id)) throw new RangeError('Unknown penguin species');
+    return species.find(p=>p.id===id) || species[hash('species:'+seed)%species.length];
+  }
+  function worldStatus(s) { const p=s.species||speciesFor(s.seed); return p.status[s.age<4?0:s.age<12?1:2]; }
   function events() { return typeof module !== 'undefined' && module.exports ? require('./events.js') : root.PenguinEvents; }
-  function createLife(seed) {
+  function createLife(seed,speciesId) {
     seed = String(seed || 'ice').slice(0, 48); const rng = random(seed);
     const origin = origins[Math.floor(rng()*origins.length)], talent = talents[Math.floor(rng()*talents.length)];
     const families = ['被一块石头抚养', '父母健在，正在缓冲', '全家只有你承认自己是企鹅'];
     const fortunes = ['继承半平方米阴影', '欠海豹三条鱼', '家徒四壁，四壁都是鱼'];
-    return {version:1,seed,age:0,name:['小冻','鹅不知','冰有礼','白忙','余鹅','石在'][Math.floor(rng()*6)],origin,talent,family:families[Math.floor(rng()*3)],fortune:fortunes[Math.floor(rng()*3)],stats:{food:55,dignity:talent.id==='slip'?65:50,bond:talent.id==='stone'?55:40,penguin:talent.id==='shadow'?65:80},flags:{origin:origin.id,talent:talent.id},history:[],phase:'birth'};
+    const penguinSpecies=speciesFor(seed,speciesId);
+    const stats={food:55,dignity:talent.id==='slip'?65:50,bond:talent.id==='stone'?55:40,penguin:talent.id==='shadow'?65:80};
+    for(const [k,v] of Object.entries(penguinSpecies.bonus))stats[k]=Math.max(0,Math.min(100,stats[k]+v));
+    return {version:2,species:penguinSpecies,seed,age:0,name:['小冻','鹅不知','冰有礼','白忙','余鹅','石在'][Math.floor(rng()*6)],origin,talent,family:families[Math.floor(rng()*3)],fortune:fortunes[Math.floor(rng()*3)],stats,flags:{origin:origin.id,talent:talent.id,species:penguinSpecies.id},history:[],phase:'birth'};
   }
   function begin(s) { if(s.phase !== 'birth') return s; return {...s,phase:'choice'}; }
   function eventFor(s) {
-    const eligible = events().filter(e => e.age === s.age+1 && (!e.requires || Object.entries(e.requires).every(([k,v])=>s.flags[k]===v)));
-    return eligible.find(e=>e.requires) || eligible.find(e=>!e.requires);
+    const legacy=s.version===1||s.legacy;
+    const eligible=events().filter(e=>e.age===s.age+1 && (!legacy||(!e.variant&&!e.requires?.species)) && (!e.requires||Object.entries(e.requires).every(([k,v])=>s.flags[k]===v)));
+    const established=eligible.find(e=>e.requires&&!e.requires.species);
+    if(established)return established;
+    const specific=eligible.find(e=>e.requires?.species);
+    if(specific)return specific;
+    const ordinary=eligible.filter(e=>!e.requires);
+    return ordinary[legacy?0:hash(s.seed+':event:'+String(s.age+1))%ordinary.length];
   }
   function choose(s,index) {
     if(s.phase !== 'choice') return s;
@@ -48,6 +70,10 @@
   function advance(s) { if(s.phase !== 'result') return s; return {...s,phase:s.age>=24?'ended':'choice'}; }
   function report(s) {
     const f=s.flags, lines=[];
+    const penguinSpecies=s.species||speciesFor(s.seed);
+    const endingTitles={'emperor-sunset':'批准太阳准点下班','emperor-chair':'朕是一把折叠椅','emperor-penguin':'皇帝转岗为企鹅','adelie-change':'活体零钱，现金流稳定','adelie-guardian':'石头的法定监护鹅','adelie-earth':'地球永久参展','gentoo-ontime':'终于准时抵达现在','gentoo-yesterday':'昨天送达，昨天退款','gentoo-finish':'终点还在热鱼','chinstrap-visa':'朋友免签，本鹅开放','chinstrap-map':'国境代班，本鹅散步','chinstrap-ocean':'紧急联系人：整片海','rockhopper-retired':'眉毛退休，表情自由','rockhopper-secretary':'全脸秘书长','rockhopper-flying':'表情已出国，本鹅未动','little-comma':'从逗号里通过一生','little-outside':'本人已走出这句话','little-world':'世界缩小，朋友照旧'};
+    const endingChoice=events().flatMap(e=>e.choices).find(c=>c.set?.speciesEnding===f.speciesEnding && f.speciesEnding);
+    if(!s.legacy&&s.version!==1) lines.push(`${penguinSpecies.label}的一生：${endingChoice?.result||penguinSpecies.description}`);
     if(f.stoneLoan) lines.push(f.pension ? '你借给石头的鱼，后来变成了养老金。石头比银行守信。' : '你曾借给石头一条鱼。它至今没有否认这笔债务。');
     if(f.shadowDinner) lines.push('你的影子替你赴宴，后来有了自己的作息。你们仍保持地面联系。');
     if(f.rename) lines.push('你把名字改成了“今日售罄”。世界因此很难预约到你。');
@@ -59,19 +85,27 @@
     if(f.origin==='fridge') lines.push('你曾以为冰箱灯是太阳，后来也给别人照过路。');
     if(!lines.length) lines.push('你没有成为任何传说，但每年都认真回答了一个奇怪的问题。');
     lines.push(`你在${s.origin.label}破壳，留下了${s.history.length}份年度记录。`);
-    const title = f.pension?'养老金由石头发放':f.fridgeLanguage?'古代冰箱语最后传鹅':f.diploma?'地面接触学名誉博士':f.partner?'彼此认错，终身有效':f.shadowDinner?'影子已上岸，本鹅仍在冰上':f.sign?'迁徙学奠基鹅':'本年度正常企鹅（存疑）';
+    const title = f.speciesEnding?(endingTitles[f.speciesEnding]||penguinSpecies.ending):f.pension?'养老金由石头发放':f.fridgeLanguage?'古代冰箱语最后传鹅':f.diploma?'地面接触学名誉博士':f.partner?'彼此认错，终身有效':f.shadowDinner?'影子已上岸，本鹅仍在冰上':f.sign?'迁徙学奠基鹅':'本年度正常企鹅（存疑）';
     const epitaph = f.finalWish==='blank'?'档案最后留了一张空椅子。后来，总有鹅来坐坐。':f.finalWish==='fridge'?'你的遗言已归入文学：冰箱里还有我。':f.pension?'你走后，石头每月仍按时汇款。':f.partnerFriend?'隔壁的企鹅说：明天也来吃饭吧。':f.partner?'那只企鹅说：没有认错，就是你。':f.shadowDinner?'那天，影子替你多站了一会儿。':'你的出生申请，现已转为永久档案。';
     return {title,lines:lines.slice(0,6),epitaph};
   }
   function validateState(s) {
-    if(!s || s.version!==1 || typeof s.seed!=='string' || s.seed.length>48 || !Number.isInteger(s.age) || s.age<0 || s.age>24) return false;
+    if(!s || ![1,2].includes(s.version) || typeof s.seed!=='string' || s.seed.length>48 || !Number.isInteger(s.age) || s.age<0 || s.age>24) return false;
     if(!['birth','choice','result','ended'].includes(s.phase) || !s.stats || !KEYS.every(k=>Number.isFinite(s.stats[k])&&s.stats[k]>=0&&s.stats[k]<=100)) return false;
     if(!s.flags || !origins.some(o=>o.id===s.flags.origin) || !talents.some(t=>t.id===s.flags.talent)) return false;
+    if(s.version===2 && (!s.species || !species.some(p=>p.id===s.species.id) || s.flags.species!==s.species.id)) return false;
+    if(s.legacy!==undefined&&typeof s.legacy!=='boolean')return false;
     if(!s.origin || s.origin.id!==s.flags.origin || !s.talent || s.talent.id!==s.flags.talent || typeof s.name!=='string') return false;
     if(!Array.isArray(s.history) || s.history.length!==s.age || !s.history.every((h,i)=>h && h.age===i+1 && typeof h.result==='string' && typeof h.title==='string' && typeof h.eventId==='string')) return false;
     if(s.phase==='birth'&&s.age!==0 || s.phase==='choice'&&s.age>=24 || s.phase==='result'&&s.age===0 || s.phase==='ended'&&s.age!==24) return false;
     return true;
   }
-  const api={createLife,begin,eventFor,choose,advance,report,validateState,origins,talents};
+  function migrateState(s) {
+    if(!validateState(s))return null;
+    if(s.version===2)return {...s,species:speciesFor(s.seed,s.species.id)};
+    const penguinSpecies=speciesFor(s.seed);
+    return {...s,version:2,legacy:true,species:penguinSpecies,flags:{...s.flags,species:penguinSpecies.id}};
+  }
+  const api={species,worldStatus,migrateState,createLife,begin,eventFor,choose,advance,report,validateState,origins,talents};
   if(typeof module!=='undefined'&&module.exports) module.exports=api; else root.PenguinLife=api;
 })(typeof window!=='undefined'?window:globalThis);
