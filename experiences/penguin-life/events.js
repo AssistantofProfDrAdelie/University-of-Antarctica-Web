@@ -1401,7 +1401,8 @@ const events = [
 ];
 
 const additions = typeof module !== 'undefined' && module.exports ? [...require('./events-a.js'),...require('./events-b.js')] : [...root.PenguinEventsA,...root.PenguinEventsB];
-const completeEvents=[...events,...additions.map(e=>({...e,edition:3}))];
+const chains=typeof module!=='undefined'&&module.exports?[...require('./chains-a.js'),...require('./chains-b.js'),...require('./chains-c.js')]:[...root.PenguinChainsA,...root.PenguinChainsB,...root.PenguinChainsC];
+const completeEvents=[...events,...additions.map(e=>({...e,edition:3})),...chains];
 if (typeof module !== 'undefined' && module.exports) module.exports = completeEvents;
 else root.PenguinEvents = completeEvents;
 })(typeof window !== 'undefined' ? window : globalThis);

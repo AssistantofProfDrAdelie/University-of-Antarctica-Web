@@ -24,7 +24,8 @@
   function ambientLine(s){const p=s.species||speciesFor(s.seed,undefined,2);return p.flavor[hash(s.seed+':scene:'+s.age)%p.flavor.length];}
   function worldStatus(s) { const p=s.species||speciesFor(s.seed,undefined,2); return p.status[s.age<4?0:s.age<12?1:2]; }
   function events() { return typeof module !== 'undefined' && module.exports ? require('./events.js') : root.PenguinEvents; }
-  function createLife(seed,speciesId,model=3) {
+  function createLife(seed,speciesId,model=3,storyVersion=model===3?4:3) {
+    if(![3,4].includes(storyVersion))throw new RangeError('Unknown story version');
     if(![2,3].includes(model))throw new RangeError('Unknown sampling model');
     seed = String(seed || 'ice').slice(0, 48); const rng = random(seed);
     const originDraw=rng(),talent=talents[Math.floor(rng()*talents.length)];
@@ -39,18 +40,21 @@
     const stats={food:55,dignity:talent.id==='slip'?65:50,bond:talent.id==='stone'?55:40,penguin:talent.id==='shadow'?65:80};
     for(const [k,v] of Object.entries(penguinSpecies.bonus))stats[k]=Math.max(0,Math.min(100,stats[k]+v));
     const names=model===2?expandedNames.slice(0,6):expandedNames;const familyPool=model===2?families:expandedFamilies,fortunePool=model===2?fortunes:expandedFortunes;
-    return {version:2,samplingVersion:model,species:penguinSpecies,seed,age:0,name:names[Math.floor(rng()*names.length)],origin,talent,family:familyPool[Math.floor(rng()*familyPool.length)],fortune:fortunePool[Math.floor(rng()*fortunePool.length)],stats,flags:{origin:origin.id,talent:talent.id,species:penguinSpecies.id},history:[],phase:'birth'};
+    return {version:2,samplingVersion:model,storyVersion,species:penguinSpecies,seed,age:0,name:names[Math.floor(rng()*names.length)],origin,talent,family:familyPool[Math.floor(rng()*familyPool.length)],fortune:fortunePool[Math.floor(rng()*fortunePool.length)],stats,flags:{origin:origin.id,talent:talent.id,species:penguinSpecies.id,...(storyVersion===4?{storyArc:penguinSpecies.id+'_'+(hash('story:'+seed)%2?'b':'a')}: {})},history:[],phase:'birth'};
   }
   function begin(s) { if(s.phase !== 'birth') return s; return {...s,phase:'choice'}; }
   function eventFor(s) {
     const legacy=s.version===1||s.legacy;
-    const eligible=events().filter(e=>e.age===s.age+1 && ((s.samplingVersion||2)===3||e.edition!==3) && (!legacy||(!e.variant&&!e.requires?.species)) && (!e.requires||Object.entries(e.requires).every(([k,v])=>s.flags[k]===v)));
+    const eligible=events().filter(e=>e.age===s.age+1 && (e.edition||2)<=(s.storyVersion||3) && ((s.samplingVersion||2)===3||(e.edition||2)<3) && (!legacy||(!e.variant&&!e.requires?.species)) && (!e.requires||Object.entries(e.requires).every(([k,v])=>s.flags[k]===v)));
+    const chain=eligible.find(e=>e.edition===4&&e.requires?.storyArc);
+    if(chain)return chain;
     const established=eligible.find(e=>e.requires&&!e.requires.species);
     if(established)return established;
     const specific=eligible.find(e=>e.requires?.species);
     if(specific)return specific;
     const ordinary=eligible.filter(e=>!e.requires);
-    return ordinary[legacy?0:hash(s.seed+':event:'+String(s.age+1))%ordinary.length];
+    const index=s.storyVersion===4?Math.floor(random('event:'+s.seed+':'+String(s.age+1))()*ordinary.length):hash(s.seed+':event:'+String(s.age+1))%ordinary.length;
+    return ordinary[legacy?0:index];
   }
   function choose(s,index) {
     if(s.phase !== 'choice') return s;
@@ -78,6 +82,7 @@
     const endingTitles={'emperor-sunset':'批准太阳准点下班','emperor-chair':'朕是一把折叠椅','emperor-penguin':'皇帝转岗为企鹅','adelie-change':'活体零钱，现金流稳定','adelie-guardian':'石头的法定监护鹅','adelie-earth':'地球永久参展','gentoo-ontime':'终于准时抵达现在','gentoo-yesterday':'昨天送达，昨天退款','gentoo-finish':'终点还在热鱼','chinstrap-visa':'朋友免签，本鹅开放','chinstrap-map':'国境代班，本鹅散步','chinstrap-ocean':'紧急联系人：整片海','rockhopper-retired':'眉毛退休，表情自由','rockhopper-secretary':'全脸秘书长','rockhopper-flying':'表情已出国，本鹅未动','little-comma':'从逗号里通过一生','little-outside':'本人已走出这句话','little-world':'世界缩小，朋友照旧'};
     const endingChoice=events().flatMap(e=>e.choices).find(c=>c.set?.speciesEnding===f.speciesEnding && f.speciesEnding);
     if(!s.legacy&&s.version!==1) lines.push(`${penguinSpecies.label}的一生：${endingChoice?.result||penguinSpecies.description}`);
+    if(s.storyVersion===4){const chapter=s.history.find(h=>h.age===15);if(chapter)lines.push('第十五年的怪事留下了回声：'+chapter.result);}
     if(f.stoneLoan) lines.push(f.pension ? '你借给石头的鱼，后来变成了养老金。石头比银行守信。' : '你曾借给石头一条鱼。它至今没有否认这笔债务。');
     if(f.shadowDinner) lines.push('你的影子替你赴宴，后来有了自己的作息。你们仍保持地面联系。');
     if(f.rename) lines.push('你把名字改成了“今日售罄”。世界因此很难预约到你。');
@@ -99,6 +104,9 @@
     if(!s.flags || ![...origins.map(o=>o.id),...species.map(p=>'habitat-'+p.id)].includes(s.flags.origin) || !talents.some(t=>t.id===s.flags.talent)) return false;
     if(s.version===2 && (!s.species || !species.some(p=>p.id===s.species.id) || s.flags.species!==s.species.id)) return false;
     if(s.samplingVersion!==undefined&&![2,3].includes(s.samplingVersion))return false;
+    if(s.storyVersion!==undefined&&![3,4].includes(s.storyVersion))return false;
+    if(s.storyVersion===4&&!['a','b'].some(route=>s.flags.storyArc===s.species?.id+'_'+route))return false;
+    if(s.storyVersion===4&&s.age>=3&&!['direct','side'].includes(s.flags.chainRoute))return false;
     if(s.legacy!==undefined&&typeof s.legacy!=='boolean')return false;
     if(!s.origin || s.origin.id!==s.flags.origin || !s.talent || s.talent.id!==s.flags.talent || typeof s.name!=='string') return false;
     if(!Array.isArray(s.history) || s.history.length!==s.age || !s.history.every((h,i)=>h && h.age===i+1 && typeof h.result==='string' && typeof h.title==='string' && typeof h.eventId==='string')) return false;
@@ -107,9 +115,9 @@
   }
   function migrateState(s) {
     if(!validateState(s))return null;
-    if(s.version===2)return {...s,samplingVersion:s.samplingVersion||2,species:speciesFor(s.seed,s.species.id)};
+    if(s.version===2)return {...s,samplingVersion:s.samplingVersion||2,storyVersion:s.storyVersion||3,species:speciesFor(s.seed,s.species.id)};
     const penguinSpecies=speciesFor(s.seed,undefined,2);
-    return {...s,version:2,samplingVersion:2,legacy:true,species:penguinSpecies,flags:{...s.flags,species:penguinSpecies.id}};
+    return {...s,version:2,samplingVersion:2,storyVersion:3,legacy:true,species:penguinSpecies,flags:{...s.flags,species:penguinSpecies.id}};
   }
   const api={species,totalWeight,probabilityFor,pickSpecies,speciesFor,ambientLine,worldStatus,migrateState,createLife,begin,eventFor,choose,advance,report,validateState,origins,talents};
   if(typeof module!=='undefined'&&module.exports) module.exports=api; else root.PenguinLife=api;
