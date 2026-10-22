@@ -7,7 +7,7 @@
   <meta name="description" content="你的出生申请已通过，物种调剂为企鹅。随机破壳，认真胡来，过完一段会被世界记住的鹅生。南极大学出品。">
   <title>这辈子先当企鹅 · 南极大学</title>
   <link rel="icon" href="../../南极大学校徽2.png">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
   <header class="masthead"><a class="brand" href="../../"><img src="../../南极大学校徽2.png" alt=""><span>南极大学</span></a><a class="back-link" href="../../campus/">返回校园 <span aria-hidden="true">↗</span></a></header>
@@ -16,7 +16,7 @@
       <figure class="portrait"><div id="species-art" class="species-art" role="img" hidden></div><img id="default-art" src="assets/penguin-life.webp" alt="一只抱着鱼的企鹅，身旁是石头与一台冰箱" width="800" height="1000"><figcaption>图中三位均具有完全民事行为能力。</figcaption></figure>
       <div class="dossier-heading"><h2>鹅籍档案</h2><span id="file-number">待分配</span></div>
       <div id="identity" class="identity"><p>尚未出生，暂无意见。</p></div>
-      <div id="stats" class="stats" hidden></div>
+      <div id="stats" class="stats" hidden></div><details id="nature-note" class="nature-note" hidden></details>
       <p class="save-note" id="save-note">无需登录 · 记录只保存在此浏览器</p>
     </aside>
     <div class="story-column">
@@ -25,13 +25,14 @@
       <section id="past" class="past" hidden><div class="section-heading"><h2>前鹅之鉴</h2><span>最近 6 段鹅生</span></div><div id="past-list"></div></section>
     </div>
   </main>
-  <footer><span>这辈子先当企鹅</span><span>纯属虚构。若与现实雷同，请检查含鹅量。</span><button id="restart" class="quiet-button" hidden>重新投胎</button><button id="species-guide" class="quiet-button">物种名录</button><button id="help" class="quiet-button">玩法与存档</button></footer>
-  <dialog id="species-dialog"><button id="close-species" class="dialog-close" aria-label="关闭物种名录">×</button><h2>六种企鹅，六套手续。</h2><p>种类真实，职业病纯属虚构。每种鹅都有自己的出生待遇与三段专属剧情。</p><div id="species-list" class="species-list"></div></dialog>
-  <dialog id="help-dialog"><button id="close-help" class="dialog-close" aria-label="关闭说明">×</button><h2>一份不保证合理的说明</h2><p>每局经历 24 年。物种、出生地、家庭与天赋均随机分配，不能指定。每种有专属事件，同一物种也会抽到不同通用怪事。每年做一个选择，再看世界如何回应。早年的怪事，会在后来的年份回来。</p><p>饱腹、体面、鹅缘和含鹅量会随选择变化。没有唯一的好结局，也不会因为某个数值归零提前结束。</p><p>每次选择后自动保存，关闭页面可回来继续。自动模式会替你随机选择；切到后台时自动暂停。存档保存在此浏览器，清理浏览器数据会丢失记录。</p><p>结尾可以下载鹅生卡、复制报告，或邀请朋友从同一个出身开始。无需联网生成故事。</p><button class="primary" id="understood">知道了，合理。</button></dialog>
+  <footer><span>这辈子先当企鹅</span><span>纯属虚构。若与现实雷同，请检查含鹅量。</span><button id="restart" class="quiet-button" hidden>重新投胎</button><button id="species-guide" class="quiet-button">物种名录</button><button id="probability-guide" class="quiet-button">概率与来源</button><button id="help" class="quiet-button">玩法与存档</button></footer>
+  <dialog id="species-dialog"><button id="close-species" class="dialog-close" aria-label="关闭物种名录">×</button><h2>十八种企鹅，十八种离谱。</h2><p>真实特征写在底稿里，胡思乱想长在故事里。名录只供查看，不能挑选出身。</p><div class="species-search-row"><label for="species-search">搜索企鹅</label><input id="species-search" type="search" placeholder="中文名或学名" autocomplete="off"><span id="species-count"></span></div><div id="species-list" class="species-list"></div></dialog>
+  <dialog id="probability-dialog"><button id="close-probability" class="dialog-close" aria-label="关闭概率说明">×</button><h2>命运这次怎么算？</h2><p>采用常见的 18 种分类口径，南、北跳岩分列。分类体系对部分企鹅仍有拆分差异。</p><p><strong>游戏权重 = 该物种繁殖对估计 ÷ 18 种估计总和。</strong>区间取中点；非洲企鹅由 2023 年全球成熟个体估计除以 2 换算。</p><p>资料来自不同年份，不是同年普查；繁殖周期、产卵数和雏鸟成活率未纳入，因此<strong>不是实际年度出生概率</strong>。不设稀有物种保底。栖地有真实依据，照片与冰箱出身属于幻想。</p><div class="probability-table-wrap"><table class="probability-table"><thead><tr><th>物种</th><th>游戏权重</th><th>繁殖对估计</th><th>资料年代与来源</th></tr></thead><tbody id="probability-rows"></tbody></table></div></dialog>
+  <dialog id="help-dialog"><button id="close-help" class="dialog-close" aria-label="关闭说明">×</button><h2>一份不保证合理的说明</h2><p>每局经历 24 年。18 种企鹅按公开种群估计加权抽取，不能指定。普通出生地对应物种栖地，也有照片或冰箱等幻想开局。家庭与天赋随机分配。每种有专属事件，同一物种也会抽到不同通用怪事。每年做一个选择，再看世界如何回应。早年的怪事，会在后来的年份回来。</p><p>饱腹、体面、鹅缘和含鹅量会随选择变化。没有唯一的好结局，也不会因为某个数值归零提前结束。</p><p>每次选择后自动保存，关闭页面可回来继续。自动模式会替你随机选择；切到后台时自动暂停。存档保存在此浏览器，清理浏览器数据会丢失记录。</p><p>结尾可以下载鹅生卡、复制报告，或邀请朋友从同一个出身开始。无需联网生成故事。</p><button class="primary" id="understood">知道了，合理。</button></dialog>
   <dialog id="restart-dialog"><h2>申请重新投胎？</h2><p>本局尚未归档。重新出生会替换当前进度，已经归档的鹅生仍会保留。</p><div class="dialog-actions"><button class="secondary" id="cancel-restart">继续当这只</button><button class="primary" id="confirm-restart">接受新的调剂</button></div></dialog>
   <dialog id="copy-dialog"><button class="dialog-close" id="close-copy" aria-label="关闭报告">×</button><h2>这份鹅生，拿去。</h2><p>可以长按或选中复制下面的文字。</p><textarea id="copy-text" readonly rows="12" aria-label="可复制的鹅生报告"></textarea></dialog>
   <p id="toast" class="toast" role="status" hidden></p>
   <noscript><p>请启用 JavaScript。企鹅已到岗，世界还没启动。</p></noscript>
-  <script src="events.js?v=3"></script><script src="engine.js?v=3"></script><script src="app.js?v=3"></script>
+  <script src="species.js?v=4"></script><script src="events-a.js?v=4"></script><script src="events-b.js?v=4"></script><script src="events.js?v=4"></script><script src="engine.js?v=4"></script><script src="app.js?v=4"></script>
 </body>
 </html>

@@ -1400,6 +1400,8 @@ const events = [
   }
 ];
 
-if (typeof module !== 'undefined' && module.exports) module.exports = events;
-else root.PenguinEvents = events;
+const additions = typeof module !== 'undefined' && module.exports ? [...require('./events-a.js'),...require('./events-b.js')] : [...root.PenguinEventsA,...root.PenguinEventsB];
+const completeEvents=[...events,...additions.map(e=>({...e,edition:3}))];
+if (typeof module !== 'undefined' && module.exports) module.exports = completeEvents;
+else root.PenguinEvents = completeEvents;
 })(typeof window !== 'undefined' ? window : globalThis);
