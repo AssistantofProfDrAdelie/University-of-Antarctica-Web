@@ -13,3 +13,5 @@ body.is-welcome .dossier-heading,body.is-welcome .identity,body.is-welcome .stat
 .chain-recall{font-size:13px!important;line-height:1.8!important;color:#627268;border-left:2px solid #c4ccbf;padding-left:12px;margin-bottom:18px!important}
 
 .life-note,.life-warning{font-size:13px;line-height:1.8;color:#8d3f2a}.life-warning{border-left:3px solid #b34f32;padding:9px 12px;background:#eee5d9}.ending-notice{border:1px solid #b34f32;padding:20px 24px;margin:24px 0;background:#eee5d9}.ending-notice h2{font-family:var(--serif,serif);font-size:26px;color:#a3442b;line-height:1.5;margin:12px 0}.ending-notice p{font-size:14px;line-height:1.9}
+
+.cause-trace{border-top:1px solid #ceb8a7;margin-top:16px;padding-top:12px;color:#6e4a3d;font-size:12px!important}

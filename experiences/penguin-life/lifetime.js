@@ -1,5 +1,6 @@
 /* 寿命曲线为游戏参数，不是18物种的真实年度死亡率。 */
 (function(root){'use strict';
+const Fate=typeof module!=='undefined'&&module.exports?require('./fates.js'):root.PenguinFates;
 const content=typeof module!=='undefined'&&module.exports?require('./life-events.js'):root.PenguinLifeEvents;
 function hash(text){let h=2166136261;for(const c of text)h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0;}
 function draw(text){let n=hash(text)+0x6D2B79F5;let t=Math.imul(n^n>>>15,1|n);t^=t+Math.imul(t^t>>>7,61|t);return ((t^t>>>14)>>>0)/4294967296;}
@@ -8,7 +9,7 @@ function risk(s,choice={}){
  const age=s.age,food=s.stats.food;
  const p=profile(s.species.id),aging=.005*Math.pow(Math.max(0,age-p.onset),1.55);
  const hunger=food===0?.32:food<10?.16:food<20?.07:0;
- const environment=(age<=2?.032:.014)*(s.stats.bond>=70?.7:1);
+ const environment=s.lifeVersion===2?0:(age<=2?.032:.014)*(s.stats.bond>=70?.7:1);
  const adventure=Number.isFinite(choice.risk)?Math.max(0,Math.min(.5,choice.risk)):0;
  return {chance:age>=p.limit?1:Math.min(.97,environment+hunger+aging+adventure),aging,hunger,adventure,environment};
 }
@@ -18,8 +19,9 @@ function resolve(s,choice={}){
  const cap=s.age>=profile(s.species.id).limit;
  const causeRoll=draw('cause:'+s.seed+':'+s.age)*(r.environment+r.hunger+r.aging+r.adventure);
  let kind=cap?'oldAge':causeRoll<r.hunger?'hunger':causeRoll<r.hunger+r.aging?'oldAge':causeRoll<r.hunger+r.aging+r.adventure?'accident':draw('strange:'+s.seed+':'+s.age)<.22?'vanished':'accident';
- const hazard=content.hazards.find(e=>e.id===s.history.at(-1).eventId);
  const adventureCaused=!cap&&causeRoll>=r.hunger+r.aging&&causeRoll<r.hunger+r.aging+r.adventure;
+ if(s.lifeVersion===2&&adventureCaused){const fate=Fate.ending(s,choice);return fate?{id:fate.id,title:fate.title,text:fate.text,epitaph:fate.epitaph,kind:fate.kind,causeLabel:fate.causeLabel,cause:fate.cause,fateId:fate.fateId,age:s.age,eventId:s.history.at(-1).eventId}:null;}
+ const hazard=content.hazards.find(e=>e.id===s.history.at(-1).eventId);
  if(adventureCaused&&hazard?.id==='hazard-unwritten-door')kind='vanished';
  const pool=content.endings[kind],ending=pool[Math.floor(draw('ending:'+s.seed+':'+s.age)*pool.length)];
  const cold=['emperor','adelie','chinstrap'].includes(s.species.id);
@@ -29,6 +31,7 @@ function resolve(s,choice={}){
  return {...ending,text,kind,age:s.age,eventId:s.history.at(-1).eventId};
 }
 function event(s){
+ if(s.lifeVersion===2){const echo=Fate.event(s);if(echo)return echo;}
  const age=s.age+1,cold=['emperor','adelie','chinstrap'].includes(s.species.id);
  const hazards=content.hazards.filter(e=>!e.habitat||e.habitat==='any'||e.habitat===(cold?'cold':'warm'));
  if(![3,8,15,22].includes(age)&&draw('hazard:'+s.seed+':'+age)<.20){const e=hazards[Math.floor(draw('hazard-pick:'+s.seed+':'+age)*hazards.length)];return {...e,age,lifeEvent:true};}
@@ -37,7 +40,7 @@ function event(s){
  const used=new Set(s.history.slice(-8).map(h=>h.eventId));const fresh=eligible.filter(e=>!used.has(e.id));const pool=fresh.length?fresh:eligible;
  return {...pool[Math.floor(draw('late:'+s.seed+':'+age)*pool.length)],age,lifeEvent:true};
 }
-function validTerminal(s){const t=s.terminal;return s.age>0&&content.endings[t.kind]?.some(e=>e.id===t.id)&&t.eventId===s.history.at(-1)?.eventId;}
+function validTerminal(s){const t=s.terminal;if(t.fateId)return s.lifeVersion===2&&t.eventId===s.history.at(-1)?.eventId&&Fate.validTerminal(s);if(s.lifeVersion===2&&!['hunger','oldAge'].includes(t.kind))return false;return s.age>0&&content.endings[t.kind]?.some(e=>e.id===t.id)&&t.eventId===s.history.at(-1)?.eventId;}
 const api={profile,risk,resolve,event,validTerminal,MAX_AGE:50};
 if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.PenguinLifetime=api;
 })(typeof window!=='undefined'?window:globalThis);
