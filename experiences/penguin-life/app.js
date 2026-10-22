@@ -9,6 +9,7 @@
   const sharedSeed=incoming&&/^[a-zA-Z0-9_-]{1,48}$/.test(incoming)?incoming:null;
   const sharedModel=sharedSeed?(new URLSearchParams(location.search).get('model')==='3'?3:2):3;
   const sharedStory=sharedSeed?(sharedModel===3&&new URLSearchParams(location.search).get('story')==='4'?4:3):4;
+  const sharedLife=sharedSeed&&sharedStory===4&&new URLSearchParams(location.search).get('life')==='1'?1:0;
   const atlasImages=new Map();
   function atlasFor(p){const name=p.atlas||'species-atlas.webp';if(!atlasImages.has(name)){const image=new Image();image.src='assets/'+name;atlasImages.set(name,image);}return atlasImages.get(name);}
   function percent(p){const value=G.probabilityFor(p.id)*100;return value.toFixed(value<1?3:2)+'%';}
@@ -20,7 +21,7 @@
   function stopAuto(){automatic=false;clearTimeout(timer);const button=$('auto');if(button){button.setAttribute('aria-pressed','false');button.textContent='自动代鹅选择';}}
   function lifeKey(s){return s.runId||JSON.stringify([s.seed,s.species.id,s.history.map(h=>h.eventId+':'+h.choice)]);}
   function archive(){if(state.phase==='ended'){past=[state,...past.filter(s=>lifeKey(s)!==lifeKey(state))].slice(0,6);}}
-  function start(seed){stopAuto();viewing=false;showAll=false;state={...G.createLife(seed||freshSeed(),undefined,seed?sharedModel:3,seed?sharedStory:4),runId:freshSeed()};persist();render();focusHeading();}
+  function start(seed){stopAuto();viewing=false;showAll=false;state={...G.createLife(seed||freshSeed(),undefined,seed?sharedModel:3,seed?sharedStory:4,seed?sharedLife:1),runId:freshSeed()};persist();render();focusHeading();}
   function focusHeading(){const h=$('stage').querySelector('h1');if(h){h.tabIndex=-1;h.focus({preventScroll:true});}if(window.innerWidth<601)$('stage').scrollIntoView({behavior:'instant',block:'start'});}
   function act(fn){state=fn(state);archive();persist();render();focusHeading();}
   function showSpeciesArt(p){$('species-art').hidden=!p;$('default-art').hidden=!!p;if(p){$('species-art').style.backgroundImage=`url("assets/${p.atlas||'species-atlas.webp'}")`;atlasFor(p);$('species-art').style.backgroundPosition=`${p.index%3*50}% ${Math.floor(p.index/3)*100}%`;$('species-art').setAttribute('aria-label',p.label+'：'+p.tagline);}document.querySelector('.portrait figcaption').textContent=p?p.tagline+'。':'图中三位均具有完全民事行为能力。';}
@@ -34,7 +35,7 @@
     $('save-note').textContent=storageOK?'无需登录 · 记录只保存在此浏览器':'浏览器未允许保存 · 本次仍可完整游玩';
   }
   function renderWelcome(){
-    $('stage').innerHTML=`<h1 class="intro-title">这辈子<br>先当<em>企鹅。</em></h1><p class="intro-text">你的出生申请已通过。<br>物种调剂为企鹅。</p><p class="intro-small">随机破壳，认真胡来。<br>石头会记得你的鱼，影子有自己的前程。<br>十八种企鹅，三十六条连锁怪事。<br>同一物种重开，也有不同的命运找上门。</p><p class="intro-small">物种按种群估计加权抽取，其他出身随机。<br>你只负责出生，命运负责乱来。</p><div class="intro-actions"><button class="primary" id="new-life">${sharedSeed?'接受同一出身':'接受调剂'} <span aria-hidden="true">&nbsp; →</span></button>${state?`<button class="secondary" id="resume">${state.phase==='ended'?'查看上辈子':'继续当这只'}</button>`:''}</div>${sharedSeed?'<p class="intro-small">朋友把出生申请转给了你。相同起点，选择由你。</p>':''}<p class="intro-small">24 年 · ${window.PenguinEvents.length} 个事件 · ${window.PenguinEvents.reduce((n,e)=>n+e.choices.length,0)} 个选项 · <button class="quiet-button" id="browse-species">翻开企鹅名录</button></p>`;
+    $('stage').innerHTML=`<h1 class="intro-title">这辈子<br>先当<em>企鹅。</em></h1><p class="intro-text">你的出生申请已通过。<br>物种调剂为企鹅。</p><p class="intro-small">随机破壳，认真胡来。<br>石头会记得你的鱼，影子有自己的前程。<br>十八种企鹅，三十六条连锁怪事。<br>同一物种重开，也有不同的命运找上门。</p><p class="intro-small">物种按种群估计加权抽取，其他出身随机。<br>你只负责出生，命运负责乱来。<br>可能戛然而止，也可能把晚年过成番外。</p><div class="intro-actions"><button class="primary" id="new-life">${sharedSeed?'接受同一出身':'接受调剂'} <span aria-hidden="true">&nbsp; →</span></button>${state?`<button class="secondary" id="resume">${state.phase==='ended'?'查看上辈子':'继续当这只'}</button>`:''}</div>${sharedSeed?'<p class="intro-small">朋友把出生申请转给了你。相同起点，选择由你。</p>':''}<p class="intro-small">寿命不定 · ${window.PenguinEvents.length+window.PenguinLifeEvents.hazards.length+window.PenguinLifeEvents.late.length} 个事件 · ${[...window.PenguinEvents,...window.PenguinLifeEvents.hazards,...window.PenguinLifeEvents.late].reduce((n,e)=>n+e.choices.length,0)} 个选项 · <button class="quiet-button" id="browse-species">翻开企鹅名录</button></p>`;
     showSpeciesArt(null);
     $('browse-species').onclick=openSpecies;
     $('new-life').onclick=()=>requestStart(sharedSeed);
@@ -42,36 +43,36 @@
     $('journal').hidden=true;
   }
   function renderBirth(){
-    $('stage').innerHTML=`<h1 class="birth-heading">这次，你是${esc(state.name)}。</h1><p class="intro-small">申请已批。以下条件不接受讨价还价。</p><dl class="birth-details"><div class="birth-row"><dt>物种</dt><dd>${esc(state.species.label)}<small>${esc(state.species.scientificName)} · ${state.samplingVersion===3?'模型权重 '+percent(state.species):'旧版出身，原样保留'}<br>${esc(state.species.description)}<br>${esc(state.species.trait)}</small></dd></div><div class="birth-row"><dt>出生地</dt><dd>${esc(state.origin.label)}<small>${esc(state.origin.description)}</small></dd></div><div class="birth-row"><dt>家庭</dt><dd>${esc(state.family)}</dd></div><div class="birth-row"><dt>家境</dt><dd>${esc(state.fortune)}</dd></div><div class="birth-row"><dt>天赋</dt><dd>${esc(state.talent.label)}<small>${esc(state.talent.description)}</small></dd></div></dl><span class="birth-stamp">物种审核：大致通过</span><button class="primary wide" id="begin">开始这段鹅生 →</button>`;
+    $('stage').innerHTML=`<h1 class="birth-heading">这次，你是${esc(state.name)}。</h1><p class="intro-small">申请已批。以下条件不接受讨价还价。</p><dl class="birth-details"><div class="birth-row"><dt>物种</dt><dd>${esc(state.species.label)}<small>${esc(state.species.scientificName)} · ${state.samplingVersion===3?'模型权重 '+percent(state.species):'旧版出身，原样保留'}<br>${esc(state.species.description)}<br>${esc(state.species.trait)}</small></dd></div><div class="birth-row"><dt>出生地</dt><dd>${esc(state.origin.label)}<small>${esc(state.origin.description)}</small></dd></div><div class="birth-row"><dt>家庭</dt><dd>${esc(state.family)}</dd></div><div class="birth-row"><dt>家境</dt><dd>${esc(state.fortune)}</dd></div><div class="birth-row"><dt>天赋</dt><dd>${esc(state.talent.label)}<small>${esc(state.talent.description)}</small></dd></div></dl>${state.lifeVersion===1?'<p class="life-note">没有约好的最后一年。缺粮和冒险会增加风险，故事可能来不及说完。</p>':''}<span class="birth-stamp">物种审核：大致通过</span><button class="primary wide" id="begin">开始这段鹅生 →</button>`;
     $('begin').onclick=()=>act(G.begin);
   }
-  function yearHeader(age){return `<div class="year-heading"><div class="age">${String(age).padStart(2,'0')}<small>岁</small></div><div class="year-tools"><p>${esc(state.species.label)} · ${age} / 24 年</p><button id="auto" class="auto-button" aria-pressed="${automatic}">${automatic?'暂停代鹅选择':'自动代鹅选择'}</button></div></div>`;}
+  function yearHeader(age){return `<div class="year-heading"><div class="age">${String(age).padStart(2,'0')}<small>岁</small></div><div class="year-tools"><p>${esc(state.species.label)} · ${state.lifeVersion===1?age+' 岁 · '+(state.terminal?'记录至此':'往后未定'):age+' / 24 年'}</p><button id="auto" class="auto-button" aria-pressed="${automatic}">${automatic?'暂停代鹅选择':'自动代鹅选择'}</button></div></div>`;}
   function wireAuto(){const b=$('auto');if(b)b.onclick=()=>{automatic=!automatic;render();};}
   function renderChoice(){
     const e=G.eventFor(state);
     const previousChapter=e.requires?.storyArc?state.history.filter(h=>[3,8,15].includes(h.age)).at(-1):null;
-    $('stage').innerHTML=yearHeader(state.age+1)+`<p class="scene-line">${esc(G.ambientLine(state))}</p><article class="event">${e.requires?.storyArc?'<p class="story-tag">连锁怪事 · '+({3:'初遇',8:'回响',15:'变故',22:'落幕'}[e.age])+'</p>':''}${previousChapter?'<p class="chain-recall">前情：'+esc(previousChapter.result)+'</p>':''}<h1>${esc(e.title)}</h1><p>${esc(e.text)}</p></article><p class="world-status">世界运行状况：${esc(G.worldStatus(state))}</p><div class="choices">${e.choices.map((c,i)=>`<button class="choice" data-choice="${i}"><span class="number" aria-hidden="true">${i+1}</span><span>${esc(c.label)}</span><svg viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="m2 2 5 6-5 6" stroke="currentColor" stroke-width="1.5"/></svg></button>`).join('')}</div>`;
+    $('stage').innerHTML=yearHeader(state.age+1)+`<p class="scene-line">${esc(G.ambientLine(state))}</p><article class="event">${e.requires?.storyArc?'<p class="story-tag">连锁怪事 · '+({3:'初遇',8:'回响',15:'变故',22:'落幕'}[e.age])+'</p>':''}${previousChapter?'<p class="chain-recall">前情：'+esc(previousChapter.result)+'</p>':''}<h1>${esc(e.title)}</h1><p>${esc(e.text)}</p></article><p class="world-status">世界运行状况：${esc(G.worldStatus(state))}</p>${state.lifeVersion===1&&state.stats.food<20?'<p class="life-warning">饱腹过低，生存风险正在上升。先照顾好肚子。</p>':''}<div class="choices">${e.choices.map((c,i)=>`<button class="choice" data-choice="${i}"><span class="number" aria-hidden="true">${i+1}</span><span>${esc(c.label)}</span><svg viewBox="0 0 10 16" fill="none" aria-hidden="true"><path d="m2 2 5 6-5 6" stroke="currentColor" stroke-width="1.5"/></svg></button>`).join('')}</div>`;
     for(const b of $('stage').querySelectorAll('[data-choice]'))b.onclick=()=>act(s=>G.choose(s,Number(b.dataset.choice)));
     wireAuto();
   }
   function renderResult(){
     const h=state.history.at(-1);
-    $('stage').innerHTML=yearHeader(state.age)+`<article class="event"><p class="result-choice">你选择了：${esc(h.choice)}</p><h1>${esc(h.title)}</h1><div class="outcome"><p>${esc(h.result)}</p></div></article><div class="deltas">${Object.entries(h.effects).map(([k,n])=>`<span>${labels[k]} ${n>0?'+':''}${n}</span>`).join('')}</div>${h.peer?`<p class="peer">${esc(h.peer)}</p>`:''}<button class="primary wide" id="next">${state.age===24?'归档这段鹅生':'翻到下一年'} →</button>`;
+    $('stage').innerHTML=yearHeader(state.age)+`<article class="event"><p class="result-choice">你选择了：${esc(h.choice)}</p><h1>${esc(h.title)}</h1><div class="outcome"><p>${esc(h.result)}</p></div></article><div class="deltas">${Object.entries(h.effects).map(([k,n])=>`<span>${labels[k]} ${n>0?'+':''}${n}</span>`).join('')}</div>${state.terminal?`<aside class="ending-notice" role="status"><p>这一年，没有翻到下一页。</p><h2>${esc(state.terminal.title)}</h2><p>${esc(state.terminal.text)}</p></aside>`:''}${h.peer?`<p class="peer">${esc(h.peer)}</p>`:''}<button class="primary wide" id="next">${state.terminal||state.lifeVersion!==1&&state.age===24?'归档这段鹅生':'翻到下一年'} →</button>`;
     $('next').onclick=()=>act(G.advance);wireAuto();
   }
-  function reportText(){const r=G.report(state);return `《这辈子先当企鹅》\n${state.name} · ${state.species.label} · 24 年\n${r.title}\n\n${r.lines.join('\n')}\n\n${r.epitaph}\n${state.flags.finalWish==='fridge'?'遗言：冰箱里还有我。\n':''}\n南极大学 · ${location.origin+location.pathname}`;}
+  function reportText(){const r=G.report(state);return `《这辈子先当企鹅》\n${state.name} · ${state.species.label} · ${state.age} 年\n${r.title}\n\n${r.lines.join('\n')}\n\n${r.epitaph}\n${state.flags.finalWish==='fridge'?'遗言：冰箱里还有我。\n':''}\n南极大学 · ${location.origin+location.pathname}`;}
   async function copyText(text){try{await navigator.clipboard.writeText(text);toast('已复制。请对这份鹅生负责。');}catch{$('copy-text').value=text;$('copy-dialog').showModal();$('copy-text').select();}}
-  function shareStart(){const url=new URL(location.href);url.search='';url.hash='';url.searchParams.set('seed',state.seed);url.searchParams.set('model',String(state.samplingVersion||2));url.searchParams.set('story',String(state.storyVersion||3));copyText(`我这辈子是${state.species.label}，出生在${state.origin.label}。从同一出身开始，你会过成什么样？\n${url.href}`);}
+  function shareStart(){const url=new URL(location.href);url.search='';url.hash='';url.searchParams.set('seed',state.seed);url.searchParams.set('model',String(state.samplingVersion||2));url.searchParams.set('story',String(state.storyVersion||3));url.searchParams.set('life',String(state.lifeVersion||0));copyText(`我这辈子是${state.species.label}，出生在${state.origin.label}。从同一出身开始，你会过成什么样？\n${url.href}`);}
   function renderReport(){
     const r=G.report(state);stopAuto();
-    $('stage').innerHTML=`<div class="year-heading"><div class="age">24<small>年</small></div><div class="year-tools"><p>${esc(state.name)}的鹅生已归档</p><p>档案永久有效，合理性另议。</p></div></div><h1 class="report-title">${esc(r.title)}</h1><div class="report-lines">${r.lines.map(l=>`<p>${esc(l)}</p>`).join('')}</div><p class="epitaph">${esc(r.epitaph)}</p>${state.flags.finalWish==='fridge'?'<p class="intro-small">本人遗言：冰箱里还有我。</p>':''}<div class="report-actions"><button class="primary" id="download">下载鹅生卡</button><button class="secondary" id="copy-report">复制报告</button><button class="secondary" id="share-birth">邀请同出身的鹅</button></div><div class="report-bottom"><button class="quiet-button" id="another">再当一次企鹅</button>${viewing?'<button class="quiet-button" id="back-current">回到当前鹅生</button>':'<a href="../../campus/">返回校园</a>'}</div>`;
+    $('stage').innerHTML=`<div class="year-heading"><div class="age">${state.age}<small>年</small></div><div class="year-tools"><p>${esc(state.name)}的鹅生已归档</p><p>档案永久有效，合理性另议。</p></div></div><h1 class="report-title">${esc(r.title)}</h1><div class="report-lines">${r.lines.map(l=>`<p>${esc(l)}</p>`).join('')}</div><p class="epitaph">${esc(r.epitaph)}</p>${state.flags.finalWish==='fridge'?'<p class="intro-small">本人遗言：冰箱里还有我。</p>':''}<div class="report-actions"><button class="primary" id="download">下载鹅生卡</button><button class="secondary" id="copy-report">复制报告</button><button class="secondary" id="share-birth">邀请同出身的鹅</button></div><div class="report-bottom"><button class="quiet-button" id="another">再当一次企鹅</button>${viewing?'<button class="quiet-button" id="back-current">回到当前鹅生</button>':'<a href="../../campus/">返回校园</a>'}</div>`;
     $('download').onclick=downloadCard;$('copy-report').onclick=()=>copyText(reportText());$('share-birth').onclick=shareStart;$('another').onclick=()=>requestStart();
     if($('back-current'))$('back-current').onclick=()=>{state=currentState;viewing=false;render();};
   }
   let currentState=null;
   function renderPast(){
     $('past').hidden=!past.length;
-    $('past-list').innerHTML=past.map((s,i)=>`<div class="past-item"><button data-past="${i}">${esc(s.species.label)} ${esc(s.name)} · ${esc(G.report(s).title)}</button><small>24 年 / 查看</small></div>`).join('');
+    $('past-list').innerHTML=past.map((s,i)=>`<div class="past-item"><button data-past="${i}">${esc(s.species.label)} ${esc(s.name)} · ${esc(G.report(s).title)}</button><small>${s.age} 年 / 查看</small></div>`).join('');
     for(const b of $('past-list').querySelectorAll('[data-past]'))b.onclick=()=>{if(!viewing)currentState=state;state=past[Number(b.dataset.past)];viewing=true;showAll=false;stopAuto();render();focusHeading();};
   }
   function renderJournal(){
@@ -105,7 +106,7 @@
       const r=G.report(state);c.fillStyle='#cd5433';c.font='bold 43px "Songti SC",serif';let headingY=wrapText(c,r.title,410,235,600,62);
       c.fillStyle='#183d35';c.font='28px "PingFang SC",sans-serif';wrapText(c,`${state.name} / ${state.species.label}`,410,headingY+28,600,40);
       c.fillStyle='#6b7a70';c.font='24px "PingFang SC",sans-serif';wrapText(c,`破壳地点：${state.origin.label}`,410,headingY+95,600,38);
-      c.font='21px "PingFang SC",sans-serif';c.fillText('24 年，物种未必变化，世界已经不一样。',65,500);
+      c.font='21px "PingFang SC",sans-serif';c.fillText(`${state.age} 年，${state.terminal?({accident:'意外离世',hunger:'缺粮离世',oldAge:'老去离世',vanished:'离奇失踪'}[state.terminal.kind]):'世界已经不一样'}。`,65,500);
       let y=605;c.fillStyle='#183d35';c.font='26px "Songti SC",serif';for(const line of r.lines)y=wrapText(c,line,65,y,950,40)+18;
       c.fillStyle='#cd5433';c.fillRect(65,1305,950,2);c.font='bold 29px "Songti SC",serif';wrapText(c,r.epitaph,65,1360,950,44);
       c.fillStyle='#6b7a70';c.font='21px "PingFang SC",sans-serif';c.fillText('这辈子先当企鹅 · 纯属虚构，认真胡来。',65,1480);
