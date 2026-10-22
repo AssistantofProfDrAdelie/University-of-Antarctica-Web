@@ -112,7 +112,7 @@
   $('species-guide').onclick=openSpecies;$('close-species').onclick=()=>$('species-dialog').close();
   $('help').onclick=()=>{stopAuto();$('help-dialog').showModal();};$('close-help').onclick=$('understood').onclick=()=>{$('help-dialog').close();render();};$('close-copy').onclick=()=>$('copy-dialog').close();
   document.addEventListener('visibilitychange',()=>{if(document.hidden){stopAuto();}else if(!$('new-life'))render();});
-  document.addEventListener('keydown',e=>{if(e.repeat||document.querySelector('dialog[open]')||!state||viewing||!['1','2','3'].includes(e.key)||/INPUT|TEXTAREA|BUTTON/.test(document.activeElement?.tagName))return;if(state.phase==='choice'){stopAuto();act(s=>G.choose(s,Number(e.key)-1));}});
+  document.addEventListener('keydown',e=>{if(e.repeat||document.querySelector('dialog[open]')||$('new-life')||!state||viewing||!['1','2','3'].includes(e.key)||/INPUT|TEXTAREA|SELECT|BUTTON/.test(document.activeElement?.tagName))return;if(state.phase==='choice'){stopAuto();act(s=>G.choose(s,Number(e.key)-1));}});
   // Resume is explicit so a shared birth never silently replaces an existing life.
   render(true);
 })();
