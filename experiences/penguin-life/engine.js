@@ -1,6 +1,7 @@
 (function (root) {
   'use strict';
   const Life=typeof module!=='undefined'&&module.exports?require('./lifetime.js'):root.PenguinLifetime;
+  const B=typeof module!=='undefined'&&module.exports?require('./breeding.js'):root.PenguinBreeding;
   const KEYS = ['food', 'dignity', 'bond', 'penguin'];
   function hash(text) { let h = 2166136261; for (const c of text) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return h >>> 0; }
   function random(seed) { let n = hash(seed); return () => { n += 0x6D2B79F5; let t = Math.imul(n ^ n >>> 15, 1 | n); t ^= t + Math.imul(t ^ t >>> 7, 61 | t); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
@@ -42,7 +43,7 @@
     const stats={food:55,dignity:talent.id==='slip'?65:50,bond:talent.id==='stone'?55:40,penguin:talent.id==='shadow'?65:80};
     for(const [k,v] of Object.entries(penguinSpecies.bonus))stats[k]=Math.max(0,Math.min(100,stats[k]+v));
     const names=model===2?expandedNames.slice(0,6):expandedNames;const familyPool=model===2?families:expandedFamilies,fortunePool=model===2?fortunes:expandedFortunes;
-    return {version:2,samplingVersion:model,storyVersion,...(lifeVersion>=1?{lifeVersion}:{}),species:penguinSpecies,seed,age:0,name:names[Math.floor(rng()*names.length)],origin,talent,family:familyPool[Math.floor(rng()*familyPool.length)],fortune:fortunePool[Math.floor(rng()*fortunePool.length)],stats,flags:{origin:origin.id,talent:talent.id,species:penguinSpecies.id,...(storyVersion===4?{storyArc:penguinSpecies.id+'_'+(hash('story:'+seed)%2?'b':'a')}: {})},history:[],phase:'birth'};
+    return {version:2,samplingVersion:model,storyVersion,...(lifeVersion>=1?{lifeVersion}:{}),...(lifeVersion===2?{kin:B.empty()}:{}),species:penguinSpecies,seed,age:0,name:names[Math.floor(rng()*names.length)],origin,talent,family:familyPool[Math.floor(rng()*familyPool.length)],fortune:fortunePool[Math.floor(rng()*fortunePool.length)],stats,flags:{origin:origin.id,talent:talent.id,species:penguinSpecies.id,...(storyVersion===4?{storyArc:penguinSpecies.id+'_'+(hash('story:'+seed)%2?'b':'a')}: {})},history:[],phase:'birth'};
   }
   function begin(s) { if(s.phase !== 'birth') return s; return {...s,phase:'choice'}; }
   function eventFor(s) {
@@ -60,7 +61,7 @@
     return ordinary[legacy?0:index];
   }
   function choose(s,index) {
-    if(s.phase !== 'choice') return s;
+    if(s.phase !== 'choice'||B.blocked(s)) return s;
     const event = eventFor(s); const choice = event && event.choices[index];
     if(!choice || !Number.isInteger(index)) throw new Error('Invalid choice');
     const stats = {...s.stats};
@@ -80,13 +81,14 @@
     if(s.lifeVersion>=1){const terminal=Life.resolve(next,choice);if(terminal)next.terminal=terminal;}
     return next;
   }
-  function advance(s) { if(s.phase !== 'result') return s; return {...s,phase:s.terminal||!s.lifeVersion&&s.age>=24?'ended':'choice'}; }
+  function advance(s) { if(s.phase !== 'result'||B.blocked(s)) return s; return {...s,phase:s.terminal||!s.lifeVersion&&s.age>=24?'ended':'choice'}; }
   function report(s) {
     const f=s.flags, lines=[];
     const penguinSpecies=s.species||speciesFor(s.seed);
     const endingTitles={'emperor-sunset':'批准太阳准点下班','emperor-chair':'朕是一把折叠椅','emperor-penguin':'皇帝转岗为企鹅','adelie-change':'活体零钱，现金流稳定','adelie-guardian':'石头的法定监护鹅','adelie-earth':'地球永久参展','gentoo-ontime':'终于准时抵达现在','gentoo-yesterday':'昨天送达，昨天退款','gentoo-finish':'终点还在热鱼','chinstrap-visa':'朋友免签，本鹅开放','chinstrap-map':'国境代班，本鹅散步','chinstrap-ocean':'紧急联系人：整片海','rockhopper-retired':'眉毛退休，表情自由','rockhopper-secretary':'全脸秘书长','rockhopper-flying':'表情已出国，本鹅未动','little-comma':'从逗号里通过一生','little-outside':'本人已走出这句话','little-world':'世界缩小，朋友照旧'};
     const endingChoice=events().flatMap(e=>e.choices).find(c=>c.set?.speciesEnding===f.speciesEnding && f.speciesEnding);
     if(!s.legacy&&s.version!==1) lines.push(`${penguinSpecies.label}的一生：${endingChoice?.result||penguinSpecies.description}`);
+    const familyLine=B.summary(s);if(familyLine)lines.push(familyLine);
     if(s.storyVersion===4){const chapter=s.history.find(h=>h.age===15);if(chapter)lines.push('第十五年的怪事留下了回声：'+chapter.result);}
     if(f.stoneLoan) lines.push(f.pension ? '你借给石头的鱼，后来变成了养老金。石头比银行守信。' : '你曾借给石头一条鱼。它至今没有否认这笔债务。');
     if(f.shadowDinner) lines.push('你的影子替你赴宴，后来有了自己的作息。你们仍保持地面联系。');
@@ -126,17 +128,18 @@
     if(s.legacy!==undefined&&typeof s.legacy!=='boolean')return false;
     if(!s.origin || s.origin.id!==s.flags.origin || !s.talent || s.talent.id!==s.flags.talent || typeof s.name!=='string') return false;
     if(!Array.isArray(s.history) || s.history.length!==s.age || !s.history.every((h,i)=>h && h.age===i+1 && typeof h.result==='string' && typeof h.title==='string' && typeof h.eventId==='string')) return false;
+    if(s.kin&&(s.lifeVersion!==2||!B.valid(s.kin,s)))return false;
     if(s.terminal&&!Life.validTerminal(s))return false;
     if(s.phase==='birth'&&s.age!==0 || s.phase==='choice'&&s.age>=(s.lifeVersion>=1?Life.profile(s.species.id).limit:24) || s.phase==='result'&&s.age===0 || s.phase==='ended'&&!s.lifeVersion&&s.age!==24) return false;
     return true;
   }
-  function upgradeLife(s){return s?.lifeVersion===1&&!s.terminal&&s.phase!=='ended'?{...s,lifeVersion:2}:s;}
+  function upgradeLife(s){let next=s?.lifeVersion===1&&!s.terminal&&s.phase!=='ended'?{...s,lifeVersion:2}:s;return next?.lifeVersion===2&&!next.kin&&!next.terminal&&next.phase!=='ended'?{...next,kin:B.empty()}:next;}
   function migrateState(s) {
     if(!validateState(s))return null;
     if(s.version===2)return {...s,samplingVersion:s.samplingVersion||2,storyVersion:s.storyVersion||3,species:speciesFor(s.seed,s.species.id)};
     const penguinSpecies=speciesFor(s.seed,undefined,2);
     return {...s,version:2,samplingVersion:2,storyVersion:3,legacy:true,species:penguinSpecies,flags:{...s.flags,species:penguinSpecies.id}};
   }
-  const api={species,totalWeight,probabilityFor,pickSpecies,speciesFor,lifetimeProfile:Life.profile,mortalityRisk:Life.risk,ambientLine,worldStatus,migrateState,upgradeLife,createLife,begin,eventFor,choose,advance,report,validateState,origins,talents};
+  const api={breeding:B,species,totalWeight,probabilityFor,pickSpecies,speciesFor,lifetimeProfile:Life.profile,mortalityRisk:Life.risk,ambientLine,worldStatus,migrateState,upgradeLife,createLife,begin,eventFor,choose,advance,report,validateState,origins,talents};
   if(typeof module!=='undefined'&&module.exports) module.exports=api; else root.PenguinLife=api;
 })(typeof window!=='undefined'?window:globalThis);

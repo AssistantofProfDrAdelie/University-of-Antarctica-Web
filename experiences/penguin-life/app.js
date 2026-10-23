@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const G=window.PenguinLife,$=id=>document.getElementById(id);
+  const G=window.PenguinLife,B=G.breeding,$=id=>document.getElementById(id);
   const SAVE='ua-penguin-life-v1',ARCHIVE='ua-penguin-life-archive-v1';
   const labels={food:'饱腹',dignity:'体面',bond:'鹅缘',penguin:'含鹅量'};
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -34,6 +34,21 @@
     $('nature-note').hidden=!state;if(state){const p=state.species;$('nature-note').innerHTML=`<summary>这只鹅的真实底稿</summary><p class="latin">${esc(p.scientificName)}</p><p>${esc(p.fact)}</p><p>栖地：${esc(p.habitat)}</p><a href="${esc(p.factUrl)}" target="_blank" rel="noopener noreferrer">物种资料 ↗</a><p>当前模型抽取权重：${percent(p)} <button class="quiet-button" id="dossier-probability">怎么算的？</button></p>`;$('dossier-probability').onclick=openProbability;}
     $('save-note').textContent=storageOK?'无需登录 · 记录只保存在此浏览器':'浏览器未允许保存 · 本次仍可完整游玩';
   }
+  function renderFamily(){
+    const panel=$('family-panel');panel.hidden=!state||state.lifeVersion!==2;if(panel.hidden)return;
+    const k=B.ensure(state),p=B.profile(state.species.id),active=B.enabled(state),status={nestling:'正在长大',independent:'已经离巢',lost:'没能长大'};
+    panel.innerHTML=`<div class="section-heading"><h2>一家子的怪事</h2><span>繁育与后代</span></div><p>繁育搭档：${k.partner?esc(k.partner.name)+' · '+esc(k.partner.trait):'尚未确认'}</p>${k.eggs.length?`<p class="family-small">本季 ${k.eggs.length} 枚蛋 · 孵出 ${k.eggs.filter(e=>e.status==='hatched').length} 只</p>`:''}${k.children.length?`<details class="children-list" open><summary>${k.children.length} 只幼鹅的档案</summary>${k.children.map(c=>`<p><strong>${esc(c.name)}</strong> <small>${status[c.status]}</small><br><small>${esc(state.species.label)} · ${c.bornAt} 岁那年出生<br>${esc(c.trait.source)}：${esc(c.trait.label)}</small></p>`).join('')}</details>`:'<p class="family-small">还没有后代。先把自己养成一只大鹅。</p>'}${active?(B.available(state)?'<button class="secondary wide" id="family-open">开启这一季繁育 →</button>':k.stage!=='idle'?`<button class="secondary wide" id="family-open">${B.blocked(state)?'继续这一季照护':'看看越冬中的幼鹅'} →</button>`:`<p class="family-small">${state.age<p.adult?'长到 '+p.adult+' 岁可开启繁育季（游戏设定）。':'这一季已收好，往后的年份还能再相聚。'}</p>`):''}${B.canVisit(state)?'<button class="quiet-button" id="family-visit">和离巢的孩子聚一聚 →</button>':''}${k.log.length?`<details class="family-log"><summary>家庭记事 · ${k.log.length} 段</summary>${k.log.slice().reverse().map(h=>`<p><small>${h.year} 岁 · ${esc(h.title)} · ${esc(h.choice)}</small><br>${esc(h.result)}</p>`).join('')}</details>`:''}`;
+    if($('family-open'))$('family-open').onclick=()=>openFamily(false);if($('family-visit'))$('family-visit').onclick=()=>openFamily(true);
+  }
+  function openFamily(visit=false){stopAuto();state=visit?B.visit(state):B.available(state)?B.begin(state):state;persist();render();renderFamilyDialog();if(!$('family-dialog').open)$('family-dialog').showModal();}
+  function familyAct(fn){state=fn(state);persist();render();renderFamilyDialog();const h=$('family-stage').querySelector('h2');if(h){h.tabIndex=-1;h.focus();}}
+  function renderFamilyDialog(){const k=B.ensure(state),e=B.scene(state),p=B.profile(state.species.id);
+    $('family-stage').innerHTML=`<p class="story-tag">${esc(state.species.label)} · ${state.age} 岁的繁育季</p>${k.pending?`<h2>${esc(k.pending.title)}</h2><div class="outcome"><p>${esc(k.pending.result)}</p></div><button class="primary wide" id="family-next">${k.pending.nextStage==='idle'?'收好这季家庭档案':k.pending.nextStage==='wintering'?'交给时间，下一年继续':'继续这一季'} →</button>`:e?`<h2>${esc(e.title)}</h2><p>${esc(e.text)}</p><div class="choices">${e.choices.map((c,i)=>`<button class="choice" data-family-choice="${i}"><span class="number">${i+1}</span><span>${esc(c.label)}</span></button>`).join('')}</div>`:`<h2>${k.stage==='wintering'?'褐色小云，慢慢过冬。':'这一季，先收好。'}</h2><p>${k.stage==='wintering'?'蛋已经孵化，幼鹅还在育雏期。可以继续年度故事，下一年再回来照护。':esc(B.summary(state)||'这一季没有繁育。海风把空白喜帖折成了飞机。')}</p><button class="primary wide" id="family-done">回到鹅生 →</button>`}<details class="nature-note"><summary>繁育的真实底稿</summary><p>${esc(p.fact)} ${esc(p.incubation)}。${esc(p.nest)}。</p><p>成年入口、照护加成、孵化与离巢概率是游戏参数，不是真实物种成活率。</p><a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">参考资料 ↗</a></details>`;
+    for(const b of $('family-stage').querySelectorAll('[data-family-choice]'))b.onclick=()=>familyAct(s=>B.choose(s,Number(b.dataset.familyChoice)));
+    if($('family-next'))$('family-next').onclick=()=>familyAct(B.next);if($('family-done'))$('family-done').onclick=()=>$('family-dialog').close();
+  }
+  $('close-family').onclick=()=>$('family-dialog').close();
+  function familyGuard(){if(!state||!B.blocked(state))return;stopAuto();for(const b of $('stage').querySelectorAll('[data-choice],#next,#auto'))b.disabled=true;const note=document.createElement('p');note.className='life-warning';note.innerHTML='这一季的幼鹅还在等你。先完成照护，再翻年。 <button class="quiet-button" id="family-return">继续繁育季 →</button>';$('stage').append(note);$('family-return').onclick=()=>openFamily();}
   function renderWelcome(){
     $('stage').innerHTML=`<h1 class="intro-title">这辈子<br>先当<em>企鹅。</em></h1><p class="intro-text">你的出生申请已通过。<br>物种调剂为企鹅。</p><p class="intro-small">随机破壳，认真胡来。<br>石头会记得你的鱼，影子有自己的前程。<br>十八种企鹅，三十六条连锁怪事。<br>同一物种重开，也有不同的命运找上门。</p><p class="intro-small">物种按种群估计加权抽取，其他出身随机。<br>你只负责出生，命运负责乱来。<br>旧事会回来找你，结尾认得你的选择。</p><div class="intro-actions"><button class="primary" id="new-life">${sharedSeed?'接受同一出身':'接受调剂'} <span aria-hidden="true">&nbsp; →</span></button>${state?`<button class="secondary" id="resume">${state.phase==='ended'?'查看上辈子':'继续当这只'}</button>`:''}</div>${sharedSeed?'<p class="intro-small">朋友把出生申请转给了你。相同起点，选择由你。</p>':''}<p class="intro-small">寿命不定 · ${window.PenguinEvents.length+window.PenguinLifeEvents.hazards.length+window.PenguinLifeEvents.late.length} 个事件 · ${[...window.PenguinEvents,...window.PenguinLifeEvents.hazards,...window.PenguinLifeEvents.late].reduce((n,e)=>n+e.choices.length,0)} 个选项<br>另有 ${window.PenguinFates.arcs.length+window.PenguinFates.memories.length} 段旧事回访 · <button class="quiet-button" id="browse-species">翻开企鹅名录</button></p>`;
     showSpeciesArt(null);
@@ -83,7 +98,7 @@
     $('all-history').hidden=records.length<=3;$('all-history').textContent=showAll?'收起早年记录':'查看完整记录';
     $('all-history').onclick=()=>{showAll=!showAll;renderJournal();};
   }
-  function schedule(){clearTimeout(timer);if(!automatic||document.hidden||!state||!['choice','result'].includes(state.phase))return;
+  function schedule(){clearTimeout(timer);if(!automatic||document.hidden||!state||B.blocked(state)||!['choice','result'].includes(state.phase))return;
     timer=setTimeout(()=>{if(state.phase==='choice')act(s=>G.choose(s,Math.floor(Math.random()*3)));else act(G.advance);},state.phase==='choice'?2400:3200);
   }
   function requestStart(seed){const active=viewing?currentState:state;if(active&&active.phase!=='ended'){pendingSeed=seed;stopAuto();$('restart-dialog').showModal();}else start(seed);}
@@ -93,7 +108,7 @@
   function render(welcome=false){
     clearTimeout(timer);document.body.classList.toggle('is-welcome',welcome||!state);renderDossier();$('restart').hidden=!state||state.phase==='ended';
     if(welcome||!state)renderWelcome();else{if(state.phase==='birth')renderBirth();else if(state.phase==='choice')renderChoice();else if(state.phase==='result')renderResult();else renderReport();renderJournal();}
-    renderPast();$('stage').classList.remove('enter');void $('stage').offsetWidth;$('stage').classList.add('enter');schedule();
+    renderFamily();if(!welcome)familyGuard();renderPast();$('stage').classList.remove('enter');void $('stage').offsetWidth;$('stage').classList.add('enter');schedule();
   }
   function wrapText(ctx,text,x,y,maxWidth,lineHeight){let line='';for(const c of text){if(ctx.measureText(line+c).width>maxWidth&&line){ctx.fillText(line,x,y);line='';y+=lineHeight;}line+=c;}if(line){ctx.fillText(line,x,y);y+=lineHeight;}return y;}
   async function downloadCard(){
